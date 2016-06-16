@@ -23,5 +23,15 @@
  */
 - (void)buttonAction:(UIButton *)button;
 
+/**
+ *  添加通知监听
+ */
+- (void)addNotificationObserver;
+/**
+ *  移除通知监听
+ */
+- (void)removeNotificationObserver;
+
+
 @end
 

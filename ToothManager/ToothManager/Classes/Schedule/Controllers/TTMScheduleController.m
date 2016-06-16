@@ -9,7 +9,6 @@
 #import "TTMLoginController.h"
 #import "TTMNavigationController.h"
 #import "TTMChairModel.h"
-#import "TTMScheduleDetailController.h"
 #import "TTMCalendarController.h"
 #import "TTMMessageController.h"
 #import "TTMMessageCellModel.h"
@@ -21,9 +20,12 @@
 #import "TTMPatientTool.h"
 #import "TTMPatientModel.h"
 #import "TTMPatientDetailController.h"
+#import "TTMAppointDetailViewController.h"
+#import "TTMSchedulePatientInfoViewController.h"
+#import "TTMScheduleCell.h"
 
 #define kMargin 20.f
-#define kRowHeight 44.0f
+#define kRowHeight 105.0f
 
 @interface TTMScheduleController ()<
     UITableViewDelegate,
@@ -64,11 +66,27 @@
     chair.seat_name = @"全部";
     self.selectedChair = chair;
     [self setupRightItem];
+    
+    //添加通知
+    [self addNotificationObserver];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self queryMessage];
+}
+
+- (void)dealloc{
+    [self removeNotificationObserver];
+}
+
+#pragma mark - 添加通知
+- (void)addNotificationObserver{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryScheduleData) name:kTTMAppointStateChangedNotification object:nil];
+}
+#pragma mark - 移除通知
+- (void)removeNotificationObserver{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setupRightItem {
@@ -95,7 +113,7 @@
 - (void)setupTableView {
     CGFloat tableHeight = ScreenHeight;
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, tableHeight)
-                                                          style:UITableViewStylePlain];
+                                                          style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.rowHeight = kRowHeight;
@@ -113,120 +131,44 @@
 }
 
 #pragma maek - UITableViewDelegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.dataArray.count;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TTMMyScheduleCell *cell = [TTMMyScheduleCell scheduleCellWithTableView:tableView];
+//    TTMMyScheduleCell *cell = [TTMMyScheduleCell scheduleCellWithTableView:tableView];
+    TTMScheduleCell *cell = [TTMScheduleCell scheduleCellWithTableView:tableView];
     if (self.dataArray.count > 0) {
-        TTMScheduleCellModel *model = self.dataArray[indexPath.row];
+        TTMScheduleCellModel *model = self.dataArray[indexPath.section];
         cell.model = model;
     }
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    SchedulePopMenu *menuView = [SchedulePopMenu defaultPopupView];
-    menuView.parentVC = self;
-    
-    __weak typeof(self) weakSelf = self;
-    [self lew_presentPopupView:menuView animation:[LewPopupViewAnimationFade new] dismissed:^{
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        switch (menuView.type) {
-            case SchedulePopMenuType1:
-                //预约详情
-                [weakSelf jumpToAppointDetailWithIndexPath:indexPath];
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10;
+}
 
-                break;
-            case SchedulePopMenuType2:
-                //患者详情
-                [self jumpToPatientDetailWithIndexPath:indexPath];
-                break;
-            case SchedulePopMenuType3:
-                //联系医生
-                [weakSelf jumpToPhoneWithIndexPath:indexPath withType:@"0"];
-                
-                break;
-            case SchedulePopMenuType4:
-                //联系患者
-                [weakSelf jumpToPhoneWithIndexPath:indexPath withType:@"1"];
-                
-                break;
-            default:
-                break;
-        }
-    }];
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 1;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //预约详情
+    [self jumpToAppointDetailWithIndexPath:indexPath];
 }
 #pragma mark - 跳转到预约详情页面
 - (void)jumpToAppointDetailWithIndexPath:(NSIndexPath *)indexPath{
-    TTMScheduleCellModel *model = self.dataArray[indexPath.row];
-    TTMScheduleDetailController *detailVC = [[TTMScheduleDetailController alloc] init];
+
+    TTMScheduleCellModel *model = self.dataArray[indexPath.section];
+    TTMAppointDetailViewController *detailVC = [[TTMAppointDetailViewController alloc] init];
     detailVC.model = model;
     [self.navigationController pushViewController:detailVC animated:YES];
-}
-
-- (void)jumpToPatientDetailWithIndexPath:(NSIndexPath *)indexPath{
-    TTMScheduleCellModel *model = self.dataArray[indexPath.row];
-    TTMPatientDetailController *detailVc = [[TTMPatientDetailController alloc] init];
-    detailVc.patientId = model.patient_id;
-    [self.navigationController pushViewController:detailVc animated:YES];
-}
-#pragma mark - 打电话
-- (void)jumpToPhoneWithIndexPath:(NSIndexPath *)indexPath withType:(NSString *)type{
-    TTMScheduleCellModel *model = self.dataArray[indexPath.row];
-    if ([type isEqualToString:@"0"]) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDWithView:self.view.window text:@"获取医生电话..."];
-        //查询医生的电话
-        [TTMDoctorTool requestDoctorInfoWithDoctorId:model.doctor_id success:^(TTMDoctorModel *dcotorInfo) {
-            [hud hide:YES];
-            self.selectDoctor = dcotorInfo;
-            if(dcotorInfo.doctor_phone.length > 0 && dcotorInfo.doctor_phone != nil){
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:[NSString stringWithFormat:@"拨打电话%@",dcotorInfo.doctor_phone] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-                alertView.tag = 101;
-                [alertView show];
-            }else{
-                [MBProgressHUD showToastWithText:@"医生未留电话!"];
-            }
-        } failure:^(NSError *error) {
-            [hud hide:YES];
-            [MBProgressHUD showToastWithText:@"医生电话获取失败！"];
-        }];
-    }else{
-        MBProgressHUD *hud = [MBProgressHUD showHUDWithView:self.view.window text:@"获取患者电话..."];
-        [TTMPatientTool requestPatientInfoWithpatientId:model.patient_id success:^(TTMPatientModel *result) {
-            [hud hide:YES];
-            self.selectPatient = result;
-            if(result.patient_phone.length > 0 && result.patient_phone != nil){
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:[NSString stringWithFormat:@"拨打电话%@",result.patient_phone] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-                alertView.tag = 102;
-                [alertView show];
-            }else{
-                [MBProgressHUD showToastWithText:@"患者未留电话!"];
-            }
-        } failure:^(NSError *error) {
-            [hud hide:YES];
-            [MBProgressHUD showToastWithText:@"患者电话获取失败！"];
-        }];
-    }
-    
-}
-//打电话
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(alertView.tag == 101){
-        if(buttonIndex == 1){
-            NSString *number = self.selectDoctor.doctor_phone;
-            NSString *num = [[NSString alloc]initWithFormat:@"tel://%@",number];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
-        }
-    }else if(alertView.tag == 102){
-        if(buttonIndex == 1){
-            NSString *number = self.selectPatient.patient_phone;
-            NSString *num = [[NSString alloc]initWithFormat:@"tel://%@",number];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
-        }
-    }
 }
 
 #pragma mark - 代理方法

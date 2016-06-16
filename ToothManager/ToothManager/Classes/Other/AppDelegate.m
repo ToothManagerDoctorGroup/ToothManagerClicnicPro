@@ -12,9 +12,17 @@
 #import "TTMNavigationController.h"
 #import "UMFeedback.h"
 #import "UMessage.h"
+#import "JPUSHService.h"
+#import "TTMRemoteNotificationManager.h"
+
 #define kUMengAppKey @"5594d14b67e58e3ef9003aad"
 #define UMSYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define _IPHONE80_ 80000
+
+static NSString *jPushAppKey = @"69a247d9b1b15f5553a94e84";
+static NSString *jPushChannel = @"App Store";
+static BOOL isProduction = FALSE;
+
 
 @interface AppDelegate ()
 
@@ -24,6 +32,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     application.statusBarHidden = NO;
@@ -65,7 +75,13 @@
 #endif
     
     [UMFeedback setAppkey:kUMengAppKey];
-    [UMessage startWithAppkey:kUMengAppKey launchOptions:launchOptions];
+//    [UMessage startWithAppkey:kUMengAppKey launchOptions:launchOptions];
+    //如不需要使用IDFA，advertisingIdentifier 可为nil
+    [JPUSHService setupWithOption:launchOptions appKey:jPushAppKey
+                          channel:jPushChannel
+                 apsForProduction:isProduction
+            advertisingIdentifier:nil];
+    
     [self setupUMessage];
     return YES;
 }
@@ -102,23 +118,29 @@
         
         UIUserNotificationSettings *userSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert
                                                                                      categories:[NSSet setWithObject:categorys]];
-        [UMessage registerRemoteNotificationAndUserNotificationSettings:userSettings];
+//        [UMessage registerRemoteNotificationAndUserNotificationSettings:userSettings];
+        //可以添加自定义categories
+        [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
         
     } else{
         //register remoteNotification types (iOS 8.0以下)
-        [UMessage registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge
-         |UIRemoteNotificationTypeSound
-         |UIRemoteNotificationTypeAlert];
+//        [UMessage registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge
+//         |UIRemoteNotificationTypeSound
+//         |UIRemoteNotificationTypeAlert];
+        
+        //categories 必须为nil
+        [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert) categories:nil];
     }
 #else
     //register remoteNotification types (iOS 8.0以下)
-     [UMessage registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge
-     |UIRemoteNotificationTypeSound
-     |UIRemoteNotificationTypeAlert];
+//     [UMessage registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge
+//     |UIRemoteNotificationTypeSound
+//     |UIRemoteNotificationTypeAlert];
+    [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert) categories:nil];
     
 #endif
     //for log
-    [UMessage setLogEnabled:YES];
+//    [UMessage setLogEnabled:YES];
 }
 
 #ifdef __IPHONE_8_0
@@ -138,18 +160,52 @@
 #endif
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    /// Required - 注册 DeviceToken
+    [JPUSHService registerDeviceToken:deviceToken];
+    
     if (deviceToken) { // 缓存deviceToken
         NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]                  stringByReplacingOccurrencesOfString: @">" withString: @""]
                            stringByReplacingOccurrencesOfString: @" " withString: @""];
-        [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"deviceToken"];
-        [UMessage registerDeviceToken:deviceToken];
+        //将registrationID保存到本地
+        if ([JPUSHService registrationID] && [JPUSHService registrationID].length > 0) {
+            [[NSUserDefaults standardUserDefaults] setObject:[JPUSHService registrationID] forKey:@"deviceToken"];
+        }
+//        [UMessage registerDeviceToken:deviceToken];
+        
+        TTMLog(@"registerId:%@",[JPUSHService registrationID]);
     }
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    [UMessage didReceiveRemoteNotification:userInfo];
+//    [UMessage didReceiveRemoteNotification:userInfo];
+     [JPUSHService handleRemoteNotification:userInfo];
 }
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    NSLog(@"收到通知:%@", [self logDic:userInfo]);
+    
+    if([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
+    {
+        [[TTMRemoteNotificationManager shareInstance] didReceiveRemoteNotification:userInfo];
+    }else{
+        //跳转到消息页面
+        
+    }
+    
+    // IOS 7 Support Required
+    [UIApplication sharedApplication].applicationIconBadgeNumber  =  0;
+//    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //Optional
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -171,6 +227,26 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (NSString *)logDic:(NSDictionary *)dic {
+    if (![dic count]) {
+        return nil;
+    }
+    NSString *tempStr1 =
+    [[dic description] stringByReplacingOccurrencesOfString:@"\\u"
+                                                 withString:@"\\U"];
+    NSString *tempStr2 =
+    [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+    NSString *tempStr3 =
+    [[@"\"" stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
+    NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *str =
+    [NSPropertyListSerialization propertyListFromData:tempData
+                                     mutabilityOption:NSPropertyListImmutable
+                                               format:NULL
+                                     errorDescription:NULL];
+    return str;
 }
 
 @end

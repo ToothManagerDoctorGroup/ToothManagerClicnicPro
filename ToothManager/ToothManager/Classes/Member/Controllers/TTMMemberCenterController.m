@@ -92,9 +92,9 @@
                                                                     contenColor:nil
                                                                      messageNum:0
                                                                      accessType:TTMMemberCellModelAccessTypeButton];
-    if (self.bankModel.keyId) { // 有值，表示有卡
+//    if (self.bankModel.keyId) { // 有值，表示有卡
         bankNoModel.controllerClass = [TTMAddBankCardController class];
-    }
+//    }
     
     NSString *doctorContent = [NSString stringWithFormat:@"%@人", @(self.summaryModel.doctor_count)];
     TTMMemberCellModel *doctorsModel = [[TTMMemberCellModel alloc] initWithTitle:@"我的医生:"

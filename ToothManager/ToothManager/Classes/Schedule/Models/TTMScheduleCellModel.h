@@ -32,6 +32,18 @@ typedef NS_ENUM(NSUInteger, TTMScheduleQueryTimeType){
 @interface TTMScheduleCellModel : NSObject
 
 /**
+ *  助手的个数
+ */
+@property (nonatomic, assign)NSInteger assistCount;
+/**
+ *  其它个数
+ */
+@property (nonatomic, assign)NSInteger extraCount;
+/**
+ *  材料个数
+ */
+@property (nonatomic, assign)NSInteger materialCount;
+/**
  *  关健字
  */
 @property (nonatomic, assign) NSInteger keyId;

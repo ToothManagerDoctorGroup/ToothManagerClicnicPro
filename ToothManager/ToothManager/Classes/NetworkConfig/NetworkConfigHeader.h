@@ -10,9 +10,13 @@
 #define NetError @"网络异常"
 #define UnknownError @"未知异常"
 
-// 域名
+// 域名(正式)
 #define DomainName @"http://122.114.62.57/"
 #define NetworkPrefix @"http://122.114.62.57/clinicServer/ashx/"
+//域名（测试）
+//#define DomainName @"http://118.244.234.207/"
+//#define NetworkPrefix @"http://118.244.234.207/clinicServer/ashx/"
+
 
 #define RealURL(path)    [NetworkPrefix stringByAppendingString:@(path)]
 
@@ -78,7 +82,7 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////
-//                               待办项                                        //
+//                              待办项                                        //
 ////////////////////////////////////////////////////////////////////////////////
 // 查看待办事项列表
 #define QueryGtaskListURL               RealURL("SignInfoHandler.ashx")

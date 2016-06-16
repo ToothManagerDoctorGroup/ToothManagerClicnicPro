@@ -36,4 +36,18 @@
     [super didReceiveMemoryWarning];
 }
 
+/**
+ *  添加通知监听
+ */
+- (void)addNotificationObserver{
+
+}
+/**
+ *  移除通知监听
+ */
+- (void)removeNotificationObserver{
+    
+}
+
+
 @end

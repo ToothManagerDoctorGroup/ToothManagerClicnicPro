@@ -15,6 +15,7 @@
 #import "TTMChargeDetailController.h"
 
 #define kMarginTop 20.f
+NSString *const kTTMScheduleDetailAppointStateChangedNotification = @"kTTMScheduleDetailAppointStateChangedNotification";
 
 @interface TTMScheduleDetailController ()
 
@@ -141,16 +142,19 @@
             break;
         }
         case TTMApointmentStatusWaitPay: {
+            [self invalidateTimer];
             timeLabel.text = [NSString stringWithFormat:@"共用时：%@", [self.pageModel.used_time hourMinutesTimeFormat]];
             moneyLabel.text = [NSString stringWithFormat:@"总费用：￥%@元", self.pageModel.total_money];
             break;
         }
         case TTMApointmentStatusEnded: {
+            [self invalidateTimer];
             timeLabel.text = [NSString stringWithFormat:@"共用时：%@", [self.pageModel.used_time hourMinutesTimeFormat]];
             moneyLabel.text = [NSString stringWithFormat:@"总费用：￥%@元", self.pageModel.total_money];
             break;
         }
         case TTMApointmentStatusComplete: {
+            [self invalidateTimer];
             timeLabel.text = [NSString stringWithFormat:@"共用时：%@", [self.pageModel.used_time hourMinutesTimeFormat]];
             moneyLabel.text = [NSString stringWithFormat:@"总费用：￥%@元", self.pageModel.total_money];
             break;
@@ -209,7 +213,7 @@
 }
 
 - (void)updateTimeLabel {
-    self.timeLabel.text = [NSString stringWithFormat:@"已用时 %@", [self.pageModel.actual_start_time timeToNow]];
+    self.timeLabel.text = [NSString stringWithFormat:@"共用时 %@", [self.pageModel.actual_start_time timeToNow]];
 }
 
 - (void)buttonAction:(UIButton *)button {
@@ -269,6 +273,7 @@
         if ([result isKindOfClass:[NSString class]]) {
             [MBProgressHUD showToastWithText:result];
         } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTTMScheduleDetailAppointStateChangedNotification object:nil];
             // 成功
 //            [weakSelf.navigationController popViewControllerAnimated:YES];
             [weakSelf queryData];
@@ -287,6 +292,9 @@
         if ([result isKindOfClass:[NSString class]]) {
             [MBProgressHUD showToastWithText:result];
         } else {
+            [weakSelf queryData];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTTMScheduleDetailAppointStateChangedNotification object:nil];
+            
             TTMChargeConfirmController *confimVC = [TTMChargeConfirmController new];
             confimVC.model = model;
             [weakSelf.navigationController pushViewController:confimVC animated:YES];
@@ -329,8 +337,14 @@
 }
 
 - (void)dealloc {
-    [self.timer invalidate];
-    self.timer = nil;
+    [self invalidateTimer];
+}
+
+- (void)invalidateTimer{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 
 @end

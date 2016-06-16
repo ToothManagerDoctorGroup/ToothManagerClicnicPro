@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2kI-rH-ljN" customClass="TTMAppointDetailHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="197"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DAc-bl-K7i">
+                    <rect key="frame" x="161" y="10" width="70" height="70"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="UYt-aR-STd"/>
+                        <constraint firstAttribute="width" constant="70" id="whA-T1-fZn"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80w-3U-ed5">
+                    <rect key="frame" x="10" y="90" width="372" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="T8h-dC-07a"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRa-lj-Con">
+                    <rect key="frame" x="10" y="116" width="372" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="cMO-ao-RmN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5k9-jb-4aW">
+                    <rect key="frame" x="0.0" y="147" width="195.5" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaK-Vy-RgY">
+                            <rect key="frame" x="0.0" y="0.0" width="195.5" height="50"/>
+                            <animations/>
+                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="联系医生" image="schedule_appoint_phone">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="contactDoctorAction:" destination="2kI-rH-ljN" eventType="touchUpInside" id="inh-3E-pZb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="PaK-Vy-RgY" firstAttribute="top" secondItem="5k9-jb-4aW" secondAttribute="top" id="9Hz-Xj-OMf"/>
+                        <constraint firstAttribute="bottom" secondItem="PaK-Vy-RgY" secondAttribute="bottom" id="CHk-VL-4NV"/>
+                        <constraint firstAttribute="height" constant="50" id="jSu-Pz-3Ej"/>
+                        <constraint firstAttribute="trailing" secondItem="PaK-Vy-RgY" secondAttribute="trailing" id="tSZ-HV-07w"/>
+                        <constraint firstItem="PaK-Vy-RgY" firstAttribute="leading" secondItem="5k9-jb-4aW" secondAttribute="leading" id="zXC-LS-svH"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbK-wT-zYG">
+                    <rect key="frame" x="196" y="147" width="195.5" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVp-mT-QzB">
+                            <rect key="frame" x="0.0" y="0.0" width="195.5" height="50"/>
+                            <animations/>
+                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="联系患者" image="schedule_appoint_phone">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="contactPatientLabel:" destination="2kI-rH-ljN" eventType="touchUpInside" id="aIt-na-BOg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="dVp-mT-QzB" firstAttribute="leading" secondItem="VbK-wT-zYG" secondAttribute="leading" id="LLE-Dx-eTf"/>
+                        <constraint firstAttribute="trailing" secondItem="dVp-mT-QzB" secondAttribute="trailing" id="OFp-I5-nC4"/>
+                        <constraint firstItem="dVp-mT-QzB" firstAttribute="top" secondItem="VbK-wT-zYG" secondAttribute="top" id="iBe-Us-e3B"/>
+                        <constraint firstAttribute="bottom" secondItem="dVp-mT-QzB" secondAttribute="bottom" id="qtB-QE-dhn"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" red="0.16470588235294117" green="0.73725490196078436" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="VbK-wT-zYG" firstAttribute="leading" secondItem="5k9-jb-4aW" secondAttribute="trailing" constant="1" id="2nK-jh-R4s"/>
+                <constraint firstItem="cRa-lj-Con" firstAttribute="leading" secondItem="2kI-rH-ljN" secondAttribute="leading" constant="10" id="2p3-0l-Nwq"/>
+                <constraint firstItem="5k9-jb-4aW" firstAttribute="top" secondItem="cRa-lj-Con" secondAttribute="bottom" constant="10" id="34G-Et-gGY"/>
+                <constraint firstAttribute="trailing" secondItem="cRa-lj-Con" secondAttribute="trailing" constant="10" id="FTT-7h-pv7"/>
+                <constraint firstItem="80w-3U-ed5" firstAttribute="top" secondItem="DAc-bl-K7i" secondAttribute="bottom" constant="10" id="KJk-LR-vgM"/>
+                <constraint firstItem="80w-3U-ed5" firstAttribute="leading" secondItem="2kI-rH-ljN" secondAttribute="leading" constant="10" id="MwJ-SF-7Xk"/>
+                <constraint firstItem="VbK-wT-zYG" firstAttribute="top" secondItem="cRa-lj-Con" secondAttribute="bottom" constant="10" id="Ph1-vN-MtT"/>
+                <constraint firstItem="DAc-bl-K7i" firstAttribute="centerX" secondItem="2kI-rH-ljN" secondAttribute="centerX" id="R9d-Wi-Zxf"/>
+                <constraint firstAttribute="trailing" secondItem="80w-3U-ed5" secondAttribute="trailing" constant="10" id="UkS-S8-aqX"/>
+                <constraint firstAttribute="trailing" secondItem="VbK-wT-zYG" secondAttribute="trailing" id="awf-sg-7Pa"/>
+                <constraint firstItem="5k9-jb-4aW" firstAttribute="leading" secondItem="2kI-rH-ljN" secondAttribute="leading" id="fe1-Xv-cSs"/>
+                <constraint firstItem="5k9-jb-4aW" firstAttribute="height" secondItem="VbK-wT-zYG" secondAttribute="height" id="nqF-Yw-mOU"/>
+                <constraint firstItem="cRa-lj-Con" firstAttribute="top" secondItem="80w-3U-ed5" secondAttribute="bottom" constant="5" id="ozt-9u-q6l"/>
+                <constraint firstItem="5k9-jb-4aW" firstAttribute="width" secondItem="VbK-wT-zYG" secondAttribute="width" id="upg-W8-sQa"/>
+                <constraint firstItem="DAc-bl-K7i" firstAttribute="top" secondItem="2kI-rH-ljN" secondAttribute="top" constant="10" id="zbv-Nf-EPp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="desLabel" destination="cRa-lj-Con" id="niR-04-bin"/>
+                <outlet property="doctorSuperView" destination="5k9-jb-4aW" id="RPb-jx-XFP"/>
+                <outlet property="headerImageView" destination="DAc-bl-K7i" id="M49-KX-XH5"/>
+                <outlet property="nameLabel" destination="80w-3U-ed5" id="5wV-Mh-E0a"/>
+                <outlet property="patientSuperView" destination="VbK-wT-zYG" id="Obi-OD-fd0"/>
+            </connections>
+            <point key="canvasLocation" x="235" y="202.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="schedule_appoint_phone" width="22" height="22"/>
+    </resources>
+</document>

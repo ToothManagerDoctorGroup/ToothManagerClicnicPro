@@ -185,7 +185,6 @@
         [MBProgressHUD showToastWithText:@"请输入账户或密码"];
         return;
     }
-    
     __weak __typeof(&*self) weakSelf = self;
     MBProgressHUD *hud = [MBProgressHUD showHUDWithView:self.view.window text:@"登录中..."];
     [TTMUser loginWithUserName:self.accountTextField.text

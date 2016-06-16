@@ -13,6 +13,7 @@
 #import "UMFeedback.h"
 #import "TTMAboutController.h"
 #import "TTMPrivateController.h"
+#import "TTMLoginTool.h"
 
 #define kRowHeight 44.f
 #define kMargin 10.f
@@ -168,11 +169,20 @@
  */
 - (void)buttonAction:(UIButton *)button {
     TTMUser *user = [TTMUser unArchiveUser];
-    user.password = nil;
-    [user archiveUser];
-    TTMNavigationController *nav = [[TTMNavigationController alloc] initWithRootViewController:
-                                    [[TTMLoginController alloc] init]];
-    self.view.window.rootViewController = nav;
+    MBProgressHUD *hud = [MBProgressHUD showHUDWithView:self.view text:@"正在退出"];
+    [TTMLoginTool logoutOfUpdateRegisterIdWithClinicId:user.keyId devicetoken:@"" success:^(TTMResponseModel *respond) {
+        [hud hide:YES];
+        user.password = nil;
+        [user archiveUser];
+        TTMNavigationController *nav = [[TTMNavigationController alloc] initWithRootViewController:
+                                        [[TTMLoginController alloc] init]];
+        self.view.window.rootViewController = nav;
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        if (error) {
+            NSLog(@"error:%@",error);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

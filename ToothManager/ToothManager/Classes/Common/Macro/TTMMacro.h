@@ -12,6 +12,21 @@
 #define TTMLog(...)
 #endif
 
+#pragma mark - -----------------Singleton-----------------------------------------------------
+#undef Declare_ShareInstance
+#define Declare_ShareInstance(__class) +(__class *)shareInstance
+
+#undef Realize_ShareInstance
+#define Realize_ShareInstance(__class) \
++(__class *)shareInstance { \
+static dispatch_once_t onceToken; \
+static __class *_instance_; \
+dispatch_once(&onceToken, ^{ \
+_instance_ = [[__class alloc]init]; \
+});   \
+return _instance_;\
+}
+
 // 1.判断是否为iOS7
 #define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
 

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="slx-vi-lkQ" customClass="TTMAppointTimeFooterView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gky-H9-3Xt">
+                    <rect key="frame" x="170" y="10" width="130" height="40"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.99607843137254903" green="0.8666666666666667" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="qAK-xt-qHw"/>
+                        <constraint firstAttribute="width" constant="130" id="vMC-bx-E1S"/>
+                    </constraints>
+                    <state key="normal" title="开始计时">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="timeAction:" destination="slx-vi-lkQ" eventType="touchUpInside" id="tWC-eM-QK1"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NK8-EK-q1X">
+                    <rect key="frame" x="10" y="0.0" width="150" height="60"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="NK8-EK-q1X" secondAttribute="bottom" id="5bf-IK-lst"/>
+                <constraint firstItem="NK8-EK-q1X" firstAttribute="leading" secondItem="slx-vi-lkQ" secondAttribute="leading" constant="10" id="IJc-Kg-mrl"/>
+                <constraint firstAttribute="trailing" secondItem="gky-H9-3Xt" secondAttribute="trailing" constant="20" id="P7x-EN-OZ0"/>
+                <constraint firstItem="gky-H9-3Xt" firstAttribute="centerY" secondItem="slx-vi-lkQ" secondAttribute="centerY" id="PIR-S2-Je9"/>
+                <constraint firstItem="gky-H9-3Xt" firstAttribute="leading" secondItem="NK8-EK-q1X" secondAttribute="trailing" constant="10" id="j2D-n1-fAC"/>
+                <constraint firstItem="NK8-EK-q1X" firstAttribute="top" secondItem="slx-vi-lkQ" secondAttribute="top" id="rwc-IO-XnK"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="timeButton" destination="gky-H9-3Xt" id="MCi-92-osc"/>
+                <outlet property="timeLabel" destination="NK8-EK-q1X" id="Gfi-E9-fS5"/>
+            </connections>
+            <point key="canvasLocation" x="-44" y="-101"/>
+        </view>
+    </objects>
+</document>

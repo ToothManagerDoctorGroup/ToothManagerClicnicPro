@@ -6,6 +6,7 @@
 #import "TTMChairModel.h"
 #import "TTMScheduleDetailController.h"
 #import "TTMScheduleCellModel.h"
+#import "TTMAppointDetailViewController.h"
 #define kSegmentH 40.f
 #define kMargin 20.f
 #define kSectionH 30.f
@@ -119,7 +120,11 @@
            clickedLineWithModel:(TTMApointmentModel *)model {
     TTMScheduleCellModel *temp = [[TTMScheduleCellModel alloc] init];
     temp.keyId = model.KeyId;
-    TTMScheduleDetailController *detailVC = [[TTMScheduleDetailController alloc] init];
+//    TTMScheduleDetailController *detailVC = [[TTMScheduleDetailController alloc] init];
+//    detailVC.model = temp;
+//    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    TTMAppointDetailViewController *detailVC = [[TTMAppointDetailViewController alloc] init];
     detailVC.model = temp;
     [self.navigationController pushViewController:detailVC animated:YES];
 }

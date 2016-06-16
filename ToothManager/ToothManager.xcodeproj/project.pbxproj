@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D2F973B1CF0222900386821 /* TTMAppointDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F97391CF0222900386821 /* TTMAppointDetailViewController.m */; };
+		3D2F973E1CF023D700386821 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F973D1CF023D700386821 /* Schedule.storyboard */; };
+		3D2F97441CF0448100386821 /* TTMSchedulePatientInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F97431CF0448100386821 /* TTMSchedulePatientInfoViewController.m */; };
+		3D2F97601CF0488100386821 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F97481CF0488100386821 /* MASCompositeConstraint.m */; };
+		3D2F97611CF0488100386821 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F974B1CF0488100386821 /* MASConstraint.m */; };
+		3D2F97621CF0488100386821 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F974D1CF0488100386821 /* MASConstraintMaker.m */; };
+		3D2F97631CF0488100386821 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F974F1CF0488100386821 /* MASLayoutConstraint.m */; };
+		3D2F97641CF0488100386821 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F97531CF0488100386821 /* MASViewAttribute.m */; };
+		3D2F97651CF0488100386821 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F97551CF0488100386821 /* MASViewConstraint.m */; };
+		3D2F97661CF0488100386821 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F97571CF0488100386821 /* NSArray+MASAdditions.m */; };
+		3D2F97671CF0488100386821 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F975A1CF0488100386821 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		3D2F97681CF0488100386821 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F975C1CF0488100386821 /* View+MASAdditions.m */; };
+		3D2F97691CF0488100386821 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F975F1CF0488100386821 /* ViewController+MASAdditions.m */; };
+		3D2F976C1CF0491C00386821 /* TTMPatientImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F976B1CF0491C00386821 /* TTMPatientImageCell.m */; };
+		3D2F976F1CF0505600386821 /* UIColor+TTMAddtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F976E1CF0505600386821 /* UIColor+TTMAddtion.m */; };
+		3D2F97721CF05A8B00386821 /* TTMImageListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F97711CF05A8B00386821 /* TTMImageListView.m */; };
+		3D2F97781CF0691E00386821 /* TTMAppointDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F97771CF0691E00386821 /* TTMAppointDetailHeaderView.m */; };
+		3D2F977A1CF0693A00386821 /* TTMAppointDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F97791CF0693A00386821 /* TTMAppointDetailHeaderView.xib */; };
 		3D7960DC1C166F1600453EB4 /* TTMMyScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7960DB1C166F1600453EB4 /* TTMMyScheduleCell.m */; };
 		3D7960E31C167ECD00453EB4 /* SchedulePopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7960E11C167ECD00453EB4 /* SchedulePopMenu.m */; };
 		3D7960E41C167ECD00453EB4 /* SchedulePopMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7960E21C167ECD00453EB4 /* SchedulePopMenu.xib */; };
@@ -38,6 +56,24 @@
 		3D7961481C16A0C500453EB4 /* TTMPatientDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7961471C16A0C500453EB4 /* TTMPatientDetailController.m */; };
 		3D79614B1C16BA6000453EB4 /* TTMMedicalCaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D79614A1C16BA6000453EB4 /* TTMMedicalCaseModel.m */; };
 		3D79614E1C16BC0300453EB4 /* TTMCTLibModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D79614D1C16BC0300453EB4 /* TTMCTLibModel.m */; };
+		3D84F5481CF69F7700A47517 /* TTMAppointPatientModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D84F5471CF69F7700A47517 /* TTMAppointPatientModel.m */; };
+		3D84F54B1CF6AF0000A47517 /* TTMLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D84F54A1CF6AF0000A47517 /* TTMLoginTool.m */; };
+		3D84F5511CF6D52A00A47517 /* TTMScheduleHeadImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D84F5501CF6D52A00A47517 /* TTMScheduleHeadImageView.m */; };
+		3DBAF4301CF2993F0035AEF6 /* TTMAppointTimeFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBAF42F1CF2993F0035AEF6 /* TTMAppointTimeFooterView.m */; };
+		3DBAF4321CF299490035AEF6 /* TTMAppointTimeFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DBAF4311CF299490035AEF6 /* TTMAppointTimeFooterView.xib */; };
+		3DBAF4351CF2C64D0035AEF6 /* TTMAppointDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBAF4341CF2C64D0035AEF6 /* TTMAppointDetailCell.m */; };
+		3DBAF4381CF2D2960035AEF6 /* TTMAppointDetailCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBAF4371CF2D2960035AEF6 /* TTMAppointDetailCellModel.m */; };
+		3DD8F46E1CF431A00060AAA0 /* TTMRemoteNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8F46D1CF431A00060AAA0 /* TTMRemoteNotificationManager.m */; };
+		3DE5A34B1CEDAAE500C353F4 /* jpush-ios-2.1.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE5A3491CEDAAE500C353F4 /* jpush-ios-2.1.6.a */; };
+		3DE5A34D1CEDAB0000C353F4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE5A34C1CEDAB0000C353F4 /* CFNetwork.framework */; };
+		3DE5A34F1CEDAB3C00C353F4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE5A34E1CEDAB3C00C353F4 /* CoreFoundation.framework */; };
+		3DE5A3511CEDAB4C00C353F4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE5A3501CEDAB4C00C353F4 /* CoreTelephony.framework */; };
+		3DE5A3531CEDAB5800C353F4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE5A3521CEDAB5800C353F4 /* SystemConfiguration.framework */; };
+		3DE5A3551CEDAB6100C353F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE5A3541CEDAB6100C353F4 /* CoreGraphics.framework */; };
+		3DE5A3571CEDAB6D00C353F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE5A3561CEDAB6D00C353F4 /* Foundation.framework */; };
+		3DE5A3591CEDAB7500C353F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE5A3581CEDAB7500C353F4 /* UIKit.framework */; };
+		3DE5A35B1CEDAB8100C353F4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE5A35A1CEDAB8100C353F4 /* Security.framework */; };
+		3DE5A35D1CEDAB8E00C353F4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE5A35C1CEDAB8E00C353F4 /* libz.tbd */; };
 		DB16790F1BE1313F00F57EEB /* TTMAddOtherLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB16790E1BE1313F00F57EEB /* TTMAddOtherLineView.m */; };
 		DB1679121BE1B24C00F57EEB /* TTMSelectValueView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1679111BE1B24C00F57EEB /* TTMSelectValueView.m */; };
 		DB185D741B369AA800E823CD /* TTMMemberCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB185D731B369AA800E823CD /* TTMMemberCellModel.m */; };
@@ -367,6 +403,45 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D2F97381CF0222900386821 /* TTMAppointDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAppointDetailViewController.h; sourceTree = "<group>"; };
+		3D2F97391CF0222900386821 /* TTMAppointDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppointDetailViewController.m; sourceTree = "<group>"; };
+		3D2F973D1CF023D700386821 /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
+		3D2F97421CF0448100386821 /* TTMSchedulePatientInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMSchedulePatientInfoViewController.h; sourceTree = "<group>"; };
+		3D2F97431CF0448100386821 /* TTMSchedulePatientInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMSchedulePatientInfoViewController.m; sourceTree = "<group>"; };
+		3D2F97471CF0488100386821 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		3D2F97481CF0488100386821 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		3D2F97491CF0488100386821 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		3D2F974A1CF0488100386821 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		3D2F974B1CF0488100386821 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		3D2F974C1CF0488100386821 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		3D2F974D1CF0488100386821 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		3D2F974E1CF0488100386821 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		3D2F974F1CF0488100386821 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		3D2F97501CF0488100386821 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		3D2F97511CF0488100386821 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		3D2F97521CF0488100386821 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		3D2F97531CF0488100386821 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		3D2F97541CF0488100386821 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		3D2F97551CF0488100386821 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		3D2F97561CF0488100386821 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		3D2F97571CF0488100386821 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		3D2F97581CF0488100386821 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		3D2F97591CF0488100386821 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		3D2F975A1CF0488100386821 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		3D2F975B1CF0488100386821 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		3D2F975C1CF0488100386821 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		3D2F975D1CF0488100386821 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		3D2F975E1CF0488100386821 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		3D2F975F1CF0488100386821 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		3D2F976A1CF0491C00386821 /* TTMPatientImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPatientImageCell.h; sourceTree = "<group>"; };
+		3D2F976B1CF0491C00386821 /* TTMPatientImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPatientImageCell.m; sourceTree = "<group>"; };
+		3D2F976D1CF0505600386821 /* UIColor+TTMAddtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TTMAddtion.h"; sourceTree = "<group>"; };
+		3D2F976E1CF0505600386821 /* UIColor+TTMAddtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TTMAddtion.m"; sourceTree = "<group>"; };
+		3D2F97701CF05A8B00386821 /* TTMImageListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMImageListView.h; sourceTree = "<group>"; };
+		3D2F97711CF05A8B00386821 /* TTMImageListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMImageListView.m; sourceTree = "<group>"; };
+		3D2F97761CF0691E00386821 /* TTMAppointDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAppointDetailHeaderView.h; sourceTree = "<group>"; };
+		3D2F97771CF0691E00386821 /* TTMAppointDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppointDetailHeaderView.m; sourceTree = "<group>"; };
+		3D2F97791CF0693A00386821 /* TTMAppointDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMAppointDetailHeaderView.xib; sourceTree = "<group>"; };
 		3D7960DA1C166F1600453EB4 /* TTMMyScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMMyScheduleCell.h; sourceTree = "<group>"; };
 		3D7960DB1C166F1600453EB4 /* TTMMyScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMMyScheduleCell.m; sourceTree = "<group>"; };
 		3D7960E01C167ECD00453EB4 /* SchedulePopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchedulePopMenu.h; sourceTree = "<group>"; };
@@ -428,6 +503,32 @@
 		3D79614A1C16BA6000453EB4 /* TTMMedicalCaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMMedicalCaseModel.m; sourceTree = "<group>"; };
 		3D79614C1C16BC0300453EB4 /* TTMCTLibModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMCTLibModel.h; sourceTree = "<group>"; };
 		3D79614D1C16BC0300453EB4 /* TTMCTLibModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMCTLibModel.m; sourceTree = "<group>"; };
+		3D84F5461CF69F7700A47517 /* TTMAppointPatientModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAppointPatientModel.h; sourceTree = "<group>"; };
+		3D84F5471CF69F7700A47517 /* TTMAppointPatientModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppointPatientModel.m; sourceTree = "<group>"; };
+		3D84F5491CF6AF0000A47517 /* TTMLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMLoginTool.h; sourceTree = "<group>"; };
+		3D84F54A1CF6AF0000A47517 /* TTMLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMLoginTool.m; sourceTree = "<group>"; };
+		3D84F54F1CF6D52A00A47517 /* TTMScheduleHeadImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMScheduleHeadImageView.h; sourceTree = "<group>"; };
+		3D84F5501CF6D52A00A47517 /* TTMScheduleHeadImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMScheduleHeadImageView.m; sourceTree = "<group>"; };
+		3DBAF42E1CF2993F0035AEF6 /* TTMAppointTimeFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAppointTimeFooterView.h; sourceTree = "<group>"; };
+		3DBAF42F1CF2993F0035AEF6 /* TTMAppointTimeFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppointTimeFooterView.m; sourceTree = "<group>"; };
+		3DBAF4311CF299490035AEF6 /* TTMAppointTimeFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMAppointTimeFooterView.xib; sourceTree = "<group>"; };
+		3DBAF4331CF2C64D0035AEF6 /* TTMAppointDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAppointDetailCell.h; sourceTree = "<group>"; };
+		3DBAF4341CF2C64D0035AEF6 /* TTMAppointDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppointDetailCell.m; sourceTree = "<group>"; };
+		3DBAF4361CF2D2960035AEF6 /* TTMAppointDetailCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAppointDetailCellModel.h; sourceTree = "<group>"; };
+		3DBAF4371CF2D2960035AEF6 /* TTMAppointDetailCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppointDetailCellModel.m; sourceTree = "<group>"; };
+		3DD8F46C1CF431A00060AAA0 /* TTMRemoteNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMRemoteNotificationManager.h; sourceTree = "<group>"; };
+		3DD8F46D1CF431A00060AAA0 /* TTMRemoteNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMRemoteNotificationManager.m; sourceTree = "<group>"; };
+		3DE5A3491CEDAAE500C353F4 /* jpush-ios-2.1.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.6.a"; sourceTree = "<group>"; };
+		3DE5A34A1CEDAAE500C353F4 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		3DE5A34C1CEDAB0000C353F4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3DE5A34E1CEDAB3C00C353F4 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		3DE5A3501CEDAB4C00C353F4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		3DE5A3521CEDAB5800C353F4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3DE5A3541CEDAB6100C353F4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3DE5A3561CEDAB6D00C353F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3DE5A3581CEDAB7500C353F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3DE5A35A1CEDAB8100C353F4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3DE5A35C1CEDAB8E00C353F4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DB16790D1BE1313F00F57EEB /* TTMAddOtherLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAddOtherLineView.h; sourceTree = "<group>"; };
 		DB16790E1BE1313F00F57EEB /* TTMAddOtherLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAddOtherLineView.m; sourceTree = "<group>"; };
 		DB1679101BE1B24C00F57EEB /* TTMSelectValueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMSelectValueView.h; sourceTree = "<group>"; };
@@ -1051,7 +1152,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DE5A35D1CEDAB8E00C353F4 /* libz.tbd in Frameworks */,
+				3DE5A35B1CEDAB8100C353F4 /* Security.framework in Frameworks */,
+				3DE5A3591CEDAB7500C353F4 /* UIKit.framework in Frameworks */,
+				3DE5A3571CEDAB6D00C353F4 /* Foundation.framework in Frameworks */,
+				3DE5A3551CEDAB6100C353F4 /* CoreGraphics.framework in Frameworks */,
+				3DE5A3531CEDAB5800C353F4 /* SystemConfiguration.framework in Frameworks */,
+				3DE5A3511CEDAB4C00C353F4 /* CoreTelephony.framework in Frameworks */,
+				3DE5A34F1CEDAB3C00C353F4 /* CoreFoundation.framework in Frameworks */,
+				3DE5A34D1CEDAB0000C353F4 /* CFNetwork.framework in Frameworks */,
 				DBE4D8781B6715EF00C3DDE0 /* libz.dylib in Frameworks */,
+				3DE5A34B1CEDAAE500C353F4 /* jpush-ios-2.1.6.a in Frameworks */,
 				DBEB8D021B54B91500FDF584 /* libUMFeedback.a in Frameworks */,
 				DBE4D8761B67157D00C3DDE0 /* libUMessage_Sdk_1.1.0.a in Frameworks */,
 				DBEB8CD61B54B8EB00FDF584 /* AVFoundation.framework in Frameworks */,
@@ -1070,6 +1181,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D2F97301CF0195500386821 /* MyAppointDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3D2F97381CF0222900386821 /* TTMAppointDetailViewController.h */,
+				3D2F97391CF0222900386821 /* TTMAppointDetailViewController.m */,
+			);
+			path = MyAppointDetail;
+			sourceTree = "<group>";
+		};
+		3D2F97311CF0195F00386821 /* MyAppointDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3DBAF4361CF2D2960035AEF6 /* TTMAppointDetailCellModel.h */,
+				3DBAF4371CF2D2960035AEF6 /* TTMAppointDetailCellModel.m */,
+			);
+			path = MyAppointDetail;
+			sourceTree = "<group>";
+		};
+		3D2F97321CF0197B00386821 /* MyAppointDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3D2F97761CF0691E00386821 /* TTMAppointDetailHeaderView.h */,
+				3D2F97771CF0691E00386821 /* TTMAppointDetailHeaderView.m */,
+				3D2F97791CF0693A00386821 /* TTMAppointDetailHeaderView.xib */,
+				3DBAF42E1CF2993F0035AEF6 /* TTMAppointTimeFooterView.h */,
+				3DBAF42F1CF2993F0035AEF6 /* TTMAppointTimeFooterView.m */,
+				3DBAF4311CF299490035AEF6 /* TTMAppointTimeFooterView.xib */,
+				3DBAF4331CF2C64D0035AEF6 /* TTMAppointDetailCell.h */,
+				3DBAF4341CF2C64D0035AEF6 /* TTMAppointDetailCell.m */,
+			);
+			path = MyAppointDetail;
+			sourceTree = "<group>";
+		};
+		3D2F97451CF0453900386821 /* MyPatientDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3D2F976A1CF0491C00386821 /* TTMPatientImageCell.h */,
+				3D2F976B1CF0491C00386821 /* TTMPatientImageCell.m */,
+				3D2F97701CF05A8B00386821 /* TTMImageListView.h */,
+				3D2F97711CF05A8B00386821 /* TTMImageListView.m */,
+			);
+			path = MyPatientDetail;
+			sourceTree = "<group>";
+		};
+		3D2F97461CF0488100386821 /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				3D2F97471CF0488100386821 /* MASCompositeConstraint.h */,
+				3D2F97481CF0488100386821 /* MASCompositeConstraint.m */,
+				3D2F97491CF0488100386821 /* MASConstraint+Private.h */,
+				3D2F974A1CF0488100386821 /* MASConstraint.h */,
+				3D2F974B1CF0488100386821 /* MASConstraint.m */,
+				3D2F974C1CF0488100386821 /* MASConstraintMaker.h */,
+				3D2F974D1CF0488100386821 /* MASConstraintMaker.m */,
+				3D2F974E1CF0488100386821 /* MASLayoutConstraint.h */,
+				3D2F974F1CF0488100386821 /* MASLayoutConstraint.m */,
+				3D2F97501CF0488100386821 /* Masonry.h */,
+				3D2F97511CF0488100386821 /* MASUtilities.h */,
+				3D2F97521CF0488100386821 /* MASViewAttribute.h */,
+				3D2F97531CF0488100386821 /* MASViewAttribute.m */,
+				3D2F97541CF0488100386821 /* MASViewConstraint.h */,
+				3D2F97551CF0488100386821 /* MASViewConstraint.m */,
+				3D2F97561CF0488100386821 /* NSArray+MASAdditions.h */,
+				3D2F97571CF0488100386821 /* NSArray+MASAdditions.m */,
+				3D2F97581CF0488100386821 /* NSArray+MASShorthandAdditions.h */,
+				3D2F97591CF0488100386821 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				3D2F975A1CF0488100386821 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				3D2F975B1CF0488100386821 /* View+MASAdditions.h */,
+				3D2F975C1CF0488100386821 /* View+MASAdditions.m */,
+				3D2F975D1CF0488100386821 /* View+MASShorthandAdditions.h */,
+				3D2F975E1CF0488100386821 /* ViewController+MASAdditions.h */,
+				3D2F975F1CF0488100386821 /* ViewController+MASAdditions.m */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
 		3D7960D91C166EF700453EB4 /* MySchedule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1083,6 +1270,8 @@
 				3D7961291C16962D00453EB4 /* PatientHeadMedicalRecordView.m */,
 				3D7960DA1C166F1600453EB4 /* TTMMyScheduleCell.h */,
 				3D7960DB1C166F1600453EB4 /* TTMMyScheduleCell.m */,
+				3D84F54F1CF6D52A00A47517 /* TTMScheduleHeadImageView.h */,
+				3D84F5501CF6D52A00A47517 /* TTMScheduleHeadImageView.m */,
 			);
 			path = MySchedule;
 			sourceTree = "<group>";
@@ -1133,6 +1322,8 @@
 				3D7961051C16854400453EB4 /* TTMDoctorTool.m */,
 				3D79610A1C1686F900453EB4 /* TTMPatientTool.h */,
 				3D79610B1C1686F900453EB4 /* TTMPatientTool.m */,
+				3D84F5491CF6AF0000A47517 /* TTMLoginTool.h */,
+				3D84F54A1CF6AF0000A47517 /* TTMLoginTool.m */,
 			);
 			path = ScheduleTool;
 			sourceTree = "<group>";
@@ -1155,6 +1346,8 @@
 			children = (
 				3D7961461C16A0C500453EB4 /* TTMPatientDetailController.h */,
 				3D7961471C16A0C500453EB4 /* TTMPatientDetailController.m */,
+				3D2F97421CF0448100386821 /* TTMSchedulePatientInfoViewController.h */,
+				3D2F97431CF0448100386821 /* TTMSchedulePatientInfoViewController.m */,
 			);
 			path = MyPatientDetail;
 			sourceTree = "<group>";
@@ -1170,6 +1363,8 @@
 				3D79614A1C16BA6000453EB4 /* TTMMedicalCaseModel.m */,
 				3D79614C1C16BC0300453EB4 /* TTMCTLibModel.h */,
 				3D79614D1C16BC0300453EB4 /* TTMCTLibModel.m */,
+				3D84F5461CF69F7700A47517 /* TTMAppointPatientModel.h */,
+				3D84F5471CF69F7700A47517 /* TTMAppointPatientModel.m */,
 			);
 			path = MyPatientDetail;
 			sourceTree = "<group>";
@@ -1194,6 +1389,15 @@
 				3D79613D1C16979C00453EB4 /* SDWebImageManager+MJ.m */,
 			);
 			path = MJPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		3DE5A3481CEDAAE500C353F4 /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				3DE5A3491CEDAAE500C353F4 /* jpush-ios-2.1.6.a */,
+				3DE5A34A1CEDAAE500C353F4 /* JPUSHService.h */,
+			);
+			path = JPush;
 			sourceTree = "<group>";
 		};
 		DB282F8D1BE33B33005DA7ED /* TTMStepView */ = {
@@ -1731,7 +1935,7 @@
 		DBE1D1D51B3197580058E0E6 = {
 			isa = PBXGroup;
 			children = (
-				DBE4EB1C1BB27CAB00BC15C6 /* Framework */,
+				DBE4EB1C1BB27CAB00BC15C6 /* Frameworks */,
 				DBE1D1E01B3197590058E0E6 /* ToothManager */,
 				DBE1D1FA1B3197590058E0E6 /* ToothManagerTests */,
 				DBE1D1DF1B3197590058E0E6 /* Products */,
@@ -1828,6 +2032,8 @@
 				DBE1D20C1B3198820058E0E6 /* AppDelegate.m */,
 				DBE1D20D1B3198820058E0E6 /* main.m */,
 				DBE1D2101B3198E30058E0E6 /* ToothManager-Prefix.pch */,
+				3DD8F46C1CF431A00060AAA0 /* TTMRemoteNotificationManager.h */,
+				3DD8F46D1CF431A00060AAA0 /* TTMRemoteNotificationManager.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -1835,6 +2041,8 @@
 		DBE1D2111B319B430058E0E6 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				3D2F97461CF0488100386821 /* Masonry */,
+				3DE5A3481CEDAAE500C353F4 /* JPush */,
 				3D79612E1C16979C00453EB4 /* MJPhotoBrowser */,
 				3D7960E51C16802300453EB4 /* popupViewController */,
 				DBC8B1221BEBCDB900064A06 /* HZPhotoBrowser */,
@@ -2116,6 +2324,8 @@
 				DBEB8CD01B53ECA700FDF584 /* NSCalendar+FSExtension.m */,
 				DBE1525E1B4AD1D4007DBD98 /* UIImageView+TTMAddtion.h */,
 				DBE1525F1B4AD1D4007DBD98 /* UIImageView+TTMAddtion.m */,
+				3D2F976D1CF0505600386821 /* UIColor+TTMAddtion.h */,
+				3D2F976E1CF0505600386821 /* UIColor+TTMAddtion.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2478,6 +2688,7 @@
 		DBE1D4D21B31AFA00058E0E6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3D2F97301CF0195500386821 /* MyAppointDetail */,
 				3D79611A1C1694CA00453EB4 /* MyPatientDetail */,
 				DBE1D4D31B31AFA00058E0E6 /* TTMScheduleController.h */,
 				DBE1D4D41B31AFA00058E0E6 /* TTMScheduleController.m */,
@@ -2492,6 +2703,7 @@
 		DBE1D4D51B31AFA00058E0E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3D2F97311CF0195F00386821 /* MyAppointDetail */,
 				3D79611B1C16950300453EB4 /* MyPatientDetail */,
 				DBDB80051B4A6D47003C235F /* TTMScheduleRequestModel.h */,
 				DBDB80061B4A6D47003C235F /* TTMScheduleRequestModel.m */,
@@ -2506,6 +2718,8 @@
 		DBE1D4D61B31AFA00058E0E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3D2F97451CF0453900386821 /* MyPatientDetail */,
+				3D2F97321CF0197B00386821 /* MyAppointDetail */,
 				3D7960DF1C167EAF00453EB4 /* MySchedulePopMenu */,
 				3D7960D91C166EF700453EB4 /* MySchedule */,
 				DBE1D4D81B31AFD00058E0E6 /* TTMScheduleHeaderView.h */,
@@ -2522,6 +2736,7 @@
 				DBDD3DFF1B353E86004248D5 /* TTMChairNoScrollView.m */,
 				DBDD3E011B3543DE004248D5 /* TTMChairItemButton.h */,
 				DBDD3E021B3543DE004248D5 /* TTMChairItemButton.m */,
+				3D2F973D1CF023D700386821 /* Schedule.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2535,16 +2750,25 @@
 			path = UMessage_Sdk_1.1.0;
 			sourceTree = "<group>";
 		};
-		DBE4EB1C1BB27CAB00BC15C6 /* Framework */ = {
+		DBE4EB1C1BB27CAB00BC15C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DE5A35C1CEDAB8E00C353F4 /* libz.tbd */,
+				3DE5A35A1CEDAB8100C353F4 /* Security.framework */,
+				3DE5A3581CEDAB7500C353F4 /* UIKit.framework */,
+				3DE5A3561CEDAB6D00C353F4 /* Foundation.framework */,
+				3DE5A3541CEDAB6100C353F4 /* CoreGraphics.framework */,
+				3DE5A3521CEDAB5800C353F4 /* SystemConfiguration.framework */,
+				3DE5A3501CEDAB4C00C353F4 /* CoreTelephony.framework */,
+				3DE5A34E1CEDAB3C00C353F4 /* CoreFoundation.framework */,
+				3DE5A34C1CEDAB0000C353F4 /* CFNetwork.framework */,
 				DBE4D8731B67157D00C3DDE0 /* UMessage_Sdk_1.1.0 */,
 				DBEB8CD71B54B91500FDF584 /* UMengFeedback_SDK */,
 				DBEB8CD51B54B8EB00FDF584 /* AVFoundation.framework */,
 				DBE1D4AA1B319D300058E0E6 /* libsqlite3.0.dylib */,
 				DBE4D8771B6715EF00C3DDE0 /* libz.dylib */,
 			);
-			name = Framework;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DBEB8CD71B54B91500FDF584 /* UMengFeedback_SDK */ = {
@@ -2748,6 +2972,7 @@
 				DB4440861B9C23C90030DF21 /* AssetsPickerChecked@2x.png in Resources */,
 				DB4440851B9C23C90030DF21 /* AssetsPickerChecked.png in Resources */,
 				DB44408C1B9C23C90030DF21 /* shanguangdeng.png in Resources */,
+				3D2F973E1CF023D700386821 /* Schedule.storyboard in Resources */,
 				3D79613F1C16979C00453EB4 /* MJPhotoBrowser.bundle in Resources */,
 				DBEB8D011B54B91500FDF584 /* UMFeedbackLocalizable.strings in Resources */,
 				DB4440881B9C23C90030DF21 /* nav_delete_btn.png in Resources */,
@@ -2779,9 +3004,11 @@
 				DBE1D4461B319B430058E0E6 /* MJRefresh.bundle in Resources */,
 				DBFF6CCA1B5DE5200035CAFF /* .gitkeep in Resources */,
 				DBE1D4391B319B430058E0E6 /* IQKeyboardManager.bundle in Resources */,
+				3D2F977A1CF0693A00386821 /* TTMAppointDetailHeaderView.xib in Resources */,
 				DBEB8D111B54B91500FDF584 /* umeng_fb_audio_play_default@2x.png in Resources */,
 				DB4440891B9C23C90030DF21 /* nav_delete_btn@2x.png in Resources */,
 				DBEB8D0D1B54B91500FDF584 /* umeng_fb_audio_dialog_content@2x.png in Resources */,
+				3DBAF4321CF299490035AEF6 /* TTMAppointTimeFooterView.xib in Resources */,
 				DBEB8D0E1B54B91500FDF584 /* umeng_fb_audio_play_01@2x.png in Resources */,
 				DBEB8D0A1B54B91500FDF584 /* ToolViewInputVoiceHL@2x.png in Resources */,
 			);
@@ -2815,6 +3042,7 @@
 				DBAD71F41BB43C0C00B6D9D0 /* NIPaths.m in Sources */,
 				DBEB8D141B54B91500FDF584 /* UMChatTableViewCell.m in Sources */,
 				DBE4EB1F1BB27FC500BC15C6 /* TTMAppointmentingCellModel.m in Sources */,
+				3D2F97611CF0488100386821 /* MASConstraint.m in Sources */,
 				DBC8B1331BEBCDB900064A06 /* HZPhotoBrowserView.m in Sources */,
 				DB282F931BE33B98005DA7ED /* TTMStepView.m in Sources */,
 				DBF35C7F1BB0360200287DBB /* TTMAppointmentingController.m in Sources */,
@@ -2831,6 +3059,7 @@
 				DB4440971B9C23C90030DF21 /* ZLCameraView.m in Sources */,
 				DBD231D41B6A05AF005A16B1 /* TTMIncomDetailController.m in Sources */,
 				3D79614B1C16BA6000453EB4 /* TTMMedicalCaseModel.m in Sources */,
+				3D2F973B1CF0222900386821 /* TTMAppointDetailViewController.m in Sources */,
 				DB44409D1B9C23C90030DF21 /* ZLPhotoPickerBrowserPhotoView.m in Sources */,
 				DBE1D4D71B31AFA00058E0E6 /* TTMScheduleController.m in Sources */,
 				DB4440141B9C080F0030DF21 /* TTMWithdrawCell.m in Sources */,
@@ -2839,7 +3068,9 @@
 				DBDD44491B364177009FE3A0 /* TTMLoseNumView.m in Sources */,
 				DBAD71F11BB43C0C00B6D9D0 /* NINonEmptyCollectionTesting.m in Sources */,
 				DBAA7C4F1B57904A00C0089D /* FMDatabaseAdditions.m in Sources */,
+				3D2F97721CF05A8B00386821 /* TTMImageListView.m in Sources */,
 				DBE1D4A91B319B430058E0E6 /* TTMUserGuideController.m in Sources */,
+				3DBAF4381CF2D2960035AEF6 /* TTMAppointDetailCellModel.m in Sources */,
 				DBE1D42E1B319B430058E0E6 /* IQUIView+Hierarchy.m in Sources */,
 				DB4440101B9C080F0030DF21 /* TTMIncomeCell.m in Sources */,
 				DBF9702E1B359C5900AD5666 /* TTMInfoView.m in Sources */,
@@ -2854,6 +3085,7 @@
 				DBAA7C4E1B57904A00C0089D /* FMDatabase.m in Sources */,
 				DBE1D4201B319B430058E0E6 /* FCModelDatabaseQueue.m in Sources */,
 				DBE1D44C1B319B430058E0E6 /* MJRefreshHeader.m in Sources */,
+				3DBAF4301CF2993F0035AEF6 /* TTMAppointTimeFooterView.m in Sources */,
 				3D7961451C16979C00453EB4 /* SDWebImageManager+MJ.m in Sources */,
 				DBE1D49D1B319B430058E0E6 /* TTMSegmentedButton.m in Sources */,
 				3D79612B1C16962D00453EB4 /* MedicalDetailView.m in Sources */,
@@ -2871,8 +3103,10 @@
 				DBEB8D151B54B91500FDF584 /* UMChatToolBar.m in Sources */,
 				DBE1D4A21B319B430058E0E6 /* TTMTabBarController.m in Sources */,
 				DBE4EB251BB2860500BC15C6 /* TTMAppointmentingLineView.m in Sources */,
+				3D2F97441CF0448100386821 /* TTMSchedulePatientInfoViewController.m in Sources */,
 				DBBF770A1B9F3D240069096F /* TTMChairSettingSelectView.m in Sources */,
 				DBE1D4581B319B430058E0E6 /* MKAnnotationView+WebCache.m in Sources */,
+				3DD8F46E1CF431A00060AAA0 /* TTMRemoteNotificationManager.m in Sources */,
 				DB4440A01B9C23C90030DF21 /* ZLPhotoPickerDatas.m in Sources */,
 				DBE1D4941B319B430058E0E6 /* UIView+TTMAddtion.m in Sources */,
 				DBE1D4501B319B430058E0E6 /* UIScrollView+MJRefresh.m in Sources */,
@@ -2898,6 +3132,7 @@
 				3D7960DC1C166F1600453EB4 /* TTMMyScheduleCell.m in Sources */,
 				DBE1D4621B319B430058E0E6 /* UIImage+GIF.m in Sources */,
 				DB4440121B9C080F0030DF21 /* TTMMessageCell.m in Sources */,
+				3D2F97631CF0488100386821 /* MASLayoutConstraint.m in Sources */,
 				DB9B804E1BA55A3F005F5679 /* TTMBankModel.m in Sources */,
 				DBE1D3EC1B319B430058E0E6 /* AFNetworkReachabilityManager.m in Sources */,
 				DBAD71F61BB43C0C00B6D9D0 /* NISDKAvailability.m in Sources */,
@@ -2905,10 +3140,12 @@
 				DBDB80011B4A3F3C003C235F /* FCUUID.m in Sources */,
 				DB4440841B9C23C90030DF21 /* DACircularProgressView.m in Sources */,
 				DBFF6CD01B5DE5200035CAFF /* UIView+FSExtension.m in Sources */,
+				3D84F5481CF69F7700A47517 /* TTMAppointPatientModel.m in Sources */,
 				DBEB8D161B54B91500FDF584 /* UMFullScreenPhotoView.m in Sources */,
 				DBAD71E91BB43C0C00B6D9D0 /* NICommonMetrics.m in Sources */,
 				DBE1D43A1B319B430058E0E6 /* JSONKit.m in Sources */,
 				DB185D7D1B36B7F800E823CD /* TTMIncomeCellModel.m in Sources */,
+				3D84F54B1CF6AF0000A47517 /* TTMLoginTool.m in Sources */,
 				DBE1D4411B319B430058E0E6 /* NSObject+MJCoding.m in Sources */,
 				DBDB80041B4A4E02003C235F /* TTMResponseModel.m in Sources */,
 				DBE1D4DD1B31BDBB0058E0E6 /* TTMScheduleCell.m in Sources */,
@@ -2920,6 +3157,7 @@
 				DBE1D4631B319B430058E0E6 /* UIImage+MultiFormat.m in Sources */,
 				DBAD71F21BB43C0C00B6D9D0 /* NINonRetainingCollections.m in Sources */,
 				DBE1D45D1B319B430058E0E6 /* SDWebImageDownloader.m in Sources */,
+				3D2F976C1CF0491C00386821 /* TTMPatientImageCell.m in Sources */,
 				DBC8B1311BEBCDB900064A06 /* HZIndicatorView.m in Sources */,
 				DB8FD53C1B997F3100A9E809 /* TTMWithdrawRecordController.m in Sources */,
 				DBC8B11E1BEBB71300064A06 /* TTMDistrictController.m in Sources */,
@@ -2946,6 +3184,7 @@
 				DB4440921B9C23C90030DF21 /* ZLAnimationBaseView.m in Sources */,
 				DBE1D4361B319B430058E0E6 /* IQTitleBarButtonItem.m in Sources */,
 				DB4440111B9C080F0030DF21 /* TTMMemberCell.m in Sources */,
+				3DBAF4351CF2C64D0035AEF6 /* TTMAppointDetailCell.m in Sources */,
 				DB185D741B369AA800E823CD /* TTMMemberCellModel.m in Sources */,
 				DBFF6CCF1B5DE5200035CAFF /* NSDate+FSExtension.m in Sources */,
 				DBFF6CCD1B5DE5200035CAFF /* FSCalendarHeader.m in Sources */,
@@ -2963,6 +3202,7 @@
 				DBE1D4A81B319B430058E0E6 /* TTMTimeButton.m in Sources */,
 				DB8FD5521B997FD900A9E809 /* TTMLoginController.m in Sources */,
 				DBE1D4A51B319B430058E0E6 /* TTMTabBar.m in Sources */,
+				3D2F976F1CF0505600386821 /* UIColor+TTMAddtion.m in Sources */,
 				DB82B61D1B993A230026FCA3 /* CYAlertView.m in Sources */,
 				DB4440A71B9C23C90030DF21 /* ZLPhotoPickerFooterCollectionReusableView.m in Sources */,
 				DBE1D4641B319B430058E0E6 /* UIImage+WebP.m in Sources */,
@@ -2970,9 +3210,12 @@
 				DB16790F1BE1313F00F57EEB /* TTMAddOtherLineView.m in Sources */,
 				DB4440A61B9C23C90030DF21 /* ZLPhotoPickerCollectionViewCell.m in Sources */,
 				DBE1D4651B319B430058E0E6 /* UIImageView+HighlightedWebCache.m in Sources */,
+				3D2F97781CF0691E00386821 /* TTMAppointDetailHeaderView.m in Sources */,
 				DB4440A81B9C23C90030DF21 /* ZLPhotoPickerGroupTableViewCell.m in Sources */,
 				DBE1D4481B319B430058E0E6 /* MJRefreshConst.m in Sources */,
 				DBF970341B35A37400AD5666 /* TTMDoctorInfoLineView.m in Sources */,
+				3D2F97681CF0488100386821 /* View+MASAdditions.m in Sources */,
+				3D84F5511CF6D52A00A47517 /* TTMScheduleHeadImageView.m in Sources */,
 				DBDD444F1B365946009FE3A0 /* TTMUser.m in Sources */,
 				DBBF77011B9F37DF0069096F /* TTMChairSettingView.m in Sources */,
 				DB82B6231B9945B00026FCA3 /* TTMWithdrawModel.m in Sources */,
@@ -3002,6 +3245,7 @@
 				DBAD71F81BB43C0C00B6D9D0 /* NIState.m in Sources */,
 				DBE1D43F1B319B430058E0E6 /* MJProperty.m in Sources */,
 				DB8FD53B1B997F3100A9E809 /* TTMWithdrawController.m in Sources */,
+				3D2F97691CF0488100386821 /* ViewController+MASAdditions.m in Sources */,
 				DBAD71A91BB4250900B6D9D0 /* TTMChargeDetailController.m in Sources */,
 				DB4440041B9C076B0030DF21 /* TTMClinicInfoController.m in Sources */,
 				DBDD3DFA1B353949004248D5 /* TTMBeforeButton.m in Sources */,
@@ -3026,6 +3270,7 @@
 				DBFF6CFC1B5DE6520035CAFF /* TTMCalendarController.m in Sources */,
 				DBDF84E61B38167900378C0C /* TTMMessageCellModel.m in Sources */,
 				DBAD71F71BB43C0C00B6D9D0 /* NISnapshotRotation.m in Sources */,
+				3D2F97601CF0488100386821 /* MASCompositeConstraint.m in Sources */,
 				3D7960F81C16802300453EB4 /* UIViewController+LewPopupViewController.m in Sources */,
 				DBF35C731BB0339D00287DBB /* TTMAppointmentController.m in Sources */,
 				DBAD71E51BB43C0C00B6D9D0 /* NIAttributedLabel.m in Sources */,
@@ -3046,6 +3291,7 @@
 				3D7961481C16A0C500453EB4 /* TTMPatientDetailController.m in Sources */,
 				DBEB8D191B54B91500FDF584 /* UMTextView.m in Sources */,
 				DBEB8D181B54B91500FDF584 /* UMRadialView.m in Sources */,
+				3D2F97641CF0488100386821 /* MASViewAttribute.m in Sources */,
 				DBA6527E1BBA73D70086BAAB /* TTMAddImageView.m in Sources */,
 				DBE1D4921B319B430058E0E6 /* NSUserDefaults+TTMAddtion.m in Sources */,
 				DBC8B11B1BEBAFAD00064A06 /* TTMPhotoSelectorView.m in Sources */,
@@ -3056,6 +3302,7 @@
 				DB44409A1B9C23C90030DF21 /* ZLPhotoPickerBrowserViewController.m in Sources */,
 				DBC8B1351BEBCDB900064A06 /* HZPhotoItemModel.m in Sources */,
 				DBE1D4CB1B31AF8F0058E0E6 /* TTMDoctorsController.m in Sources */,
+				3D2F97651CF0488100386821 /* MASViewConstraint.m in Sources */,
 				DBAA7C511B57904A00C0089D /* FMDatabaseQueue.m in Sources */,
 				DBE1D4441B319B430058E0E6 /* NSString+Extension.m in Sources */,
 				DBC404CE1BE282C00022BA3E /* TTMSelectButton.m in Sources */,
@@ -3069,6 +3316,7 @@
 				DB8FD5511B997FD900A9E809 /* TTMForgetPasswordController.m in Sources */,
 				DBB7F5841BB54CD000E83DBA /* TTMChargeConfirmController.m in Sources */,
 				DBE1D20F1B3198820058E0E6 /* main.m in Sources */,
+				3D2F97671CF0488100386821 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				3D7960F51C16802300453EB4 /* LewPopupViewAnimationFade.m in Sources */,
 				DBE1D4321B319B430058E0E6 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				DBE1D45B1B319B430058E0E6 /* SDWebImageCompat.m in Sources */,
@@ -3082,6 +3330,7 @@
 				DBF970371B35AE5100AD5666 /* TTMDoctorInfoModel.m in Sources */,
 				DBDC5C081BA082DB0002D113 /* TTMChairSettingUnitTextField.m in Sources */,
 				DBEB8CD11B53ECA700FDF584 /* NSCalendar+FSExtension.m in Sources */,
+				3D2F97661CF0488100386821 /* NSArray+MASAdditions.m in Sources */,
 				DBE1D41E1B319B430058E0E6 /* FCModel.m in Sources */,
 				DB4440B21B9C24370030DF21 /* MCPhotoPickerView.m in Sources */,
 				DBE152601B4AD1D4007DBD98 /* UIImageView+TTMAddtion.m in Sources */,
@@ -3093,6 +3342,7 @@
 				DBE1D4911B319B430058E0E6 /* NSString+TTMAddtion.m in Sources */,
 				DB4440131B9C080F0030DF21 /* TTMMessageMCell.m in Sources */,
 				DBE1D4611B319B430058E0E6 /* UIButton+WebCache.m in Sources */,
+				3D2F97621CF0488100386821 /* MASConstraintMaker.m in Sources */,
 				DBAD71F01BB43C0C00B6D9D0 /* NINetworkActivity.m in Sources */,
 				3D7961171C16946300453EB4 /* TTMHttpRespondModel.m in Sources */,
 				3D7960F41C16802300453EB4 /* LewPopupViewAnimationDrop.m in Sources */,
@@ -3173,7 +3423,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2783bd26-27ae-4549-862e-a1df8ffcb0d5";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3211,7 +3461,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "2783bd26-27ae-4549-862e-a1df8ffcb0d5";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3233,10 +3483,12 @@
 					"$(PROJECT_DIR)/UMengFeedback_SDK",
 					"$(PROJECT_DIR)/UMengFeedback_SDK/UMOpus",
 					"$(PROJECT_DIR)/UMessage_Sdk_1.1.0",
+					"$(PROJECT_DIR)/ToothManager/Classes/Common/3rdParty/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.trasen.dev.clinic.CRM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2783bd26-27ae-4549-862e-a1df8ffcb0d5";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -3256,10 +3508,12 @@
 					"$(PROJECT_DIR)/UMengFeedback_SDK",
 					"$(PROJECT_DIR)/UMengFeedback_SDK/UMOpus",
 					"$(PROJECT_DIR)/UMessage_Sdk_1.1.0",
+					"$(PROJECT_DIR)/ToothManager/Classes/Common/3rdParty/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.trasen.dev.clinic.CRM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2783bd26-27ae-4549-862e-a1df8ffcb0d5";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

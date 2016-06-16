@@ -10,6 +10,7 @@
 #import "TTMGreenButton.h"
 #import "TTMTextField.h"
 #import "TTMMaterialModel.h"
+#import "TTMAppointDetailViewController.h"
 
 #define kFontSize 14
 
@@ -291,6 +292,9 @@
             if ([result isKindOfClass:[NSString class]]) {
                 [MBProgressHUD showToastWithText:result];
             } else {
+                //发送通知
+                [[NSNotificationCenter defaultCenter] postNotificationName:kTTMAppointStateChangedNotification object:nil];
+                
                 MBProgressHUD *hud = [MBProgressHUD showToastWithText:@"提交成功"];
                 hud.completionBlock = ^(){
                     NSArray *viewControllers = weakSelf.navigationController.viewControllers;

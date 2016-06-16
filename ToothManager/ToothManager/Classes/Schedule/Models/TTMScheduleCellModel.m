@@ -12,7 +12,10 @@
 + (void)initialize {
     if (self == [TTMScheduleCellModel class]) {
         [self setupReplacedKeyFromPropertyName:^NSDictionary *{
-            return @{@"keyId": @"KeyId"};
+            return @{@"keyId": @"KeyId",
+                     @"assistCount" : @"AssistCount",
+                     @"extraCount" : @"ExtraCount",
+                     @"materialCount" : @"MaterialCount"};
         }];
         
         [self setupObjectClassInArray:^NSDictionary *{

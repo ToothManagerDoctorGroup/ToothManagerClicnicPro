@@ -14,6 +14,7 @@
 #import "TTMHandContractController.h"
 #import "TTMGTaskCellModel.h"
 #import "TTMChargeDetailController.h"
+#import "TTMAppointDetailViewController.h"
 
 #define kSegmentH 40.f
 #define kMarginTop 20.f
@@ -100,11 +101,17 @@
     TTMMessageCellModel *messageModel = self.dataArray[indexPath.row];
     
     if ([messageModel.message_type isEqualToString:kMessageTypeReserve]) {
-        TTMScheduleDetailController *scheduleVC = [[TTMScheduleDetailController alloc] init];
-        TTMScheduleCellModel *model = [TTMScheduleCellModel new];
-        model.keyId = messageModel.message_id;
-        scheduleVC.model = model;
-        [self.navigationController pushViewController:scheduleVC animated:YES];
+//        TTMScheduleDetailController *scheduleVC = [[TTMScheduleDetailController alloc] init];
+//        TTMScheduleCellModel *model = [TTMScheduleCellModel new];
+//        model.keyId = messageModel.message_id;
+//        scheduleVC.model = model;
+//        [self.navigationController pushViewController:scheduleVC animated:YES];
+        
+        TTMScheduleCellModel *cellModel = [[TTMScheduleCellModel alloc] init];
+        cellModel.keyId = messageModel.message_id;
+        TTMAppointDetailViewController *detailVC = [[TTMAppointDetailViewController alloc] init];
+        detailVC.model = cellModel;
+        [self.navigationController pushViewController:detailVC animated:YES];
     } else if ([messageModel.message_type isEqualToString:kMessageTypeSign]) {
         TTMHandContractController *handVC = [TTMHandContractController new];
         TTMGTaskCellModel *model = [TTMGTaskCellModel new];

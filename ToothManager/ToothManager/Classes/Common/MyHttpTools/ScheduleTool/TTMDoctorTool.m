@@ -32,4 +32,33 @@
     }];
 }
 
+/**
+ *  获取预约的详细信息
+ *
+ *  @param reserveId 预约id
+ *  @param patientId 患者id
+ *  @param success   成功回调
+ *  @param failure   失败回调
+ */
++ (void)getAppointmentDetailWithReserveId:(NSString *)reserveId patientId:(NSString *)patientId success:(void(^)(TTMResponseModel *respond))success failure:(void(^)(NSError *error))failure{
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"action"] = @"getPatientAndFiles";
+    params[@"reserver_id"] = reserveId;
+    params[@"patient_id"] =  patientId;
+    
+    [TTMMyHttpTool GET:QueryScheduleListURL parameters:params success:^(id responseObject) {
+        
+        TTMResponseModel *respond = [TTMResponseModel objectWithKeyValues:responseObject];
+        if (success) {
+            success(respond);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
 @end

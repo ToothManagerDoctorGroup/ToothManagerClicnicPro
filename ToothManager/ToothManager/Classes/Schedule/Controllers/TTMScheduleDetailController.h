@@ -6,6 +6,8 @@
 #import "TTMBaseColorController.h"
 @class TTMScheduleCellModel;
 
+
+extern NSString *const kTTMScheduleDetailAppointStateChangedNotification;
 /**
  *  预约详情Controller
  */
