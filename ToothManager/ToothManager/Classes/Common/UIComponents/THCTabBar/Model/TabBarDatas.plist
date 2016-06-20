@@ -14,17 +14,17 @@
 	</dict>
 	<dict>
 		<key>tabBarTitle</key>
-		<string>待办项</string>
+		<string>订单</string>
 		<key>tabBarImageName</key>
 		<string>tabbar_icon_gtasks_normal</string>
 		<key>tabBarSelectedImageName</key>
 		<string>tabbar_icon_gtasks_selected</string>
 		<key>tabBarController</key>
-		<string>TTMGTaskController</string>
+		<string>TTMOrderController</string>
 	</dict>
 	<dict>
 		<key>tabBarTitle</key>
-		<string>医生库</string>
+		<string>统计</string>
 		<key>tabBarImageName</key>
 		<string>tabbar_icon_doctors_normal</string>
 		<key>tabBarSelectedImageName</key>

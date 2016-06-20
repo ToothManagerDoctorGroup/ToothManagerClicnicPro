@@ -1,0 +1,10 @@
+PODS:
+  - WMPageController (1.6.2)
+
+DEPENDENCIES:
+  - WMPageController (~> 1.6.2)
+
+SPEC CHECKSUMS:
+  WMPageController: 06386e1590d914c5dee140846c6479c297e43d25
+
+COCOAPODS: 0.39.0

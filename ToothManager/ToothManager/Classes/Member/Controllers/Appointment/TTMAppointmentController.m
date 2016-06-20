@@ -159,12 +159,6 @@
  *  @param incomeModel 预约model
  */
 - (void)incomeCell:(TTMIncomeCell *)cell incomModel:(TTMIncomeModel *)incomeModel {
-//    TTMScheduleDetailController *detailVC = [[TTMScheduleDetailController alloc] init];
-//    TTMScheduleCellModel *cellModel = [[TTMScheduleCellModel alloc] init];
-//    cellModel.keyId = incomeModel.keyId;
-//    detailVC.model = cellModel;
-//    [self.navigationController pushViewController:detailVC animated:YES];
-    
     TTMScheduleCellModel *cellModel = [[TTMScheduleCellModel alloc] init];
     cellModel.keyId = incomeModel.keyId;
     TTMAppointDetailViewController *detailVC = [[TTMAppointDetailViewController alloc] init];

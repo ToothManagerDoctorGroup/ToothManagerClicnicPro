@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "14e542f4-6b62-4b8e-b20f-e5954c3b93f6++4926",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "14e542f4-6b62-4b8e-b20f-e5954c3b93f6++4926" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "58CECC7D89DEFF9BBA3E7AEC8CA1583868433D78" : 0,
+    "14e542f4-6b62-4b8e-b20f-e5954c3b93f6++4926" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4A4EB757-654B-4C48-A469-C7AE80F53620",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "58CECC7D89DEFF9BBA3E7AEC8CA1583868433D78" : "",
+    "14e542f4-6b62-4b8e-b20f-e5954c3b93f6++4926" : "ToothManager\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ToothManager",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ToothManager.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/code.taobao.org\/svn\/ToothManager",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "14e542f4-6b62-4b8e-b20f-e5954c3b93f6++4926"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ToothManagerDoctorGroup\/ToothManagerClicnicPro.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "58CECC7D89DEFF9BBA3E7AEC8CA1583868433D78"
+    }
+  ]
+}

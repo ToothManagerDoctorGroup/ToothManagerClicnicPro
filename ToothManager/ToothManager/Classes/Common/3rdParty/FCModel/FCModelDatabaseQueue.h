@@ -6,12 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#ifdef COCOAPODS
-#import <FMDB/FMDatabase.h>
-#else
 #import "FMDatabase.h"
-#endif
+
+//#ifdef COCOAPODS
+//#import <FMDB/FMDatabase.h>
+//#else
+//#import "FMDatabase.h"
+//#endif
 
 // This serves the same role as FMDB's FMDatabaseQueue for FCModel, but with some differences:
 //

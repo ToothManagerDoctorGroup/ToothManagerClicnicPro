@@ -14,7 +14,7 @@
 #define kMaxItemWidth (ScreenWidth / kMaxShowCount) // item最大宽度
 
 #define kBottomLineColor MainColor
-#define kFontSize 15
+#define kFontSize 14
 
 @interface TTMSegmentedView ()
 
@@ -49,10 +49,11 @@
 - (void)setup {
     
     self.backgroundColor = RGBColor(254.0f, 254.0f, 254.0f);
+    self.titleNormalFont = [UIFont systemFontOfSize:kFontSize];
     
     // 底部的横线
     UIView *bottomLine = [[UIView alloc] init];
-    bottomLine.backgroundColor = [UIColor lightGrayColor];
+    bottomLine.backgroundColor = [UIColor grayColor];
     [self addSubview:bottomLine];
     self.bottomLine = bottomLine;
     
@@ -77,6 +78,17 @@
 - (void)setSegmentControllers:(NSArray *)segmentControllers {
     _segmentControllers = segmentControllers;
     [self setupTitlesWithDataArray:segmentControllers];
+}
+
+- (void)setTitleNormalFont:(UIFont *)titleNormalFont{
+    _titleNormalFont = titleNormalFont;
+    
+    [self.scrollView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[TTMSegmentedButton class]]) {
+            TTMSegmentedButton *button = (TTMSegmentedButton *)obj;
+            button.titleLabel.font = self.titleNormalFont;
+        }
+    }];
 }
 
 - (void)setupTitlesWithDataArray:(NSArray *)array {
@@ -109,7 +121,7 @@
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button setTitleColor:MainColor forState:UIControlStateSelected];
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
-        button.titleLabel.font = [UIFont systemFontOfSize:14];
+        button.titleLabel.font = self.titleNormalFont;
         if (i == 0) {
             self.selectedButton = button;
             [self buttonClick:button];

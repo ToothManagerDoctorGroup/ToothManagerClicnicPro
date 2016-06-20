@@ -15,6 +15,8 @@
 
 @property (nonatomic, assign) NSUInteger selectedIndex;
 
+@property (nonatomic, strong)UIFont *titleNormalFont;
+
 @property (nonatomic, weak) id<TTMSegmentedViewDelegate> delegate;
 
 @property (nonatomic, strong) NSArray *segmentControllers;
