@@ -137,15 +137,7 @@
         }else if (indexPath.row == 1){
             //性别
             cell.titleLabel.text = @"性别";
-            NSString *gender;
-            if ([self.curPatientModel.patientGender isEqualToString:@"0"]) {
-                gender = @"女";
-            }else if ([self.curPatientModel.patientGender isEqualToString:@"1"]){
-                gender = @"男";
-            }else{
-                gender = @"未知";
-            }
-            cell.contentLabel.text = gender;
+            cell.contentLabel.text = self.curPatientModel.patientGender;
             cell.imageList = @[];
             
         }else if (indexPath.row == 2){

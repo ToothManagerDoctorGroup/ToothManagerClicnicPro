@@ -146,4 +146,5 @@ typedef NS_ENUM(NSUInteger, TTMApointmentStatus){
 + (void)editPayDetailWithModel:(TTMChargeDetailModel *)model
                       complete:(CompleteBlock)complete;
 
+
 @end

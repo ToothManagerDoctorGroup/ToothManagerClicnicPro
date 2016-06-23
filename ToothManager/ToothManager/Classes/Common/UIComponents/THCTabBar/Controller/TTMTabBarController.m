@@ -7,6 +7,12 @@
 #import "TTMTabBar.h"
 #import "TTMTabBarItemModel.h"
 #import "TTMNavigationController.h"
+#import "TTMChairUsageRateController.h"
+#import "TTMOrderQuantityController.h"
+#import "TTMOrderItemRatioController.h"
+#import "TTMIncomeStatisticsController.h"
+#import "TTMOrderIncrementController.h"
+#import <WMPageController/WMPageController.h>
 
 @interface TTMTabBarController () <TTMTabBarDelegate>
 
@@ -71,10 +77,16 @@
 }
 
 - (void)addChildViewControllerWithTabBarItemModel:(TTMTabBarItemModel *)tabBarItemModel {
-    UIViewController *controller = [[NSClassFromString(tabBarItemModel.tabBarController) alloc] init];
+    UIViewController *controller = nil;
+    if ([tabBarItemModel.tabBarController isEqualToString:@"WMPageController"]) {
+        controller = [self p_defaultController];
+    }else{
+        controller = [[NSClassFromString(tabBarItemModel.tabBarController) alloc] init];
+    }
     controller.title = tabBarItemModel.tabBarTitle;
     controller.tabBarItem.image = [UIImage imageNamed:tabBarItemModel.tabBarImageName];
     controller.tabBarItem.selectedImage = [UIImage imageNamed:tabBarItemModel.tabBarSelectedImageName];
+    
     TTMNavigationController *navigationController = [[TTMNavigationController alloc]
                                                      initWithRootViewController:controller];
     [self addChildViewController:navigationController];
@@ -89,6 +101,25 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - 创建统计视图控制器
+//创建控制器
+- (WMPageController *)p_defaultController {
+    NSArray *viewControllers = @[[TTMChairUsageRateController class],[TTMOrderQuantityController class],[TTMOrderItemRatioController class],[TTMIncomeStatisticsController class],[TTMOrderIncrementController class]];
+    NSArray *titles = @[@"椅位使用率",@"诊所预约量",@"预约事项占比",@"收入统计",@"预约增量"];
+    WMPageController *pageVC = [[WMPageController alloc] initWithViewControllerClasses:viewControllers andTheirTitles:titles];
+    pageVC.pageAnimatable = YES;
+    pageVC.menuItemWidth = (ScreenWidth - 40) / 3;
+    pageVC.postNotification = YES;
+    pageVC.bounces = NO;
+    pageVC.menuViewStyle = WMMenuViewStyleLine;
+    pageVC.menuBGColor = [UIColor whiteColor];
+    pageVC.titleSizeSelected = 14;
+    pageVC.titleSizeNormal = 14;
+    pageVC.titleColorSelected = MainColor;
+    pageVC.menuHeight = 44;
+    return pageVC;
 }
 
 @end

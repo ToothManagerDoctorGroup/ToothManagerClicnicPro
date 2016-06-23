@@ -14,6 +14,5 @@
 @interface TTMAppointStartViewController : TTMBaseColorController
 
 @property (nonatomic, assign)TTMApointmentStatus status;
-@property (nonatomic, assign)NSUInteger timeType;
 
 @end

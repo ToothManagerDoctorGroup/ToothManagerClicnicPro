@@ -114,12 +114,14 @@ NSString *const TTMOrderControllerChairChangedNotification = @"TTMOrderControlle
         // 设置页面
         NSArray *titles = @[@"待计时", @"计时中",@"收费待确认",@"待收费"];
         NSMutableArray *controllers = [NSMutableArray array];
+        int i = 0;
         for (NSString *title in titles) {
             TTMAppointStartViewController *appointmenting = [TTMAppointStartViewController new];
             appointmenting.title = title;
-            appointmenting.timeType = 1;
+            appointmenting.status = i;
             [controllers addObject:appointmenting];
             [self addChildViewController:appointmenting];
+            i++;
         }
         TTMAppointEndViewController *appointmented = [TTMAppointEndViewController new];
         appointmented.title = @"已完成";

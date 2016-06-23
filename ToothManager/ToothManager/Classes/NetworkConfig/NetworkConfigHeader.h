@@ -11,11 +11,11 @@
 #define UnknownError @"未知异常"
 
 // 域名(正式)
-//#define DomainName @"http://122.114.62.57/"
-//#define NetworkPrefix @"http://122.114.62.57/clinicServer/ashx/"
+#define DomainName @"http://www.zhongyaguanjia.com/"
+#define NetworkPrefix @"http://www.zhongyaguanjia.com/clinicServer/ashx/"
 //域名（测试）
-#define DomainName @"http://118.244.234.207/"
-#define NetworkPrefix @"http://118.244.234.207/clinicServer/ashx/"
+//#define DomainName @"http://www.ibeituan.com/"
+//#define NetworkPrefix @"http://www.ibeituan.com/clinicServer/ashx/"
 
 
 #define RealURL(path)    [NetworkPrefix stringByAppendingString:@(path)]
@@ -80,6 +80,9 @@
 // 查看日程椅位信息
 #define QueryScheduleChairListURL       RealURL("SeatHandler.ashx")
 
+// 查看预约列表信息
+#define QueryAppointmentListURL         RealURL("DoctorClinicReserverHandler.ashx")
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //                              待办项                                        //
@@ -99,5 +102,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 // 查看医生信息列表, 查看医生详情
 #define QueryDoctorListURL              RealURL("DoctorHandler.ashx")
+
+////////////////////////////////////////////////////////////////////////////////
+//                               数据统计                                     //
+////////////////////////////////////////////////////////////////////////////////
+// 查看医生信息列表, 查看医生详情
+#define QueryClinicChartURL              RealURL("ClinicChartHandler.ashx")
 
 #endif

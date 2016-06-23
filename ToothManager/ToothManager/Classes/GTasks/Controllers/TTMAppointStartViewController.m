@@ -16,17 +16,22 @@
 #import "TTMChairModel.h"
 #import "TTMScheduleDetailController.h"
 #import "TTMScheduleCellModel.h"
+#import "TTMOrderTool.h"
 #import "TTMAppointDetailViewController.h"
 
 #define kMargin 10.f
 #define kSectionH 30.f
 #define kSegumentH 40.f
+#define kPageSize 10
 
 @interface TTMAppointStartViewController ()<UITableViewDelegate,UITableViewDataSource,TTMApointmentingCellDelegate>
 
 @property (nonatomic, weak)   UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray; // 展示的数组
 @property (nonatomic, copy) NSArray *allDataArray; // 所有数组
+
+@property (nonatomic, strong)TTMOrderQueryModel *queryModel;
+@property (nonatomic, assign)int pageIndex;
 
 @end
 
@@ -36,7 +41,8 @@
     [super viewDidLoad];
     
     [self setupTableView];
-    [self queryWithTimeType:self.timeType];
+    [self queryWithQueryModel:self.queryModel];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(sortByNotification:)
                                                  name:TTMOrderControllerChairChangedNotification
@@ -60,7 +66,7 @@
     
     __weak typeof(self) weakSelf = self;
     [tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakSelf queryWithTimeType:weakSelf.timeType];
+        [weakSelf queryWithQueryModel:weakSelf.queryModel];
     }];
 }
 
@@ -90,7 +96,7 @@
 
 #pragma mark - TTMSegmentedViewDelegate
 - (void)segmentedViewDidSelected:(TTMSegmentedView *)segmentedView fromIndex:(NSUInteger)from toIndex:(NSUInteger)to {
-    [self queryWithTimeType:to];
+    
 }
 
 #pragma mark - TTMApointmentingCellDelegate
@@ -151,7 +157,7 @@
             [MBProgressHUD showToastWithText:result];
         } else {
             // 成功
-            [weakSelf queryWithTimeType:weakSelf.timeType];
+            [weakSelf queryWithQueryModel:weakSelf.queryModel];
         }
     }];
 }
@@ -175,19 +181,20 @@
 }
 
 /**
- *  按时间段查询预约列表
+ *  查询预约列表
  *
- *  @param timeType 时间类型
+ *  @param queryModel 查询model
  */
-- (void)queryWithTimeType:(NSUInteger)timeType {
+- (void)queryWithQueryModel:(TTMOrderQueryModel *)queryModel {
     __weak __typeof(&*self) weakSelf = self;
-    [TTMApointmentModel queryAppointmentListWithTimeType:timeType complete:^(id result) {
+    [TTMOrderTool queryAppointmentListWithQueryModel:queryModel complete:^(id result) {
         if ([weakSelf.tableView.header isRefreshing]) {
             [weakSelf.tableView.header endRefreshing];
         }
         if([result isKindOfClass:[NSString class]]) {
             [MBProgressHUD showToastWithText:result];
         } else {
+            
             self.allDataArray = result; // 原始的所有数据
             weakSelf.dataArray = [weakSelf sortArrayByDay:result];
             [weakSelf.tableView reloadData];
@@ -210,9 +217,9 @@
         TTMApointmentModel *appointmentModel = array[i];
         NSDate *dateTime = [appointmentModel.appoint_time dateValue]; // 这一条数据的时间
         
-        if ([dateTime fs_day] != [lastDate fs_day]) { // 与前一条数据的天不相同
+        if (lastDate && ![dateTime fs_isEqualToDateForDay:lastDate]) { // 与前一条数据的天不相同
             TTMAppointmentingCellModel *appointmentCellModel = [[TTMAppointmentingCellModel alloc] init];
-            appointmentCellModel.day = [dateTime fs_stringWithFormat:@"MM月dd日"];
+            appointmentCellModel.day = [dateTime fs_stringWithFormat:@"yyyy年MM月dd日"];
             [appointmentCellModel.infoList addObject:appointmentModel];
             [mutArray addObject:appointmentCellModel];
         } else { // 相同则继续添加
@@ -255,5 +262,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+#pragma mark - ********************* Lazy Method ***********************
+- (TTMOrderQueryModel *)queryModel{
+    if (!_queryModel) {
+        _queryModel = [[TTMOrderQueryModel alloc] initWithReserveStatus:[@(self.status) stringValue] seatId:@"" pageIndex:self.pageIndex pageSize:kPageSize];
+    }
+    return _queryModel;
+}
+
 
 @end

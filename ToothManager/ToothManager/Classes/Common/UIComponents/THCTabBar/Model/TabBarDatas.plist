@@ -16,9 +16,9 @@
 		<key>tabBarTitle</key>
 		<string>订单</string>
 		<key>tabBarImageName</key>
-		<string>tabbar_icon_gtasks_normal</string>
+		<string>tabbar_icon_order_normal</string>
 		<key>tabBarSelectedImageName</key>
-		<string>tabbar_icon_gtasks_selected</string>
+		<string>tabbar_icon_order_selected</string>
 		<key>tabBarController</key>
 		<string>TTMOrderController</string>
 	</dict>
@@ -26,11 +26,11 @@
 		<key>tabBarTitle</key>
 		<string>统计</string>
 		<key>tabBarImageName</key>
-		<string>tabbar_icon_doctors_normal</string>
+		<string>tabbar_icon_statistics_normal</string>
 		<key>tabBarSelectedImageName</key>
-		<string>tabbar_icon_doctors_selected</string>
+		<string>tabbar_icon_statistics_selected</string>
 		<key>tabBarController</key>
-		<string>TTMDoctorsController</string>
+		<string>WMPageController</string>
 	</dict>
 	<dict>
 		<key>tabBarTitle</key>

@@ -13,5 +13,7 @@
 //十六进制获取颜色
 + (UIColor *) colorWithHex:(unsigned int)hex;
 + (UIColor *) colorWithHex:(unsigned int)hex alpha:(CGFloat)alpha;
++ (UIColor *) randomColor;
+
 
 @end

@@ -54,7 +54,7 @@
                 <outlet property="timeButton" destination="gky-H9-3Xt" id="MCi-92-osc"/>
                 <outlet property="timeLabel" destination="NK8-EK-q1X" id="Gfi-E9-fS5"/>
             </connections>
-            <point key="canvasLocation" x="-44" y="-101"/>
+            <point key="canvasLocation" x="-25" y="-101"/>
         </view>
     </objects>
 </document>

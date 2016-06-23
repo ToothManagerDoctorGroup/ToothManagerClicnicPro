@@ -58,7 +58,7 @@
             NSMutableArray *mutArray = [NSMutableArray array];
             for (NSDictionary *dict in rows) {
                 TTMChairModel *model = [TTMChairModel objectWithKeyValues:dict];
-                model.seat_name = [model.seat_name stringByAppendingString:@"椅位"];
+                model.seat_name = model.seat_name;
                 [mutArray addObject:model];
             }
             complete(mutArray);
