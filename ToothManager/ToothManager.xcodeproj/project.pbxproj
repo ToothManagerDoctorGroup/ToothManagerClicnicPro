@@ -37,6 +37,31 @@
 		3D2F97721CF05A8B00386821 /* TTMImageListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F97711CF05A8B00386821 /* TTMImageListView.m */; };
 		3D2F97781CF0691E00386821 /* TTMAppointDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F97771CF0691E00386821 /* TTMAppointDetailHeaderView.m */; };
 		3D2F977A1CF0693A00386821 /* TTMAppointDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F97791CF0693A00386821 /* TTMAppointDetailHeaderView.xib */; };
+		3D78C0621D1CF3EA00DA9343 /* NSString+Zirkfied.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0251D1CF3EA00DA9343 /* NSString+Zirkfied.m */; };
+		3D78C0631D1CF3EA00DA9343 /* UIBezierPath+Zirkfied.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0271D1CF3EA00DA9343 /* UIBezierPath+Zirkfied.m */; };
+		3D78C0641D1CF3EA00DA9343 /* UIColor+Zirkfied.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0291D1CF3EA00DA9343 /* UIColor+Zirkfied.m */; };
+		3D78C0651D1CF3EA00DA9343 /* UIView+Zirkfied.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C02B1D1CF3EA00DA9343 /* UIView+Zirkfied.m */; };
+		3D78C0661D1CF3EA00DA9343 /* ZFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C02E1D1CF3EA00DA9343 /* ZFLabel.m */; };
+		3D78C0671D1CF3EA00DA9343 /* ZFPopoverLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0301D1CF3EA00DA9343 /* ZFPopoverLabel.m */; };
+		3D78C0681D1CF3EA00DA9343 /* ZFXAxisLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0321D1CF3EA00DA9343 /* ZFXAxisLine.m */; };
+		3D78C0691D1CF3EA00DA9343 /* ZFYAxisLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0341D1CF3EA00DA9343 /* ZFYAxisLine.m */; };
+		3D78C06A1D1CF3EA00DA9343 /* ZFConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0391D1CF3EA00DA9343 /* ZFConst.m */; };
+		3D78C06B1D1CF3EA00DA9343 /* ZFMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C03B1D1CF3EA00DA9343 /* ZFMethod.m */; };
+		3D78C06C1D1CF3EA00DA9343 /* ZFBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C03E1D1CF3EA00DA9343 /* ZFBar.m */; };
+		3D78C06D1D1CF3EA00DA9343 /* ZFBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0401D1CF3EA00DA9343 /* ZFBarChart.m */; };
+		3D78C06E1D1CF3EA00DA9343 /* ZFGenericAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0431D1CF3EA00DA9343 /* ZFGenericAxis.m */; };
+		3D78C06F1D1CF3EA00DA9343 /* ZFGenericChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0461D1CF3EA00DA9343 /* ZFGenericChart.m */; };
+		3D78C0701D1CF3EA00DA9343 /* ZFHorizontalAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0491D1CF3EA00DA9343 /* ZFHorizontalAxis.m */; };
+		3D78C0711D1CF3EA00DA9343 /* ZFHorizontalBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C04C1D1CF3EA00DA9343 /* ZFHorizontalBar.m */; };
+		3D78C0721D1CF3EA00DA9343 /* ZFHorizontalBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C04E1D1CF3EA00DA9343 /* ZFHorizontalBarChart.m */; };
+		3D78C0731D1CF3EA00DA9343 /* ZFCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0511D1CF3EA00DA9343 /* ZFCircle.m */; };
+		3D78C0741D1CF3EA00DA9343 /* ZFLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0531D1CF3EA00DA9343 /* ZFLine.m */; };
+		3D78C0751D1CF3EA00DA9343 /* ZFLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0551D1CF3EA00DA9343 /* ZFLineChart.m */; };
+		3D78C0761D1CF3EA00DA9343 /* ZFPie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0581D1CF3EA00DA9343 /* ZFPie.m */; };
+		3D78C0771D1CF3EA00DA9343 /* ZFPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C05A1D1CF3EA00DA9343 /* ZFPieChart.m */; };
+		3D78C0781D1CF3EA00DA9343 /* ZFTranslucencePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C05C1D1CF3EA00DA9343 /* ZFTranslucencePath.m */; };
+		3D78C0791D1CF3EA00DA9343 /* ZFWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C05F1D1CF3EA00DA9343 /* ZFWave.m */; };
+		3D78C07A1D1CF3EA00DA9343 /* ZFWaveChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C0611D1CF3EA00DA9343 /* ZFWaveChart.m */; };
 		3D7960DC1C166F1600453EB4 /* TTMMyScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7960DB1C166F1600453EB4 /* TTMMyScheduleCell.m */; };
 		3D7960E31C167ECD00453EB4 /* SchedulePopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7960E11C167ECD00453EB4 /* SchedulePopMenu.m */; };
 		3D7960E41C167ECD00453EB4 /* SchedulePopMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7960E21C167ECD00453EB4 /* SchedulePopMenu.xib */; };
@@ -497,6 +522,58 @@
 		3D2F97761CF0691E00386821 /* TTMAppointDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAppointDetailHeaderView.h; sourceTree = "<group>"; };
 		3D2F97771CF0691E00386821 /* TTMAppointDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppointDetailHeaderView.m; sourceTree = "<group>"; };
 		3D2F97791CF0693A00386821 /* TTMAppointDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMAppointDetailHeaderView.xib; sourceTree = "<group>"; };
+		3D78C0241D1CF3EA00DA9343 /* NSString+Zirkfied.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Zirkfied.h"; sourceTree = "<group>"; };
+		3D78C0251D1CF3EA00DA9343 /* NSString+Zirkfied.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Zirkfied.m"; sourceTree = "<group>"; };
+		3D78C0261D1CF3EA00DA9343 /* UIBezierPath+Zirkfied.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Zirkfied.h"; sourceTree = "<group>"; };
+		3D78C0271D1CF3EA00DA9343 /* UIBezierPath+Zirkfied.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Zirkfied.m"; sourceTree = "<group>"; };
+		3D78C0281D1CF3EA00DA9343 /* UIColor+Zirkfied.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Zirkfied.h"; sourceTree = "<group>"; };
+		3D78C0291D1CF3EA00DA9343 /* UIColor+Zirkfied.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Zirkfied.m"; sourceTree = "<group>"; };
+		3D78C02A1D1CF3EA00DA9343 /* UIView+Zirkfied.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Zirkfied.h"; sourceTree = "<group>"; };
+		3D78C02B1D1CF3EA00DA9343 /* UIView+Zirkfied.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Zirkfied.m"; sourceTree = "<group>"; };
+		3D78C02D1D1CF3EA00DA9343 /* ZFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLabel.h; sourceTree = "<group>"; };
+		3D78C02E1D1CF3EA00DA9343 /* ZFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLabel.m; sourceTree = "<group>"; };
+		3D78C02F1D1CF3EA00DA9343 /* ZFPopoverLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPopoverLabel.h; sourceTree = "<group>"; };
+		3D78C0301D1CF3EA00DA9343 /* ZFPopoverLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPopoverLabel.m; sourceTree = "<group>"; };
+		3D78C0311D1CF3EA00DA9343 /* ZFXAxisLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFXAxisLine.h; sourceTree = "<group>"; };
+		3D78C0321D1CF3EA00DA9343 /* ZFXAxisLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFXAxisLine.m; sourceTree = "<group>"; };
+		3D78C0331D1CF3EA00DA9343 /* ZFYAxisLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFYAxisLine.h; sourceTree = "<group>"; };
+		3D78C0341D1CF3EA00DA9343 /* ZFYAxisLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFYAxisLine.m; sourceTree = "<group>"; };
+		3D78C0361D1CF3EA00DA9343 /* ZFChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFChart.h; sourceTree = "<group>"; };
+		3D78C0371D1CF3EA00DA9343 /* ZFColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFColor.h; sourceTree = "<group>"; };
+		3D78C0381D1CF3EA00DA9343 /* ZFConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFConst.h; sourceTree = "<group>"; };
+		3D78C0391D1CF3EA00DA9343 /* ZFConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFConst.m; sourceTree = "<group>"; };
+		3D78C03A1D1CF3EA00DA9343 /* ZFMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFMethod.h; sourceTree = "<group>"; };
+		3D78C03B1D1CF3EA00DA9343 /* ZFMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFMethod.m; sourceTree = "<group>"; };
+		3D78C03D1D1CF3EA00DA9343 /* ZFBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFBar.h; sourceTree = "<group>"; };
+		3D78C03E1D1CF3EA00DA9343 /* ZFBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFBar.m; sourceTree = "<group>"; };
+		3D78C03F1D1CF3EA00DA9343 /* ZFBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFBarChart.h; sourceTree = "<group>"; };
+		3D78C0401D1CF3EA00DA9343 /* ZFBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFBarChart.m; sourceTree = "<group>"; };
+		3D78C0421D1CF3EA00DA9343 /* ZFGenericAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFGenericAxis.h; sourceTree = "<group>"; };
+		3D78C0431D1CF3EA00DA9343 /* ZFGenericAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFGenericAxis.m; sourceTree = "<group>"; };
+		3D78C0451D1CF3EA00DA9343 /* ZFGenericChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFGenericChart.h; sourceTree = "<group>"; };
+		3D78C0461D1CF3EA00DA9343 /* ZFGenericChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFGenericChart.m; sourceTree = "<group>"; };
+		3D78C0481D1CF3EA00DA9343 /* ZFHorizontalAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFHorizontalAxis.h; sourceTree = "<group>"; };
+		3D78C0491D1CF3EA00DA9343 /* ZFHorizontalAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFHorizontalAxis.m; sourceTree = "<group>"; };
+		3D78C04B1D1CF3EA00DA9343 /* ZFHorizontalBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFHorizontalBar.h; sourceTree = "<group>"; };
+		3D78C04C1D1CF3EA00DA9343 /* ZFHorizontalBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFHorizontalBar.m; sourceTree = "<group>"; };
+		3D78C04D1D1CF3EA00DA9343 /* ZFHorizontalBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFHorizontalBarChart.h; sourceTree = "<group>"; };
+		3D78C04E1D1CF3EA00DA9343 /* ZFHorizontalBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFHorizontalBarChart.m; sourceTree = "<group>"; };
+		3D78C0501D1CF3EA00DA9343 /* ZFCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFCircle.h; sourceTree = "<group>"; };
+		3D78C0511D1CF3EA00DA9343 /* ZFCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFCircle.m; sourceTree = "<group>"; };
+		3D78C0521D1CF3EA00DA9343 /* ZFLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLine.h; sourceTree = "<group>"; };
+		3D78C0531D1CF3EA00DA9343 /* ZFLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLine.m; sourceTree = "<group>"; };
+		3D78C0541D1CF3EA00DA9343 /* ZFLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLineChart.h; sourceTree = "<group>"; };
+		3D78C0551D1CF3EA00DA9343 /* ZFLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLineChart.m; sourceTree = "<group>"; };
+		3D78C0571D1CF3EA00DA9343 /* ZFPie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPie.h; sourceTree = "<group>"; };
+		3D78C0581D1CF3EA00DA9343 /* ZFPie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPie.m; sourceTree = "<group>"; };
+		3D78C0591D1CF3EA00DA9343 /* ZFPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPieChart.h; sourceTree = "<group>"; };
+		3D78C05A1D1CF3EA00DA9343 /* ZFPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPieChart.m; sourceTree = "<group>"; };
+		3D78C05B1D1CF3EA00DA9343 /* ZFTranslucencePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFTranslucencePath.h; sourceTree = "<group>"; };
+		3D78C05C1D1CF3EA00DA9343 /* ZFTranslucencePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFTranslucencePath.m; sourceTree = "<group>"; };
+		3D78C05E1D1CF3EA00DA9343 /* ZFWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFWave.h; sourceTree = "<group>"; };
+		3D78C05F1D1CF3EA00DA9343 /* ZFWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFWave.m; sourceTree = "<group>"; };
+		3D78C0601D1CF3EA00DA9343 /* ZFWaveChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFWaveChart.h; sourceTree = "<group>"; };
+		3D78C0611D1CF3EA00DA9343 /* ZFWaveChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFWaveChart.m; sourceTree = "<group>"; };
 		3D7960DA1C166F1600453EB4 /* TTMMyScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMMyScheduleCell.h; sourceTree = "<group>"; };
 		3D7960DB1C166F1600453EB4 /* TTMMyScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMMyScheduleCell.m; sourceTree = "<group>"; };
 		3D7960E01C167ECD00453EB4 /* SchedulePopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchedulePopMenu.h; sourceTree = "<group>"; };
@@ -1417,6 +1494,153 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
+		3D78C0221D1CF3EA00DA9343 /* ZFChart */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C0231D1CF3EA00DA9343 /* Category */,
+				3D78C02C1D1CF3EA00DA9343 /* Component */,
+				3D78C0351D1CF3EA00DA9343 /* Other */,
+				3D78C03C1D1CF3EA00DA9343 /* ZFBarChart */,
+				3D78C0411D1CF3EA00DA9343 /* ZFGenericAxis */,
+				3D78C0441D1CF3EA00DA9343 /* ZFGenericChart */,
+				3D78C0471D1CF3EA00DA9343 /* ZFHorizontalAxis */,
+				3D78C04A1D1CF3EA00DA9343 /* ZFHorizontalBarChart */,
+				3D78C04F1D1CF3EA00DA9343 /* ZFLineChart */,
+				3D78C0561D1CF3EA00DA9343 /* ZFPieChart */,
+				3D78C05D1D1CF3EA00DA9343 /* ZFWaveChart */,
+			);
+			path = ZFChart;
+			sourceTree = "<group>";
+		};
+		3D78C0231D1CF3EA00DA9343 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C0241D1CF3EA00DA9343 /* NSString+Zirkfied.h */,
+				3D78C0251D1CF3EA00DA9343 /* NSString+Zirkfied.m */,
+				3D78C0261D1CF3EA00DA9343 /* UIBezierPath+Zirkfied.h */,
+				3D78C0271D1CF3EA00DA9343 /* UIBezierPath+Zirkfied.m */,
+				3D78C0281D1CF3EA00DA9343 /* UIColor+Zirkfied.h */,
+				3D78C0291D1CF3EA00DA9343 /* UIColor+Zirkfied.m */,
+				3D78C02A1D1CF3EA00DA9343 /* UIView+Zirkfied.h */,
+				3D78C02B1D1CF3EA00DA9343 /* UIView+Zirkfied.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		3D78C02C1D1CF3EA00DA9343 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C02D1D1CF3EA00DA9343 /* ZFLabel.h */,
+				3D78C02E1D1CF3EA00DA9343 /* ZFLabel.m */,
+				3D78C02F1D1CF3EA00DA9343 /* ZFPopoverLabel.h */,
+				3D78C0301D1CF3EA00DA9343 /* ZFPopoverLabel.m */,
+				3D78C0311D1CF3EA00DA9343 /* ZFXAxisLine.h */,
+				3D78C0321D1CF3EA00DA9343 /* ZFXAxisLine.m */,
+				3D78C0331D1CF3EA00DA9343 /* ZFYAxisLine.h */,
+				3D78C0341D1CF3EA00DA9343 /* ZFYAxisLine.m */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		3D78C0351D1CF3EA00DA9343 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C0361D1CF3EA00DA9343 /* ZFChart.h */,
+				3D78C0371D1CF3EA00DA9343 /* ZFColor.h */,
+				3D78C0381D1CF3EA00DA9343 /* ZFConst.h */,
+				3D78C0391D1CF3EA00DA9343 /* ZFConst.m */,
+				3D78C03A1D1CF3EA00DA9343 /* ZFMethod.h */,
+				3D78C03B1D1CF3EA00DA9343 /* ZFMethod.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		3D78C03C1D1CF3EA00DA9343 /* ZFBarChart */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C03D1D1CF3EA00DA9343 /* ZFBar.h */,
+				3D78C03E1D1CF3EA00DA9343 /* ZFBar.m */,
+				3D78C03F1D1CF3EA00DA9343 /* ZFBarChart.h */,
+				3D78C0401D1CF3EA00DA9343 /* ZFBarChart.m */,
+			);
+			path = ZFBarChart;
+			sourceTree = "<group>";
+		};
+		3D78C0411D1CF3EA00DA9343 /* ZFGenericAxis */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C0421D1CF3EA00DA9343 /* ZFGenericAxis.h */,
+				3D78C0431D1CF3EA00DA9343 /* ZFGenericAxis.m */,
+			);
+			path = ZFGenericAxis;
+			sourceTree = "<group>";
+		};
+		3D78C0441D1CF3EA00DA9343 /* ZFGenericChart */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C0451D1CF3EA00DA9343 /* ZFGenericChart.h */,
+				3D78C0461D1CF3EA00DA9343 /* ZFGenericChart.m */,
+			);
+			path = ZFGenericChart;
+			sourceTree = "<group>";
+		};
+		3D78C0471D1CF3EA00DA9343 /* ZFHorizontalAxis */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C0481D1CF3EA00DA9343 /* ZFHorizontalAxis.h */,
+				3D78C0491D1CF3EA00DA9343 /* ZFHorizontalAxis.m */,
+			);
+			path = ZFHorizontalAxis;
+			sourceTree = "<group>";
+		};
+		3D78C04A1D1CF3EA00DA9343 /* ZFHorizontalBarChart */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C04B1D1CF3EA00DA9343 /* ZFHorizontalBar.h */,
+				3D78C04C1D1CF3EA00DA9343 /* ZFHorizontalBar.m */,
+				3D78C04D1D1CF3EA00DA9343 /* ZFHorizontalBarChart.h */,
+				3D78C04E1D1CF3EA00DA9343 /* ZFHorizontalBarChart.m */,
+			);
+			path = ZFHorizontalBarChart;
+			sourceTree = "<group>";
+		};
+		3D78C04F1D1CF3EA00DA9343 /* ZFLineChart */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C0501D1CF3EA00DA9343 /* ZFCircle.h */,
+				3D78C0511D1CF3EA00DA9343 /* ZFCircle.m */,
+				3D78C0521D1CF3EA00DA9343 /* ZFLine.h */,
+				3D78C0531D1CF3EA00DA9343 /* ZFLine.m */,
+				3D78C0541D1CF3EA00DA9343 /* ZFLineChart.h */,
+				3D78C0551D1CF3EA00DA9343 /* ZFLineChart.m */,
+			);
+			path = ZFLineChart;
+			sourceTree = "<group>";
+		};
+		3D78C0561D1CF3EA00DA9343 /* ZFPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C0571D1CF3EA00DA9343 /* ZFPie.h */,
+				3D78C0581D1CF3EA00DA9343 /* ZFPie.m */,
+				3D78C0591D1CF3EA00DA9343 /* ZFPieChart.h */,
+				3D78C05A1D1CF3EA00DA9343 /* ZFPieChart.m */,
+				3D78C05B1D1CF3EA00DA9343 /* ZFTranslucencePath.h */,
+				3D78C05C1D1CF3EA00DA9343 /* ZFTranslucencePath.m */,
+			);
+			path = ZFPieChart;
+			sourceTree = "<group>";
+		};
+		3D78C05D1D1CF3EA00DA9343 /* ZFWaveChart */ = {
+			isa = PBXGroup;
+			children = (
+				3D78C05E1D1CF3EA00DA9343 /* ZFWave.h */,
+				3D78C05F1D1CF3EA00DA9343 /* ZFWave.m */,
+				3D78C0601D1CF3EA00DA9343 /* ZFWaveChart.h */,
+				3D78C0611D1CF3EA00DA9343 /* ZFWaveChart.m */,
+			);
+			path = ZFWaveChart;
+			sourceTree = "<group>";
+		};
 		3D7960D91C166EF700453EB4 /* MySchedule */ = {
 			isa = PBXGroup;
 			children = (
@@ -2243,6 +2467,7 @@
 		DBE1D2111B319B430058E0E6 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				3D78C0221D1CF3EA00DA9343 /* ZFChart */,
 				3DB88FCF1D18E3F000772542 /* UUChart */,
 				3D2A0DCD1D17C26E009BBC80 /* XLTagView */,
 				3D2F97461CF0488100386821 /* Masonry */,
@@ -3304,6 +3529,7 @@
 				DBC8B1321BEBCDB900064A06 /* HZPhotoBrowser.m in Sources */,
 				DBAD71ED1BB43C0C00B6D9D0 /* NIFoundationMethods.m in Sources */,
 				3D7961211C16950300453EB4 /* TTMPatientModel.m in Sources */,
+				3D78C06E1D1CF3EA00DA9343 /* ZFGenericAxis.m in Sources */,
 				DBE1D4491B319B430058E0E6 /* MJRefreshFooter.m in Sources */,
 				3D79612C1C16962D00453EB4 /* PatientDetailHeadInfoView.m in Sources */,
 				DBE1D4661B319B430058E0E6 /* UIImageView+WebCache.m in Sources */,
@@ -3369,6 +3595,8 @@
 				DBDD44581B365B1F009FE3A0 /* TTMIncomeController.m in Sources */,
 				DBC1C5671BDCA19900B01229 /* TTMAddOtherController.m in Sources */,
 				3D2A0DF21D17F608009BBC80 /* TTMCustomDateView.m in Sources */,
+				3D78C0761D1CF3EA00DA9343 /* ZFPie.m in Sources */,
+				3D78C0771D1CF3EA00DA9343 /* ZFPieChart.m in Sources */,
 				DB4440961B9C23C90030DF21 /* ZLCameraImageView.m in Sources */,
 				DBEB8D151B54B91500FDF584 /* UMChatToolBar.m in Sources */,
 				DBE1D4A21B319B430058E0E6 /* TTMTabBarController.m in Sources */,
@@ -3390,6 +3618,7 @@
 				3D2A0DE31D17C6B2009BBC80 /* TTMIncomeStatisticsController.m in Sources */,
 				3D2A0DD21D17C26E009BBC80 /* XLTagFrame.m in Sources */,
 				DB8FD5551B997FD900A9E809 /* TTMAboutController.m in Sources */,
+				3D78C06A1D1CF3EA00DA9343 /* ZFConst.m in Sources */,
 				DB4440A11B9C23C90030DF21 /* ZLPhotoPickerGroup.m in Sources */,
 				DBEB8D121B54B91500FDF584 /* UMFeedbackViewController.m in Sources */,
 				DBE1D3EA1B319B430058E0E6 /* AFHTTPRequestOperationManager.m in Sources */,
@@ -3405,6 +3634,8 @@
 				DBE1D4471B319B430058E0E6 /* MJRefreshComponent.m in Sources */,
 				3D7960DC1C166F1600453EB4 /* TTMMyScheduleCell.m in Sources */,
 				DBE1D4621B319B430058E0E6 /* UIImage+GIF.m in Sources */,
+				3D78C06B1D1CF3EA00DA9343 /* ZFMethod.m in Sources */,
+				3D78C0751D1CF3EA00DA9343 /* ZFLineChart.m in Sources */,
 				DB4440121B9C080F0030DF21 /* TTMMessageCell.m in Sources */,
 				3D2F97631CF0488100386821 /* MASLayoutConstraint.m in Sources */,
 				DB9B804E1BA55A3F005F5679 /* TTMBankModel.m in Sources */,
@@ -3424,10 +3655,12 @@
 				DBDB80041B4A4E02003C235F /* TTMResponseModel.m in Sources */,
 				3D2A0DD31D17C26E009BBC80 /* XLTagView.m in Sources */,
 				3DD40D131D1A32530044425B /* TTMStatisticsTool.m in Sources */,
+				3D78C0791D1CF3EA00DA9343 /* ZFWave.m in Sources */,
 				DBE1D4DD1B31BDBB0058E0E6 /* TTMScheduleCell.m in Sources */,
 				DBC8B1211BEBBCAE00064A06 /* TTMEditInfoController.m in Sources */,
 				DBAD71E61BB43C0C00B6D9D0 /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */,
 				DBE1D42C1B319B430058E0E6 /* IQNSArray+Sort.m in Sources */,
+				3D78C0781D1CF3EA00DA9343 /* ZFTranslucencePath.m in Sources */,
 				DBDF84E01B3800DA00378C0C /* TTMGreenButton.m in Sources */,
 				DB4440941B9C23C90030DF21 /* ZLAnimationScrollView.m in Sources */,
 				DBE1D4631B319B430058E0E6 /* UIImage+MultiFormat.m in Sources */,
@@ -3465,12 +3698,14 @@
 				3DBAF4351CF2C64D0035AEF6 /* TTMAppointDetailCell.m in Sources */,
 				DB185D741B369AA800E823CD /* TTMMemberCellModel.m in Sources */,
 				3DB88FCB1D18D95500772542 /* TTMPickerTextField.m in Sources */,
+				3D78C07A1D1CF3EA00DA9343 /* ZFWaveChart.m in Sources */,
 				DBFF6CCF1B5DE5200035CAFF /* NSDate+FSExtension.m in Sources */,
 				DBFF6CCD1B5DE5200035CAFF /* FSCalendarHeader.m in Sources */,
 				3D79614E1C16BC0300453EB4 /* TTMCTLibModel.m in Sources */,
 				DBE1D43D1B319B430058E0E6 /* MJConst.m in Sources */,
 				3D2A0DE01D17C66E009BBC80 /* TTMOrderItemRatioController.m in Sources */,
 				DBAD71EA1BB43C0C00B6D9D0 /* NIDebuggingTools.m in Sources */,
+				3D78C06F1D1CF3EA00DA9343 /* ZFGenericChart.m in Sources */,
 				3DB8901D1D193F2100772542 /* TTMStatisticsChartModel.m in Sources */,
 				DBE1D49B1B319B430058E0E6 /* UIBarButtonItem+TTMAddtion.m in Sources */,
 				DBE1D4A41B319B430058E0E6 /* TTMTabBarItemModel.m in Sources */,
@@ -3482,6 +3717,7 @@
 				DBE1D4B21B31A0D50058E0E6 /* TTMBaseColorController.m in Sources */,
 				DBE1D4A81B319B430058E0E6 /* TTMTimeButton.m in Sources */,
 				DB8FD5521B997FD900A9E809 /* TTMLoginController.m in Sources */,
+				3D78C0681D1CF3EA00DA9343 /* ZFXAxisLine.m in Sources */,
 				DBE1D4A51B319B430058E0E6 /* TTMTabBar.m in Sources */,
 				3D2F976F1CF0505600386821 /* UIColor+TTMAddtion.m in Sources */,
 				DB82B61D1B993A230026FCA3 /* CYAlertView.m in Sources */,
@@ -3489,6 +3725,7 @@
 				DB4440A71B9C23C90030DF21 /* ZLPhotoPickerFooterCollectionReusableView.m in Sources */,
 				DBE1D4641B319B430058E0E6 /* UIImage+WebP.m in Sources */,
 				DB4440A51B9C23C90030DF21 /* ZLPhotoPickerCollectionView.m in Sources */,
+				3D78C0631D1CF3EA00DA9343 /* UIBezierPath+Zirkfied.m in Sources */,
 				DB16790F1BE1313F00F57EEB /* TTMAddOtherLineView.m in Sources */,
 				DB4440A61B9C23C90030DF21 /* ZLPhotoPickerCollectionViewCell.m in Sources */,
 				DBE1D4651B319B430058E0E6 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -3501,6 +3738,8 @@
 				3D2F97681CF0488100386821 /* View+MASAdditions.m in Sources */,
 				3D84F5511CF6D52A00A47517 /* TTMScheduleHeadImageView.m in Sources */,
 				DBDD444F1B365946009FE3A0 /* TTMUser.m in Sources */,
+				3D78C0671D1CF3EA00DA9343 /* ZFPopoverLabel.m in Sources */,
+				3D78C0651D1CF3EA00DA9343 /* UIView+Zirkfied.m in Sources */,
 				DBBF77011B9F37DF0069096F /* TTMChairSettingView.m in Sources */,
 				DB82B6231B9945B00026FCA3 /* TTMWithdrawModel.m in Sources */,
 				3DB88FCE1D18DB7F00772542 /* TTMStatisticsChartView.m in Sources */,
@@ -3528,10 +3767,12 @@
 				DB20E5531BDBD25A008E9FDA /* TTMAssistModel.m in Sources */,
 				DBF970311B35A2BD00AD5666 /* TTMDoctorInfoView.m in Sources */,
 				DBE1D4DA1B31AFD00058E0E6 /* TTMScheduleHeaderView.m in Sources */,
+				3D78C0721D1CF3EA00DA9343 /* ZFHorizontalBarChart.m in Sources */,
 				DBAD71F81BB43C0C00B6D9D0 /* NIState.m in Sources */,
 				DBE1D43F1B319B430058E0E6 /* MJProperty.m in Sources */,
 				DB8FD53B1B997F3100A9E809 /* TTMWithdrawController.m in Sources */,
 				3D2F97691CF0488100386821 /* ViewController+MASAdditions.m in Sources */,
+				3D78C0741D1CF3EA00DA9343 /* ZFLine.m in Sources */,
 				DBAD71A91BB4250900B6D9D0 /* TTMChargeDetailController.m in Sources */,
 				DB4440041B9C076B0030DF21 /* TTMClinicInfoController.m in Sources */,
 				DBDD3DFA1B353949004248D5 /* TTMBeforeButton.m in Sources */,
@@ -3540,6 +3781,7 @@
 				DBE1D42F1B319B430058E0E6 /* IQUIViewController+Additions.m in Sources */,
 				DBE1D4351B319B430058E0E6 /* IQBarButtonItem.m in Sources */,
 				DBE1D3EF1B319B430058E0E6 /* AFURLRequestSerialization.m in Sources */,
+				3D78C06C1D1CF3EA00DA9343 /* ZFBar.m in Sources */,
 				DBE1D4371B319B430058E0E6 /* IQToolbar.m in Sources */,
 				DBFF6CCE1B5DE5200035CAFF /* NSCalendar+FSExtension.m in Sources */,
 				DB4440B41B9C24370030DF21 /* MCPopoverView.m in Sources */,
@@ -3565,7 +3807,9 @@
 				DBAD71E81BB43C0C00B6D9D0 /* NIButtonUtilities.m in Sources */,
 				3D7960F71C16802300453EB4 /* LewPopupViewAnimationSpring.m in Sources */,
 				DBE1D4311B319B430058E0E6 /* IQKeyboardManager.m in Sources */,
+				3D78C0731D1CF3EA00DA9343 /* ZFCircle.m in Sources */,
 				DB4440991B9C23C90030DF21 /* ZLPhotoPickerBrowserPhoto.m in Sources */,
+				3D78C0691D1CF3EA00DA9343 /* ZFYAxisLine.m in Sources */,
 				DBE1D45C1B319B430058E0E6 /* SDWebImageDecoder.m in Sources */,
 				3D7961411C16979C00453EB4 /* MJPhotoLoadingView.m in Sources */,
 				DBDB7FFD1B4A16A7003C235F /* TTMChairModel.m in Sources */,
@@ -3583,6 +3827,7 @@
 				DBA6527E1BBA73D70086BAAB /* TTMAddImageView.m in Sources */,
 				DBE1D4921B319B430058E0E6 /* NSUserDefaults+TTMAddtion.m in Sources */,
 				DBC8B11B1BEBAFAD00064A06 /* TTMPhotoSelectorView.m in Sources */,
+				3D78C0711D1CF3EA00DA9343 /* ZFHorizontalBar.m in Sources */,
 				DBAD71F31BB43C0C00B6D9D0 /* NIOperations.m in Sources */,
 				DBE1D4981B319B430058E0E6 /* TTMValidateTool.m in Sources */,
 				DBE1D3F11B319B430058E0E6 /* AFURLSessionManager.m in Sources */,
@@ -3606,6 +3851,7 @@
 				3DB88FE01D18E3F000772542 /* UUChartLabel.m in Sources */,
 				DB8FD5511B997FD900A9E809 /* TTMForgetPasswordController.m in Sources */,
 				DBB7F5841BB54CD000E83DBA /* TTMChargeConfirmController.m in Sources */,
+				3D78C0621D1CF3EA00DA9343 /* NSString+Zirkfied.m in Sources */,
 				3D2A0DDD1D17C60B009BBC80 /* TTMOrderQuantityController.m in Sources */,
 				DBE1D20F1B3198820058E0E6 /* main.m in Sources */,
 				3D2F97671CF0488100386821 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -3621,12 +3867,16 @@
 				3DB88FDF1D18E3F000772542 /* UUChartConst.m in Sources */,
 				DBE1D4301B319B430058E0E6 /* IQUIWindow+Hierarchy.m in Sources */,
 				DBF9703A1B35BA1200AD5666 /* TTMShowTextView.m in Sources */,
+				3D78C0641D1CF3EA00DA9343 /* UIColor+Zirkfied.m in Sources */,
 				DBF970371B35AE5100AD5666 /* TTMDoctorInfoModel.m in Sources */,
+				3D78C0701D1CF3EA00DA9343 /* ZFHorizontalAxis.m in Sources */,
+				3D78C06D1D1CF3EA00DA9343 /* ZFBarChart.m in Sources */,
 				DBDC5C081BA082DB0002D113 /* TTMChairSettingUnitTextField.m in Sources */,
 				DBEB8CD11B53ECA700FDF584 /* NSCalendar+FSExtension.m in Sources */,
 				3D2F97661CF0488100386821 /* NSArray+MASAdditions.m in Sources */,
 				DBE1D41E1B319B430058E0E6 /* FCModel.m in Sources */,
 				DB4440B21B9C24370030DF21 /* MCPhotoPickerView.m in Sources */,
+				3D78C0661D1CF3EA00DA9343 /* ZFLabel.m in Sources */,
 				DBE152601B4AD1D4007DBD98 /* UIImageView+TTMAddtion.m in Sources */,
 				DBDD3E031B3543DE004248D5 /* TTMChairItemButton.m in Sources */,
 				DB4440261B9C20AC0030DF21 /* TTMChairSettingController.m in Sources */,

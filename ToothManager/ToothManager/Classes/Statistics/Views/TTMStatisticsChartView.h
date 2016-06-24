@@ -28,7 +28,6 @@ typedef NS_ENUM(NSInteger,StatisticsChartStyle){
 
 - (void)reloadData;
 
-
 @end
 
 @protocol TTMStatisticsChartViewDataSource <NSObject>

@@ -7,23 +7,29 @@
 //
 
 #import "TTMStatisticsChartView.h"
-#import "UUChart.h"
 #import "TTMStatisticsChartHeaderFooterView.h"
 #import "UIColor+TTMAddtion.h"
 #import "TTMStatisticsChartModel.h"
+#import "ZFChart.h"
 
-#define kChartViewHeight 150
+#define kChartViewHeight 200
 #define kMargin 10
 #define kHeaderFooterDefaultHeight 44
 
-@interface TTMStatisticsChartView ()<UUChartDataSource>
-@property (nonatomic, strong)UUChart *uuChartView;
+@interface TTMStatisticsChartView ()<ZFGenericChartDataSource,ZFBarChartDelegate,ZFLineChartDelegate,ZFPieChartDataSource>
+
+@property (nonatomic, strong)ZFBarChart *barChart;
+@property (nonatomic, strong)ZFLineChart *lineChart;
+@property (nonatomic, strong)ZFPieChart *pieChart;
+
 @property (nonatomic, strong)TTMStatisticsChartHeaderFooterView *headerView;
 @property (nonatomic, strong)TTMStatisticsChartHeaderFooterView *footerView;
 @property (nonatomic, strong)UIView *container;
 
 @property (nonatomic, assign)StatisticsChartStyle style;
 @property (assign, nonatomic) id<TTMStatisticsChartViewDataSource> dataSource;
+
+@property (nonatomic, strong)TTMStatisticsChartModel *currentChartModel;
 
 @end
 
@@ -50,22 +56,18 @@
 
 #pragma mark - ********************* Public Method ***********************
 - (void)reloadData{
-    //移除之前的子视图
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    self.container = nil;
-    self.uuChartView = nil;
-    self.headerView = nil;
-    self.footerView = nil;
-    
     [self setUpChart];
 }
 
 #pragma mark - ********************* Private Method ***********************
 #pragma mark 设置图表视图
 - (void)setUpChart{
+    
+     self.currentChartModel = [self.dataSource chartViewSourceArrayForChart:self];
+    
     //添加图表视图
     [self addSubview:self.container];
-    [self.uuChartView showInView:self.container];
     //判断是否显示头视图和尾部视图
     if ([self.dataSource respondsToSelector:@selector(chartViewShowHeaderView:)] && [self.dataSource chartViewShowHeaderView:self]) {
         //设置头视图
@@ -77,9 +79,58 @@
         [self addSubview:self.footerView];
     }
     
+    //设置图表视图
+    [self setUpChartView];
     //设置约束
     [self setUpContrains];
+    
 }
+#pragma mark 设置图表视图
+- (void)setUpChartView{
+    switch (self.style) {
+        case StatisticsChartStyleBar:
+        {
+            [self.container addSubview:self.barChart];
+        }
+            break;
+        case StatisticsChartStyleLine:
+        {
+            [self.container addSubview:self.lineChart];
+        }
+            break;
+        case StatisticsChartStylePie:
+        {
+            [self.container addSubview:self.pieChart];
+        }
+            break;
+    }
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    if (!self.currentChartModel) {
+        return;
+    }
+    switch (self.style) {
+        case StatisticsChartStyleBar:
+        {
+            [self.barChart strokePath];
+        }
+            break;
+        case StatisticsChartStyleLine:
+        {
+            [self.lineChart strokePath];
+        }
+            break;
+        case StatisticsChartStylePie:
+        {
+            [self.pieChart strokePath];
+        }
+            break;
+    }
+}
+
 #pragma mark 设置约束
 - (void)setUpContrains{
     BOOL hasHeader = [self.dataSource respondsToSelector:@selector(chartViewShowHeaderView:)] && [self.dataSource chartViewShowHeaderView:self];
@@ -113,47 +164,79 @@
         }];
         self.bottomContraints = self.footerView.mas_bottom;
         self.footerView.dataArray = model.footerSourceArray;
-        
     }
 }
 
 #pragma mark - ******************* Delegate / DataSource ********************
-#pragma mark UUChartDataSource
-- (NSArray *)chartConfigAxisXLabel:(UUChart *)chart{
-    TTMStatisticsChartModel *model = [self.dataSource chartViewSourceArrayForChart:self];
-    return model.axisXTitles;
+#pragma mark -ZFGenericChartDataSource
+- (NSArray *)valueArrayInGenericChart:(ZFGenericChart *)chart{
+    return self.currentChartModel.axisYDataArray;
 }
 
-- (NSArray *)chartConfigAxisYValue:(UUChart *)chart{
-    TTMStatisticsChartModel *model = [self.dataSource chartViewSourceArrayForChart:self];
-    return model.axisYDataArray;
+- (NSArray *)nameArrayInGenericChart:(ZFGenericChart *)chart{
+    return self.currentChartModel.axisXTitles;
 }
 
-#pragma mark - @optional
-//颜色数组
-- (NSArray *)chartConfigColors:(UUChart *)chart
-{
-    TTMStatisticsChartModel *model = [self.dataSource chartViewSourceArrayForChart:self];
-    return model.colors;
+- (NSArray *)colorArrayInGenericChart:(ZFGenericChart *)chart{
+    return self.currentChartModel.colors;
 }
-//显示数值范围
-- (CGRange)chartRange:(UUChart *)chart
-{
-    TTMStatisticsChartModel *model = [self.dataSource chartViewSourceArrayForChart:self];
-    return model.axisYRange;
+
+- (CGFloat)axisLineMaxValueInGenericChart:(ZFGenericChart *)chart{
+    return self.currentChartModel.maxValue;
+}
+
+- (NSInteger)axisLineSectionCountInGenericChart:(ZFGenericChart *)chart{
+    return self.currentChartModel.ySection;
+}
+
+#pragma mark - ZFPieChartDataSource
+
+- (NSArray *)valueArrayInPieChart:(ZFPieChart *)chart{
+    return self.currentChartModel.axisYDataArray;
+}
+
+- (NSArray *)nameArrayInPieChart:(ZFPieChart *)chart{
+    return self.currentChartModel.axisXTitles;
+}
+
+- (NSArray *)colorArrayInPieChart:(ZFPieChart *)chart{
+    return self.currentChartModel.colors;
 }
 
 
 #pragma mark - ********************* Lazy Method ***********************
-- (UUChart *)uuChartView{
-    if (!_uuChartView) {
-        if (self.style == StatisticsChartStyleLine) {
-            _uuChartView = [[UUChart alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, kChartViewHeight) dataSource:self style:UUChartStyleLine];
-        }else{
-            _uuChartView = [[UUChart alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, kChartViewHeight) dataSource:self style:UUChartStyleBar];
-        }
+- (ZFBarChart *)barChart{
+    if (!_barChart) {
+        _barChart = [[ZFBarChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kChartViewHeight)];
+        _barChart.dataSource = self;
+        _barChart.delegate = self;
+        _barChart.isShowSeparate = YES;
     }
-    return _uuChartView;
+    return _barChart;
+}
+
+- (ZFLineChart *)lineChart{
+    if (!_lineChart) {
+        _lineChart = [[ZFLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kChartViewHeight)];
+        _lineChart.dataSource = self;
+        _lineChart.delegate = self;
+        _lineChart.topicColor = ZFPurple;
+        _lineChart.isResetAxisLineMinValue = YES;
+        _lineChart.isShowSeparate = YES;
+    }
+    return _lineChart;
+}
+
+- (ZFPieChart *)pieChart{
+    if (!_pieChart) {
+        _pieChart = [[ZFPieChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kChartViewHeight)];
+        _pieChart.dataSource = self;
+        _pieChart.piePatternType = kPieChartPatternTypeForCircle;
+        _pieChart.isShadow = NO;
+        _pieChart.userInteractionEnabled = NO;
+        _pieChart.isShowPercent = NO;
+    }
+    return _pieChart;
 }
 
 - (UIView *)container{
@@ -173,9 +256,9 @@
 - (TTMStatisticsChartHeaderFooterView *)footerView{
     if (!_footerView) {
         _footerView = [[TTMStatisticsChartHeaderFooterView alloc] init];
+        _footerView.maxNumOneLine = 3;
     }
     return _footerView;
 }
-
 
 @end

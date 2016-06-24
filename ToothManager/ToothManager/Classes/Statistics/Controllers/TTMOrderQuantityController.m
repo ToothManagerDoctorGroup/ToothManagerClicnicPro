@@ -14,6 +14,7 @@
 #import "TTMStatisticsTool.h"
 #import "TTMDateTool.h"
 #import "Masonry.h"
+#import "ZFColor.h"
 
 @interface TTMOrderQuantityController ()<TTMStatisticsChartViewDataSource>
 
@@ -22,6 +23,16 @@
 @end
 
 @implementation TTMOrderQuantityController
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        //设置视图的样式
+        self.style = StatisticsChartStyleBar;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -56,8 +67,9 @@
             TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
             model.axisXTitles = axisXTitles;
             model.axisYDataArray = @[axisYDataArray];
-            model.axisYRange = CGRangeMake(maxReserveCount, 0);
-            model.colors = @[[UUColor green],[UUColor red],[UUColor brown],[UIColor purpleColor],[UIColor orangeColor],[UIColor blueColor]];
+            model.maxValue = maxReserveCount;
+            model.ySection = 8;
+            model.colors = @[MainColor];
             weakSelf.model = model;
             //设置表格数据
             weakSelf.formSourceArray = formDataArray;
@@ -67,10 +79,6 @@
 
 
 #pragma mark - TTMStatisticsChartViewDataSource
-- (BOOL)chartViewShowFooterView:(TTMStatisticsChartView *)chartView{
-    return YES;
-}
-
 - (TTMStatisticsChartModel *)chartViewSourceArrayForChart:(TTMStatisticsChartView *)chartView{
     return self.model;
 }
@@ -81,7 +89,7 @@
 }
 
 - (void)exportButtonAction{
-    TTMLog(@"导出第二个");
+    [self queryData];
 }
 
 @end

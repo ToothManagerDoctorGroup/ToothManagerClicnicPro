@@ -14,6 +14,7 @@
 #import "TTMScheduleDetailController.h"
 #import "TTMScheduleCellModel.h"
 #import "TTMAppointDetailViewController.h"
+#import "TTMOrderTool.h"
 
 #define kSegmentH 40.f
 #define kMargin 20.f
@@ -27,6 +28,8 @@
 
 @property (nonatomic, copy) NSArray *allDataArray; // 所有数组
 
+@property (nonatomic, strong)   TTMOrderQueryModel *queryModel;
+
 @end
 
 @implementation TTMAppointEndViewController
@@ -35,11 +38,22 @@
     [super viewDidLoad];
     
     [self setupTableView];
-    [self queryData];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(sortByNotification:)
                                                  name:TTMOrderControllerChairChangedNotification
                                                object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //查询数据
+    if (self.currentChair) {
+        self.queryModel.seatId = self.currentChair.seat_id;
+    }else{
+        self.queryModel.seatId = @"";
+    }
+    [self queryWithQueryModel:self.queryModel];
 }
 
 
@@ -59,7 +73,7 @@
     
     __weak typeof(self) weakSelf = self;
     [tableView addLegendHeaderWithRefreshingBlock:^{
-        [weakSelf queryData];
+        [weakSelf queryWithQueryModel:weakSelf.queryModel];
     }];
 }
 
@@ -138,16 +152,17 @@
  *  查询完成的预约
  *
  */
-- (void)queryData {
+- (void)queryWithQueryModel:(TTMOrderQueryModel *)queryModel {
     __weak __typeof(&*self) weakSelf = self;
-    [TTMApointmentModel queryCompleteAppointmentComplete:^(id result) {
+    [TTMOrderTool queryAppointmentListWithQueryModel:queryModel complete:^(id result) {
         if ([weakSelf.tableView.header isRefreshing]) {
             [weakSelf.tableView.header endRefreshing];
         }
-        if ([result isKindOfClass:[NSString class]]) {
+        if([result isKindOfClass:[NSString class]]) {
             [MBProgressHUD showToastWithText:result];
         } else {
-            weakSelf.allDataArray = result;
+            
+            self.allDataArray = result; // 原始的所有数据
             weakSelf.sections = [weakSelf sortArrayByYear:result];
             [weakSelf.tableView reloadData];
         }
@@ -228,20 +243,22 @@
  */
 - (void)sortByNotification:(NSNotification *)notification {
     TTMChairModel *chairModel = notification.object;
-    NSArray *tempArray = [self.allDataArray copy];
+    self.currentChair = chairModel;
     
-    NSMutableArray *chairArray = [NSMutableArray array];
-    if (!chairModel.seat_id) { // 表示查询全部
-        [chairArray addObjectsFromArray:tempArray];
-    } else {
-        for (TTMApointmentModel *model in tempArray) {
-            if ([model.seat_id isEqualToString:chairModel.seat_id]) {
-                [chairArray addObject:model];
-            }
-        }
+    if (self.currentChair) {
+        self.queryModel.seatId = self.currentChair.seat_id;
+    }else{
+        self.queryModel.seatId = @"";
     }
-    self.sections = [self sortArrayByYear:chairArray];
-    [self.tableView reloadData];
+    [self queryWithQueryModel:self.queryModel];
+}
+
+#pragma mark - ********************* Lazy Method ***********************
+- (TTMOrderQueryModel *)queryModel{
+    if (!_queryModel) {
+        _queryModel = [[TTMOrderQueryModel alloc] initWithReserveStatus:[@(TTMApointmentStatusComplete) stringValue] seatId:@"" pageIndex:0 pageSize:0];
+    }
+    return _queryModel;
 }
 
 - (void)dealloc {

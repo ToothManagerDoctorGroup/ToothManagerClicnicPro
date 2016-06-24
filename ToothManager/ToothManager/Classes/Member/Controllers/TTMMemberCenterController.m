@@ -140,7 +140,7 @@
     settingModel.controllerClass = [TTMSettingController class];
     
     NSArray *section1 = @[balanceModel, bankNoModel];
-    NSArray *section2 = @[appointmentModel, incomeModel];
+    NSArray *section2 = @[incomeModel];
     NSArray *section3 = @[settingModel];
     _dataArray = @[section1, section2, section3];
 

@@ -145,4 +145,12 @@
     self.selectedButton = button;
 }
 
+- (void)setTargetIndex:(NSUInteger)targetIndex{
+    _targetIndex = targetIndex;
+    if (self.selectedIndex == targetIndex) return;
+    
+    TTMSegmentedButton *button = [self viewWithTag:targetIndex];
+    [self buttonClick:button];
+}
+
 @end

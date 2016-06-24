@@ -247,7 +247,9 @@
 }
 
 + (NSString *)getMonthEndWith:(NSDate *)date{
-    NSString *dateStr = [self stringWithDateNoTime:date];
+    NSString *dateStr = [self getMonthBeginWith:date];
+    
+    
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSRange range = [calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:[self dateWithStringNoTime:dateStr]];
     NSUInteger numberOfDaysInMonth = range.length;

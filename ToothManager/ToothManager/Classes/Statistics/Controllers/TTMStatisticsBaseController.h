@@ -12,6 +12,8 @@
 @class XLTagView;
 @interface TTMStatisticsBaseController : TTMBaseColorController<TTMStatisticsChartViewDataSource>
 
+@property (nonatomic, assign)StatisticsChartStyle style;
+
 @property (nonatomic, strong)NSArray *formSourceArray;
 
 - (void)exportButtonAction;

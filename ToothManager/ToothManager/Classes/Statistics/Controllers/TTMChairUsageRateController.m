@@ -12,52 +12,112 @@
 #import "TTMStatisticsChartHeaderFooterView.h"
 #import "XLTagView.h"
 #import "TTMStatisticsFormView.h"
+#import "ZFColor.h"
 #import "Masonry.h"
+#import "TTMStatisticsTool.h"
+#import "TTMDateTool.h"
 
 @interface TTMChairUsageRateController ()<TTMStatisticsChartViewDataSource>
 
-//@property (nonatomic, strong)TTMStatisticsChartView *chartView;
-//@property (nonatomic, strong)TTMStatisticsFormView *formView;
-//@property (nonatomic, strong)UIScrollView *scorllView;
-
+@property (nonatomic, strong)TTMStatisticsChartModel *model;
 
 @end
 
 @implementation TTMChairUsageRateController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        //设置视图的样式
+        self.style = StatisticsChartStyleBar;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    NSMutableArray *array = [NSMutableArray array];
-//    for (int i = 0; i < 10; i++) {
-//        TTMStatisticsFormModel *model = [[TTMStatisticsFormModel alloc] initWIthTitle:@"李四" content:@"12"];
-//        [array addObject:model];
-//    }
-//    
-////    [self.view addSubview:self.chartView];
-//    [self.view addSubview:self.scorllView];
-//    [self.scorllView addSubview:self.chartView];
-//    [self.scorllView addSubview:self.formView];
-//    
-//    [self.chartView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.view);
-//        make.top.equalTo(self.scorllView);
-//        make.right.equalTo(self.view);
-//        make.bottom.equalTo(self.chartView.bottomContraints);
-//    }];
-//
-//    [self.formView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.view).offset(10);
-//        make.right.equalTo(self.view).offset(-10);
-//        make.top.mas_equalTo(self.chartView.mas_bottom).offset(10);
-//        make.height.mas_equalTo([TTMStatisticsFormView formViewHeightWithArray:array]);
-//    }];
-//    self.formView.sourceArray = array;
-//    
-//    [self.scorllView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_equalTo(self.view).insets(UIEdgeInsetsMake(55, 0, 0, 0));
-//        make.bottom.mas_equalTo(self.formView.mas_bottom).offset(10);
-//    }];
+    //请求椅位使用率数据
+    [self queryData];
+}
+
+#pragma mark 请求椅位使用率数据
+- (void)queryData{
+    __weak typeof(self) weakSelf = self;
+    NSString *startTime = [TTMDateTool getMonthBeginWith:[NSDate date]];
+    NSString *endTime = [TTMDateTool getMonthEndWith:[NSDate date]];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [TTMStatisticsTool queryChairUsageRateWithBeginTime:startTime endTime:endTime complete:^(id result) {
+        [hud hide:YES];
+        if ([result isKindOfClass:[NSString class]]) {
+            [MBProgressHUD showToastWithText:result];
+        }else{
+            //X轴显示标题数组(获取所有的椅位名称)
+            NSMutableArray *chairNames = [NSMutableArray array];
+            NSMutableArray *axisXTitles = [NSMutableArray array];
+            NSMutableArray *axisYDataArray = [NSMutableArray array];
+            NSMutableArray *randomColors = [NSMutableArray array];
+            NSMutableArray *formDataArray = [NSMutableArray arrayWithObject:[[TTMStatisticsFormModel alloc] initWIthTitle:@"日期" content:@"椅位使用率"]];
+            NSArray *sectionArray = result;
+            for (int i = 0; i < sectionArray.count; i++) {
+                NSArray *rows = sectionArray[i];
+                for (int j = 0; j < rows.count; j++) {
+                    TTMChairUsageRateModel *chairModel = rows[j];
+                    
+                    //设置椅位名称
+                    if (i == 0) {
+                        [chairNames addObject:chairModel.seatName];
+                    }
+                    //设置X轴数据
+                    if (j == 0) {
+                        NSString *xTitle = [chairModel.curDate componentsSeparatedByString:@" "][0];
+                        [axisXTitles addObject:xTitle];
+                        
+                        TTMStatisticsFormModel *formModel = [[TTMStatisticsFormModel alloc] initWIthTitle:xTitle content:[NSString stringWithFormat:@"%.2f",[chairModel.curRate floatValue]]];
+                        [formDataArray addObject:formModel];
+                    }
+                }
+            }
+            
+            for (int i = 0; i < chairNames.count; i++) {
+                [randomColors addObject:ZFRandomColor];
+            }
+            
+            //创建Y轴数据
+            for (int i = 0; i < chairNames.count; i++) {
+                NSMutableArray *tempArr = [NSMutableArray array];
+                for (int j = 0; j < sectionArray.count; j++) {
+                    //设置y轴数据
+                    NSArray *subArray = sectionArray[j];
+                    TTMChairUsageRateModel *model = subArray[i];
+                    [tempArr addObject:[NSString stringWithFormat:@"%.2f",[model.curRate floatValue]]];
+                }
+                [axisYDataArray addObject:tempArr];
+            }
+            
+            //创建模型数据
+            TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
+            model.axisXTitles = axisXTitles;
+            model.axisYDataArray = axisYDataArray;
+            model.maxValue = 100;
+            model.ySection = 8;
+            model.colors = randomColors;
+            
+            //创建头部数据
+            NSMutableArray *headerArray = [NSMutableArray array];
+            for (int i = 0; i < chairNames.count; i++) {
+                TTMStatisticsChartHeaderFooterModel *footerM = [[TTMStatisticsChartHeaderFooterModel alloc] init];
+                footerM.color = model.colors[i];
+                footerM.content = chairNames[i];
+                [headerArray addObject:footerM];
+            }
+            model.headerSourceArray = headerArray;
+            weakSelf.model = model;
+            //设置表格数据
+            weakSelf.formSourceArray = formDataArray;
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,61 +126,14 @@
 
 
 #pragma mark - TTMStatisticsChartViewDataSource
-- (BOOL)chartViewShowFooterView:(TTMStatisticsChartView *)chartView{
+- (BOOL)chartViewShowHeaderView:(TTMStatisticsChartView *)chartView{
     return YES;
 }
 
 - (TTMStatisticsChartModel *)chartViewSourceArrayForChart:(TTMStatisticsChartView *)chartView{
-    TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
-    NSArray *ary1 = @[@"22",@"54",@"15",@"30",@"42",@"77",@"43"];
-    NSArray *ary2 = @[@"76",@"34",@"54",@"23",@"16",@"32",@"17"];
-    model.axisXTitles = @[@"R1",@"R2",@"R3",@"R4",@"R5",@"R6",@"R7"];
-    model.axisYDataArray = @[ary1,ary2];
-    model.axisYRange = CGRangeMake(90, 0);
-    model.colors = @[[UUColor green],[UUColor red],[UUColor brown],[UIColor purpleColor],[UIColor orangeColor],[UIColor blueColor]];
     
-    NSMutableArray *footerArray = [NSMutableArray array];
-    NSArray *titles = @[@"种植",@"拆线",@"复查",@"修复",@"洗牙"];
-    for (int i = 0; i < titles.count; i++) {
-        TTMStatisticsChartHeaderFooterModel *footerM = [[TTMStatisticsChartHeaderFooterModel alloc] init];
-        footerM.color = model.colors[i];
-        footerM.content = titles[i];
-        [footerArray addObject:footerM];
-    }
-    model.footerSourceArray = footerArray;
-    
-    return model;
+    return self.model;
 }
-
-
-//- (TTMStatisticsChartView *)chartView{
-//    if (!_chartView) {
-//        _chartView = [[TTMStatisticsChartView alloc] initWithFrame:CGRectZero dataSource:self style:StatisticsChartStyleBar];
-//    }
-//    return _chartView;
-//}
-//
-//- (void)exportButtonAction{
-//    TTMLog(@"导出第一个");
-//}
-//
-//#pragma mark - 表格视图
-//- (TTMStatisticsFormView *)formView{
-//    if (!_formView) {
-//        _formView = [[TTMStatisticsFormView alloc] init];
-//    }
-//    return _formView;
-//}
-//
-//#pragma mark - ScrollView
-//- (UIScrollView *)scorllView{
-//    if (!_scorllView) {
-//        _scorllView = [[UIScrollView alloc] init];
-//        _scorllView.showsVerticalScrollIndicator = YES;
-//        _scorllView.bounces = NO;
-//    }
-//    return _scorllView;
-//}
 
 
 @end

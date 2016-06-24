@@ -8,11 +8,16 @@
 
 #import "TTMBaseColorController.h"
 #import "TTMApointmentModel.h"
+
+
+extern NSString *const kTTMAppointStartViewControllerChangedNotification;
 /**
  *  预约开始（包括待计时，计时中，收费待确认，待收费）
  */
 @interface TTMAppointStartViewController : TTMBaseColorController
 
 @property (nonatomic, assign)TTMApointmentStatus status;
+
+@property (nonatomic, strong)TTMChairModel *currentChair;
 
 @end

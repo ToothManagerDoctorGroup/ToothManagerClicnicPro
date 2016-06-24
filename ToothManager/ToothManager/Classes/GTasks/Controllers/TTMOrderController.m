@@ -48,6 +48,10 @@ NSString *const TTMOrderControllerChairChangedNotification = @"TTMOrderControlle
     [super didReceiveMemoryWarning];
 }
 
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - ********************* Private Method ***********************
 - (void)setUpSubViews{
     //设置标题栏按钮
@@ -55,6 +59,30 @@ NSString *const TTMOrderControllerChairChangedNotification = @"TTMOrderControlle
     
     [self.view addSubview:self.segmentView];
     [self.view addSubview:self.contentView];
+    
+    //添加通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stateChangedAction:) name:kTTMAppointStartViewControllerChangedNotification object:nil];
+}
+
+#pragma mark 预约状态变化
+- (void)stateChangedAction:(NSNotification *)noti{
+    switch ([noti.object integerValue]) {
+        case TTMApointmentStatusStarting:
+            //跳转到计时中界面
+            self.segmentView.targetIndex = 1;
+            break;
+        case TTMApointmentStatusEnded:
+            //跳转到收费待确认页面
+            self.segmentView.targetIndex = 2;
+            break;
+        case TTMApointmentStatusWaitPay:
+            //跳转到收费待确认页面
+            self.segmentView.targetIndex = 3;
+            break;
+        default:
+            break;
+    }
+    
 }
 
 #pragma mark 椅位按钮点击
@@ -91,6 +119,18 @@ NSString *const TTMOrderControllerChairChangedNotification = @"TTMOrderControlle
     _currentChair = currentChair;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:TTMOrderControllerChairChangedNotification object:currentChair];
+    
+    [self.childViewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull vc, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([vc isKindOfClass:[TTMAppointStartViewController class]]) {
+            TTMAppointStartViewController *startVc = (TTMAppointStartViewController *)vc;
+            startVc.currentChair = currentChair;
+        }
+        
+        if ([vc isKindOfClass:[TTMAppointEndViewController class]]) {
+            TTMAppointEndViewController *endVc = (TTMAppointEndViewController *)vc;
+            endVc.currentChair = currentChair;
+        }
+    }];
 }
 
 

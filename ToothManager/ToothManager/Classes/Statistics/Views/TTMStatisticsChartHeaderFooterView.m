@@ -187,6 +187,7 @@
         _contentLabel = [[UILabel alloc] init];
         _contentLabel.textColor = [UIColor blackColor];
         _contentLabel.font = [UIFont systemFontOfSize:14];
+        _contentLabel.adjustsFontSizeToFitWidth = YES;
     }
     return _contentLabel;
 }

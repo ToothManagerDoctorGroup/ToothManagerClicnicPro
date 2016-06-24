@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UUChartConst.h"
 
 @interface TTMStatisticsChartModel : NSObject
 
@@ -15,10 +14,16 @@
  *  y轴数据（可以是多重数组）
  */
 @property (nonatomic, strong)NSArray *axisYDataArray;
+
 /**
- *  y轴标题范围
+ *  Y轴最大值
  */
-@property (nonatomic, assign)CGRange axisYRange;
+@property (nonatomic, assign)CGFloat maxValue;
+/**
+ *  y轴分段数
+ */
+@property (nonatomic, assign)NSInteger ySection;
+
 /**
  *  x轴标题数组
  */

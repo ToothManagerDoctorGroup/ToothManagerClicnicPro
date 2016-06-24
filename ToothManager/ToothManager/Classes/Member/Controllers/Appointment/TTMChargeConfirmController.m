@@ -11,6 +11,7 @@
 #import "TTMTextField.h"
 #import "TTMMaterialModel.h"
 #import "TTMAppointDetailViewController.h"
+#import "TTMAppointStartViewController.h"
 
 #define kFontSize 14
 
@@ -294,11 +295,11 @@
             } else {
                 //发送通知
                 [[NSNotificationCenter defaultCenter] postNotificationName:kTTMAppointStateChangedNotification object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kTTMAppointStartViewControllerChangedNotification object:@(TTMApointmentStatusWaitPay)];
                 
                 MBProgressHUD *hud = [MBProgressHUD showToastWithText:@"提交成功"];
                 hud.completionBlock = ^(){
-                    NSArray *viewControllers = weakSelf.navigationController.viewControllers;
-                    [weakSelf.navigationController popToViewController:viewControllers[1] animated:YES];
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
                 };
             }
         }];

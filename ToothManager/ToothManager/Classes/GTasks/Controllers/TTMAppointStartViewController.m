@@ -7,7 +7,6 @@
 //
 
 #import "TTMAppointStartViewController.h"
-#import "TTMSegmentedView.h"
 #import "TTMApointmentingCell.h"
 #import "TTMChargeDetailController.h"
 #import "TTMChargeConfirmController.h"
@@ -24,14 +23,16 @@
 #define kSegumentH 40.f
 #define kPageSize 10
 
+NSString *const kTTMAppointStartViewControllerChangedNotification = @"kTTMAppointStartViewControllerChangedNotification";
+
 @interface TTMAppointStartViewController ()<UITableViewDelegate,UITableViewDataSource,TTMApointmentingCellDelegate>
 
-@property (nonatomic, weak)   UITableView *tableView;
-@property (nonatomic, strong) NSArray *dataArray; // 展示的数组
-@property (nonatomic, copy) NSArray *allDataArray; // 所有数组
+@property (nonatomic, weak)     UITableView *tableView;
+@property (nonatomic, strong)   NSArray *dataArray; // 展示的数组
+@property (nonatomic, copy)     NSArray *allDataArray; // 所有数组
 
-@property (nonatomic, strong)TTMOrderQueryModel *queryModel;
-@property (nonatomic, assign)int pageIndex;
+@property (nonatomic, strong)   TTMOrderQueryModel *queryModel;
+@property (nonatomic, assign)   int pageIndex;
 
 @end
 
@@ -41,7 +42,6 @@
     [super viewDidLoad];
     
     [self setupTableView];
-    [self queryWithQueryModel:self.queryModel];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(sortByNotification:)
@@ -49,6 +49,17 @@
                                                object:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    //查询数据
+    if (self.currentChair) {
+        self.queryModel.seatId = self.currentChair.seat_id;
+    }else{
+        self.queryModel.seatId = @"";
+    }
+    [self queryWithQueryModel:self.queryModel];
+}
 /**
  *  加载tableview
  */
@@ -94,10 +105,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-#pragma mark - TTMSegmentedViewDelegate
-- (void)segmentedViewDidSelected:(TTMSegmentedView *)segmentedView fromIndex:(NSUInteger)from toIndex:(NSUInteger)to {
-    
-}
 
 #pragma mark - TTMApointmentingCellDelegate
 - (void)apointmentingCell:(TTMApointmentingCell *)apointmentingCell model:(TTMApointmentModel *)model {
@@ -108,6 +115,8 @@
                                                     clickedBlock:^(CYAlertView *alertView, BOOL cancelled, NSInteger buttonIndex) {
                                                         if (buttonIndex == 1) {
                                                             [weakSelf startWithModel:model];
+                                                            //发送通知
+                                                            
                                                         }
                                                     }
                                                cancelButtonTitle:@"取消"
@@ -158,6 +167,8 @@
         } else {
             // 成功
             [weakSelf queryWithQueryModel:weakSelf.queryModel];
+            //发送通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTTMAppointStartViewControllerChangedNotification object:@(TTMApointmentStatusStarting)];
         }
     }];
 }
@@ -176,6 +187,8 @@
             TTMChargeConfirmController *confimVC = [TTMChargeConfirmController new];
             confimVC.model = model;
             [weakSelf.navigationController pushViewController:confimVC animated:YES];
+            //发送通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTTMAppointStartViewControllerChangedNotification object:@(TTMApointmentStatusEnded)];
         }
     }];
 }
@@ -217,7 +230,7 @@
         TTMApointmentModel *appointmentModel = array[i];
         NSDate *dateTime = [appointmentModel.appoint_time dateValue]; // 这一条数据的时间
         
-        if (lastDate && ![dateTime fs_isEqualToDateForDay:lastDate]) { // 与前一条数据的天不相同
+        if (![dateTime fs_isEqualToDateForDay:lastDate]) { // 与前一条数据的天不相同
             TTMAppointmentingCellModel *appointmentCellModel = [[TTMAppointmentingCellModel alloc] init];
             appointmentCellModel.day = [dateTime fs_stringWithFormat:@"yyyy年MM月dd日"];
             [appointmentCellModel.infoList addObject:appointmentModel];
@@ -239,20 +252,14 @@
  */
 - (void)sortByNotification:(NSNotification *)notification {
     TTMChairModel *chairModel = notification.object;
-    NSArray *tempArray = [self.allDataArray copy];
+    self.currentChair = chairModel;
     
-    NSMutableArray *chairArray = [NSMutableArray array];
-    if (!chairModel.seat_id) { // 表示查询全部
-        [chairArray addObjectsFromArray:tempArray];
-    } else {
-        for (TTMApointmentModel *model in tempArray) {
-            if ([model.seat_id isEqualToString:chairModel.seat_id]) {
-                [chairArray addObject:model];
-            }
-        }
+    if (self.currentChair) {
+        self.queryModel.seatId = self.currentChair.seat_id;
+    }else{
+        self.queryModel.seatId = @"";
     }
-    self.dataArray = [self sortArrayByDay:chairArray];
-    [self.tableView reloadData];
+    [self queryWithQueryModel:self.queryModel];
 }
 
 - (void)dealloc {

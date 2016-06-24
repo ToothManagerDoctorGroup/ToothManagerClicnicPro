@@ -31,6 +31,7 @@
 
 @implementation TTMStatisticsBaseController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (iOS7) {
@@ -150,7 +151,7 @@
 #pragma mark 图表视图
 - (TTMStatisticsChartView *)chartView{
     if (!_chartView) {
-        _chartView = [[TTMStatisticsChartView alloc] initWithFrame:CGRectZero dataSource:self style:StatisticsChartStyleBar];
+        _chartView = [[TTMStatisticsChartView alloc] initWithFrame:CGRectZero dataSource:self style:self.style];
     }
     return _chartView;
 }

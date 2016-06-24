@@ -11,6 +11,9 @@
 /**
  *  预约完成
  */
+@class TTMChairModel;
 @interface TTMAppointEndViewController : TTMBaseColorController
+
+@property (nonatomic, strong)TTMChairModel *currentChair;
 
 @end

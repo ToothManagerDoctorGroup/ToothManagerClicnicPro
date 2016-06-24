@@ -92,7 +92,7 @@
                                                                      imageURL:@""
                                                                          type:TTMClinicCellModelTypeNormal
                                                               controllerClass:[TTMEditInfoController class]];
-        TTMClinicInfoCellModel *chair = [TTMClinicInfoCellModel modelWithTitle:@"椅位配置"
+        TTMClinicInfoCellModel *chair = [TTMClinicInfoCellModel modelWithTitle:@"牙椅配置"
                                                                       content:nil
                                                                      imageURL:@""
                                                                          type:TTMClinicCellModelTypeNormal

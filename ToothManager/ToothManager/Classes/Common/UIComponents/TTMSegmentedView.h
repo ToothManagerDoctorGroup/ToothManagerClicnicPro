@@ -23,6 +23,8 @@
 
 @property (nonatomic, weak) UIView *bottomLine;
 
+@property (nonatomic, assign)NSUInteger targetIndex;
+
 @end
 
 @protocol TTMSegmentedViewDelegate <NSObject>
