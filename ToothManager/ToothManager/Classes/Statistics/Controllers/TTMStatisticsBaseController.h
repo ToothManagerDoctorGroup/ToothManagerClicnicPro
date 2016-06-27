@@ -9,14 +9,22 @@
 #import "TTMBaseColorController.h"
 #import "TTMStatisticsChartView.h"
 
-@class XLTagView;
+@class XLTagView,TTMStatisticsFormSourceModel;
 @interface TTMStatisticsBaseController : TTMBaseColorController<TTMStatisticsChartViewDataSource>
 
+//统计图的样式
 @property (nonatomic, assign)StatisticsChartStyle style;
 
-@property (nonatomic, strong)NSArray *formSourceArray;
+//是否显示表格数据的头视图
+@property (nonatomic, assign)BOOL showFormViewHeader;
 
+//表格数据的数据源
+@property (nonatomic, strong)TTMStatisticsFormSourceModel *formSourceModel;
+
+//导出
 - (void)exportButtonAction;
 
+//选择时间
+- (void)selectDateWithStartTime:(NSString *)startTime endTime:(NSString *)endTime;
 
 @end

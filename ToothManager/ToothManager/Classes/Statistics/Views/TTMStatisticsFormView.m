@@ -9,24 +9,31 @@
 #import "TTMStatisticsFormView.h"
 #import "UIColor+TTMAddtion.h"
 #import "TTMStatisticsFormCell.h"
+#import "XLSegmentView.h"
 #import "Masonry.h"
 
 #define kTTMStatisticsFormCellHeight 40
 #define kTTMStatisticsFormCellID @"kTTMStatisticsFormCellID"
+#define kHeaderViewHeight 44
 
 @interface TTMStatisticsFormView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong)UIView *headerView;
+@property (nonatomic, strong)XLSegmentView *headerSegmentView;
 @property (nonatomic, strong)UICollectionView *collectionView;
+
+@property (nonatomic, assign)BOOL showHeader;
+
+@property (nonatomic, strong)NSArray *dataList;
 
 @end
 
 @implementation TTMStatisticsFormView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame showHeader:(BOOL)showHeader
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.showHeader = showHeader;
         [self setUp];
     }
     return self;
@@ -35,26 +42,54 @@
 - (void)setUp{
     [self addSubview:self.collectionView];
     
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
-    }];
+    if (self.showHeader) {
+        [self addSubview:self.headerSegmentView];
+        
+        [self.headerSegmentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.and.right.equalTo(self);
+            make.height.mas_equalTo(kHeaderViewHeight);
+        }];
+        
+        [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self).insets(UIEdgeInsetsMake(kHeaderViewHeight, 0, 0, 0));
+        }];
+    }else{
+        [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self);
+        }];
+    }
 }
 
-+ (CGFloat)formViewHeightWithArray:(NSArray *)array{
++ (CGFloat)formViewHeightWithArray:(NSArray *)array showHeader:(BOOL)showHeader{
     if (!array) return 0;
-    return array.count * kTTMStatisticsFormCellHeight + (array.count - 1) * 1;
+    if (showHeader) {
+        return array.count * kTTMStatisticsFormCellHeight + (array.count - 1) * 1 + kHeaderViewHeight;
+    }else{
+        return array.count * kTTMStatisticsFormCellHeight + (array.count - 1) * 1;
+    }
 }
 
-- (void)setSourceArray:(NSArray *)sourceArray{
-    _sourceArray = sourceArray;
-    
+- (void)setSourceModel:(TTMStatisticsFormSourceModel *)sourceModel{
+    _sourceModel = sourceModel;
+    self.dataList = sourceModel.sourceArray[0];
     [self.collectionView reloadData];
+    
+    if (sourceModel.titleArray.count > 0) {
+        self.headerSegmentView.titleArray = sourceModel.titleArray;
+        __weak typeof(self) weakSelf = self;
+        self.headerSegmentView.block = ^(NSInteger index) {
+            //刷新数据
+            weakSelf.dataList = sourceModel.sourceArray[index - 1];
+            [weakSelf.collectionView reloadData];
+        };
+    }
+    
 }
 
 #pragma mark - ********************* Delegate/DataSource ******************
 #pragma mark CollectionViewDelegate/DataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return self.sourceArray.count;
+    return self.dataList.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -78,7 +113,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     TTMStatisticsFormCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTTMStatisticsFormCellID forIndexPath:indexPath];
-    TTMStatisticsFormModel *model = self.sourceArray[indexPath.section];
+    TTMStatisticsFormModel *model = self.dataList[indexPath.section];
     if (indexPath.section == 0) {
         cell.backgroundColor = MainColor;
         cell.contentLabel.textColor = [UIColor whiteColor];
@@ -120,6 +155,17 @@
     }
     return _collectionView;
 }
+
+- (XLSegmentView *)headerSegmentView{
+    if (!_headerSegmentView) {
+        _headerSegmentView = [[XLSegmentView alloc] initWithFrame:CGRectZero];
+        _headerSegmentView.bgNormalColor = [UIColor whiteColor];
+        _headerSegmentView.bgSelectColor = MainColor;
+        _headerSegmentView.titleSelectColor = [UIColor blackColor];
+    }
+    return _headerSegmentView;
+}
+
 @end
 
 
@@ -134,5 +180,9 @@
     }
     return self;
 }
+
+@end
+
+@implementation TTMStatisticsFormSourceModel
 
 @end

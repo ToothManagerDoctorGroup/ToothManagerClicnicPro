@@ -52,5 +52,6 @@
 + (NSString *)getMonthBeginWith:(NSDate *)date;
 //根据所给时间计算当月的天数
 + (NSUInteger)getMonthDayCountWithDate:(NSString *)dateStr;
-
+//计算出两个时间之间的间隔
++ (NSTimeInterval)getTimeDifferenceBetweenStart:(NSString *)start end:(NSString *)end;
 @end

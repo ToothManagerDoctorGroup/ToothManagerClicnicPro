@@ -30,6 +30,7 @@
     if (self) {
         //设置视图的样式
         self.style = StatisticsChartStylePie;
+        self.showFormViewHeader = NO;
     }
     return self;
 }
@@ -38,20 +39,33 @@
     [super viewDidLoad];
     
     //查询预约事项占比
-    [self queryData];
+    NSString *startTime = [TTMDateTool getMonthBeginWith:[NSDate date]];
+    NSString *endTime = [TTMDateTool getMonthEndWith:[NSDate date]];
+    [self queryDataWithStartTime:startTime endTime:endTime];
+}
+
+#pragma mark 选择时间
+- (void)selectDateWithStartTime:(NSString *)startTime endTime:(NSString *)endTime{
+    NSLog(@"执行更新操作starttime:%@--endtime:%@",startTime,endTime);
+    //重新请求数据
+    [self queryDataWithStartTime:startTime endTime:endTime];
 }
 
 #pragma mark - 查询预约事项占比
-- (void)queryData{
+- (void)queryDataWithStartTime:(NSString *)startTime endTime:(NSString *)endTime{
     __weak typeof(self) weakSelf = self;
-    NSString *startTime = [TTMDateTool getMonthBeginWith:[NSDate date]];
-    NSString *endTime = [TTMDateTool getMonthEndWith:[NSDate date]];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [TTMStatisticsTool queryOrderItemRatioWithBeginTime:startTime endTime:endTime complete:^(id result) {
         [hud hide:YES];
         if ([result isKindOfClass:[NSString class]]) {
             [MBProgressHUD showToastWithText:result];
         }else{
+            NSArray *sectionArray = result;
+            if (sectionArray.count == 0) {
+                [MBProgressHUD showToastWithText:@"当前时间无数据"];
+                return;
+            }
+            
             //X轴显示标题数组
             NSMutableArray *axisXTitles = [NSMutableArray array];
             NSMutableArray *axisYDataArray = [NSMutableArray array];
@@ -88,7 +102,9 @@
             
             weakSelf.model = model;
             //设置表格数据
-            weakSelf.formSourceArray = formDataArray;
+            TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
+            formSourceModel.sourceArray = @[formDataArray];
+            weakSelf.formSourceModel = formSourceModel;
         }
     }];
 }

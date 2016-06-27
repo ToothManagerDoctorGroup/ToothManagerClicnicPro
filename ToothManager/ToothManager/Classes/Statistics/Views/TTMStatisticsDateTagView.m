@@ -10,6 +10,8 @@
 #import "TTMCustomDateView.h"
 #import "Masonry.h"
 #import "XLTagView.h"
+#import "NSString+TTMAddtion.h"
+#import "TTMDateTool.h"
 
 @interface TTMStatisticsDateTagView ()<XLTagViewDelegate>
 
@@ -52,10 +54,49 @@
 #pragma mark XLTagViewDelegate
 - (void)tagView:(XLTagView *)tagView tagArray:(NSArray *)tagArray{
     NSInteger index = [[tagArray firstObject] integerValue];
-    if (index == 3) {
-        self.tagView.hidden = YES;
-        self.dateView.hidden = NO;
+
+    //获取当前选中的时间
+    NSString *startTime = nil;
+    NSString *endTime = nil;
+    switch (index) {
+        case 0:
+        {
+            //今日
+            NSString *curDateStr = [TTMDateTool stringWithDateNoTime:[NSDate date]];
+            startTime = curDateStr;
+            endTime = curDateStr;
+            if (self.dateSelectBlock) {
+                self.dateSelectBlock(startTime,endTime);
+            }
+        }
+            
+            break;
+        case 1:
+        {
+            //本周
+            startTime = [TTMDateTool stringWithDateNoTime:[TTMDateTool getMondayDateWithCurrentDate:[NSDate date]]];
+            endTime = [TTMDateTool stringWithDateNoTime:[TTMDateTool getSundayDateWithCurrentDate:[NSDate date]]];
+            if (self.dateSelectBlock) {
+                self.dateSelectBlock(startTime,endTime);
+            }
+        }
+            break;
+        case 2:
+        {
+            //本月
+            startTime = [TTMDateTool getMonthBeginWith:[NSDate date]];
+            endTime = [TTMDateTool getMonthEndWith:[NSDate date]];
+            if (self.dateSelectBlock) {
+                self.dateSelectBlock(startTime,endTime);
+            }
+        }
+            break;
+        default:
+            self.tagView.hidden = YES;
+            self.dateView.hidden = NO;
+            break;
     }
+    
 }
 
 #pragma mark - ********************* Lazy Method ***********************
@@ -89,8 +130,38 @@
         _dateView.hidden = YES;
         __weak typeof(self) weakSelf = self;
         _dateView.buttonBlock = ^(NSString *startTime,NSString *endTime){
-            weakSelf.tagView.hidden = NO;
-            weakSelf.dateView.hidden = YES;
+            
+            //判断开始时间和结束时间是否有值
+            if ([NSString isEmpty:startTime] && [NSString isEmpty:endTime]) {
+                weakSelf.tagView.hidden = NO;
+                weakSelf.dateView.hidden = YES;
+            }else if ([NSString isEmpty:startTime] && ![NSString isEmpty:endTime]) {
+                [MBProgressHUD showToastWithText:@"请输入开始时间"];
+            }else if (![NSString isEmpty:startTime] && [NSString isEmpty:endTime]) {
+                [MBProgressHUD showToastWithText:@"请输入结束时间"];
+            }else{
+                //比较两个时间大小
+                NSComparisonResult result = [TTMDateTool compareStartDateStr:startTime endDateStr:endTime];
+                if (result == NSOrderedDescending) {
+                    [MBProgressHUD showToastWithText:@"开始时间不能大于结束时间"];
+                    return;
+                }
+                
+                //比较两个时间之间的差值，必须在一个月之内
+                NSTimeInterval differ = [TTMDateTool getTimeDifferenceBetweenStart:startTime end:endTime];
+                if (differ / (60 * 60 * 24) > 31) {
+                    [MBProgressHUD showToastWithText:@"时间段必须在一个月之内"];
+                    return;
+                }
+                
+                //调用block
+                if (weakSelf.dateSelectBlock) {
+                    weakSelf.dateSelectBlock(startTime,endTime);
+                }
+                weakSelf.tagView.hidden = NO;
+                weakSelf.dateView.hidden = YES;
+            }
+            
         };
     }
     return _dateView;

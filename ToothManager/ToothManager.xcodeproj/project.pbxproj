@@ -96,6 +96,7 @@
 		3D84F5481CF69F7700A47517 /* TTMAppointPatientModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D84F5471CF69F7700A47517 /* TTMAppointPatientModel.m */; };
 		3D84F54B1CF6AF0000A47517 /* TTMLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D84F54A1CF6AF0000A47517 /* TTMLoginTool.m */; };
 		3D84F5511CF6D52A00A47517 /* TTMScheduleHeadImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D84F5501CF6D52A00A47517 /* TTMScheduleHeadImageView.m */; };
+		3D9141671D1E7B0000432D00 /* XLSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9141661D1E7B0000432D00 /* XLSegmentView.m */; };
 		3DB88FCB1D18D95500772542 /* TTMPickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB88FCA1D18D95500772542 /* TTMPickerTextField.m */; };
 		3DB88FCE1D18DB7F00772542 /* TTMStatisticsChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB88FCD1D18DB7F00772542 /* TTMStatisticsChartView.m */; };
 		3DB88FDC1D18E3F000772542 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB88FD11D18E3F000772542 /* UUBar.m */; };
@@ -641,6 +642,8 @@
 		3D84F54A1CF6AF0000A47517 /* TTMLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMLoginTool.m; sourceTree = "<group>"; };
 		3D84F54F1CF6D52A00A47517 /* TTMScheduleHeadImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMScheduleHeadImageView.h; sourceTree = "<group>"; };
 		3D84F5501CF6D52A00A47517 /* TTMScheduleHeadImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMScheduleHeadImageView.m; sourceTree = "<group>"; };
+		3D9141651D1E7B0000432D00 /* XLSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSegmentView.h; sourceTree = "<group>"; };
+		3D9141661D1E7B0000432D00 /* XLSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSegmentView.m; sourceTree = "<group>"; };
 		3DB88FC91D18D95500772542 /* TTMPickerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPickerTextField.h; sourceTree = "<group>"; };
 		3DB88FCA1D18D95500772542 /* TTMPickerTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPickerTextField.m; sourceTree = "<group>"; };
 		3DB88FCC1D18DB7F00772542 /* TTMStatisticsChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMStatisticsChartView.h; sourceTree = "<group>"; };
@@ -2816,6 +2819,8 @@
 				DBE1D3CA1B319B430058E0E6 /* TTMSegmentedView.m */,
 				3DB88FC91D18D95500772542 /* TTMPickerTextField.h */,
 				3DB88FCA1D18D95500772542 /* TTMPickerTextField.m */,
+				3D9141651D1E7B0000432D00 /* XLSegmentView.h */,
+				3D9141661D1E7B0000432D00 /* XLSegmentView.m */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -3893,6 +3898,7 @@
 				DBAD71F01BB43C0C00B6D9D0 /* NINetworkActivity.m in Sources */,
 				3D7961171C16946300453EB4 /* TTMHttpRespondModel.m in Sources */,
 				3D7960F41C16802300453EB4 /* LewPopupViewAnimationDrop.m in Sources */,
+				3D9141671D1E7B0000432D00 /* XLSegmentView.m in Sources */,
 				DBE1D4341B319B430058E0E6 /* IQTextView.m in Sources */,
 				DBDD443D1B3633B2009FE3A0 /* TTMDoctorDetailController.m in Sources */,
 				DBFF6CCC1B5DE5200035CAFF /* FSCalendarCell.m in Sources */,

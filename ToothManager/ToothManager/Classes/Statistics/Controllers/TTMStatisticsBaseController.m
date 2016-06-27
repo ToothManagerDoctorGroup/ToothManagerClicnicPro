@@ -55,7 +55,7 @@
     [self.view addSubview:self.scorllView];
     [self.scorllView addSubview:self.chartView];
     [self.scorllView addSubview:self.formView];
-    [self.view addSubview:self.exportButton];
+//    [self.view addSubview:self.exportButton];
     
     [self setUpContrains];
 }
@@ -67,11 +67,11 @@
         make.size.mas_equalTo(CGSizeMake(ScreenWidth, kTagViewHeight));
     }];
     
-    [self.exportButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view).offset(-kMargin);
-        make.bottom.equalTo(self.view).offset(-kMargin);
-        make.size.mas_equalTo(CGSizeMake(kExportButtonWidth, kExportButtonHeight));
-    }];
+//    [self.exportButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(self.view).offset(-kMargin);
+//        make.bottom.equalTo(self.view).offset(-kMargin);
+//        make.size.mas_equalTo(CGSizeMake(kExportButtonWidth, kExportButtonHeight));
+//    }];
     
     [self updateContraints];
 }
@@ -85,12 +85,12 @@
             make.bottom.equalTo(self.chartView.bottomContraints);
         }];
     }
-    if (self.formSourceArray && self.formSourceArray.count > 0) {
+    if (self.formSourceModel && self.formSourceModel.sourceArray.count > 0) {
         [self.formView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.view).offset(10);
             make.right.equalTo(self.view).offset(-10);
             make.top.mas_equalTo(self.chartView.mas_bottom).offset(10);
-            make.height.mas_equalTo([TTMStatisticsFormView formViewHeightWithArray:self.formSourceArray]);
+            make.height.mas_equalTo([TTMStatisticsFormView formViewHeightWithArray:self.formSourceModel.sourceArray[0] showHeader:self.showFormViewHeader]);
         }];
         
         [self.scorllView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -105,12 +105,12 @@
     }
 }
 
-- (void)setFormSourceArray:(NSArray *)formSourceArray{
-    _formSourceArray = formSourceArray;
+- (void)setFormSourceModel:(TTMStatisticsFormSourceModel *)formSourceModel{
+    _formSourceModel = formSourceModel;
     
     [self.chartView reloadData];
     [self updateContraints];
-    self.formView.sourceArray = formSourceArray;
+    self.formView.sourceModel = formSourceModel;
 }
 
 #pragma mark - ********************* Delegate / DataSource ********************
@@ -123,9 +123,17 @@
 #pragma mark 日期标签视图
 - (TTMStatisticsDateTagView *)tagView{
     if (!_tagView) {
+        __weak typeof(self) weakSelf = self;
         _tagView = [[TTMStatisticsDateTagView alloc] init];
+        _tagView.dateSelectBlock = ^(NSString *startTime,NSString *endTime){
+            [weakSelf selectDateWithStartTime:startTime endTime:endTime];
+        };
     }
     return _tagView;
+}
+
+#pragma mark 日期选择方法
+- (void)selectDateWithStartTime:(NSString *)startTime endTime:(NSString *)endTime{
 }
 
 #pragma mark 导出按钮
@@ -159,7 +167,7 @@
 #pragma mark 表格视图
 - (TTMStatisticsFormView *)formView{
     if (!_formView) {
-        _formView = [[TTMStatisticsFormView alloc] init];
+        _formView = [[TTMStatisticsFormView alloc] initWithFrame:CGRectZero showHeader:self.showFormViewHeader];
     }
     return _formView;
 }

@@ -274,4 +274,16 @@
     return numberOfDaysInMonth;
 }
 
+//计算出两个时间之间的间隔
++ (NSTimeInterval)getTimeDifferenceBetweenStart:(NSString *)start end:(NSString *)end{
+    NSDate *startDate = [self dateWithStringNoTime:start];
+    NSDate *endDate = [self dateWithStringNoTime:end];
+    
+    NSTimeInterval startInterval = [startDate timeIntervalSince1970];
+    NSTimeInterval endInterval = [endDate timeIntervalSince1970];
+    NSTimeInterval differInterval = endInterval - startInterval;
+    
+    return differInterval;
+}
+
 @end

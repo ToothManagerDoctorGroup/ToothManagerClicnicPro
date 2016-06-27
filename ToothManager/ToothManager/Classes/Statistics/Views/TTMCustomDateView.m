@@ -11,7 +11,7 @@
 #import "UIColor+TTMAddtion.h"
 #import "Masonry.h"
 
-@interface TTMCustomDateView ()
+@interface TTMCustomDateView ()<TTMPickerTextFieldDelegate>
 
 @property (nonatomic, strong)TTMPickerTextField *startTime;//开始时间
 @property (nonatomic, strong)TTMPickerTextField *endTime;//结束时间
@@ -79,7 +79,7 @@
 
 
 #pragma mark - ********************* Lazy Method ***********************
-- (UITextField *)startTime{
+- (TTMPickerTextField *)startTime{
     if (!_startTime) {
         _startTime = [[TTMPickerTextField alloc] init];
         _startTime.placeholder = @"开始时间";
@@ -90,11 +90,15 @@
         _startTime.layer.masksToBounds = YES;
         _startTime.layer.borderWidth = 1;
         _startTime.layer.borderColor = [UIColor colorWithHex:0xdddddd].CGColor;
+        _startTime.inputMode = TextFieldInputModeDatePicker;
+        _startTime.dateMode = TextFieldDateModeOnlyDate;
+        _startTime.actionDelegate = self;
+        
     }
     return _startTime;
 }
 
-- (UITextField *)endTime{
+- (TTMPickerTextField *)endTime{
     if (!_endTime) {
         _endTime = [[TTMPickerTextField alloc] init];
         _endTime.placeholder = @"结束时间";
@@ -105,6 +109,9 @@
         _endTime.layer.masksToBounds = YES;
         _endTime.layer.borderWidth = 1;
         _endTime.layer.borderColor = [UIColor colorWithHex:0xdddddd].CGColor;
+        _endTime.inputMode = TextFieldInputModeDatePicker;
+        _endTime.dateMode = TextFieldDateModeOnlyDate;
+        _endTime.actionDelegate = self;
     }
     return _endTime;
 }

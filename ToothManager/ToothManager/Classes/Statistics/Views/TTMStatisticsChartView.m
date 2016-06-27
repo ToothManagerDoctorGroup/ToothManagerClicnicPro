@@ -27,20 +27,22 @@
 @property (nonatomic, strong)UIView *container;
 
 @property (nonatomic, assign)StatisticsChartStyle style;
-@property (assign, nonatomic) id<TTMStatisticsChartViewDataSource> dataSource;
+@property (weak, nonatomic) id<TTMStatisticsChartViewDataSource> dataSource;
 
 @property (nonatomic, strong)TTMStatisticsChartModel *currentChartModel;
+
+@property (nonatomic, strong)NSArray *defaultColors;
 
 @end
 
 @implementation TTMStatisticsChartView
-
 
 - (instancetype)initWithFrame:(CGRect)frame dataSource:(id<TTMStatisticsChartViewDataSource>)dataSource style:(StatisticsChartStyle)style{
     if (self = [super initWithFrame:frame]) {
         self.dataSource = dataSource;
         self.style = style;
         
+        self.defaultColors = @[];
         self.backgroundColor = [UIColor whiteColor];
         self.layer.borderWidth = 1;
         self.layer.borderColor = [UIColor colorWithHex:0xeeeeee].CGColor;
@@ -56,7 +58,13 @@
 
 #pragma mark - ********************* Public Method ***********************
 - (void)reloadData{
+//    if (_barChart || _pieChart || _lineChart) {
+//        
+//    }
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    if (self.style == StatisticsChartStylePie) {
+        self.pieChart = nil;
+    }
     [self setUpChart];
 }
 
@@ -187,6 +195,15 @@
 
 - (NSInteger)axisLineSectionCountInGenericChart:(ZFGenericChart *)chart{
     return self.currentChartModel.ySection;
+}
+
+- (CGFloat)axisLineMinValueInGenericChart:(ZFGenericChart *)chart{
+    return 0;
+}
+
+#pragma mark - ZFBarChartDataSource
+- (id)valueTextColorArrayInBarChart:(ZFBarChart *)barChart{
+    return self.currentChartModel.colors;
 }
 
 #pragma mark - ZFPieChartDataSource

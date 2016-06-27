@@ -11,11 +11,14 @@
 /**
  *  表格视图
  */
+@class TTMStatisticsFormSourceModel;
 @interface TTMStatisticsFormView : UIView
 
-@property (nonatomic, strong)NSArray *sourceArray;
+@property (nonatomic, strong)TTMStatisticsFormSourceModel *sourceModel;//数据源
 
-+ (CGFloat)formViewHeightWithArray:(NSArray *)array;
++ (CGFloat)formViewHeightWithArray:(NSArray *)array showHeader:(BOOL)showHeader;
+
+- (instancetype)initWithFrame:(CGRect)frame showHeader:(BOOL)showHeader;
 
 @end
 
@@ -27,4 +30,12 @@
 
 - (instancetype)initWIthTitle:(NSString *)title
                       content:(NSString *)content;
+@end
+
+
+@interface TTMStatisticsFormSourceModel : NSObject
+
+@property (nonatomic, strong)NSArray *titleArray;//标题数组
+@property (nonatomic, strong)NSArray *sourceArray;//表格数据数组
+
 @end

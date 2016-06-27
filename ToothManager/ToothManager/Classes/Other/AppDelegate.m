@@ -50,7 +50,7 @@ static BOOL isProduction = FALSE;
         }
     } launchControllerBlock:^{
         TTMUserGuideController *guideController = [[TTMUserGuideController alloc] init];
-        guideController.images = @[@"guide_1", @"guide_2", @"guide_3"];
+        guideController.images = @[@"guide_lead1", @"guide_lead2", @"guide_lead3"];
         guideController.showIndicator = YES;
         
         TTMLoginController *loginVC = [[TTMLoginController alloc] init];

@@ -28,6 +28,7 @@
     if (self) {
         //设置视图的样式
         self.style = StatisticsChartStyleLine;
+        self.showFormViewHeader = NO;
     }
     return self;
 }
@@ -36,14 +37,24 @@
     [super viewDidLoad];
     
     //预约增量查询
-    [self queryData];
-}
-
-#pragma mark - 预约量查询
-- (void)queryData{
-    __weak typeof(self) weakSelf = self;
+    //查询收入统计
     NSString *startTime = [TTMDateTool getMonthBeginWith:[NSDate date]];
     NSString *endTime = [TTMDateTool getMonthEndWith:[NSDate date]];
+    [self queryDataWithStartTime:startTime endTime:endTime];
+}
+
+#pragma mark 选择时间
+- (void)selectDateWithStartTime:(NSString *)startTime endTime:(NSString *)endTime{
+    NSLog(@"执行更新操作starttime:%@--endtime:%@",startTime,endTime);
+    //重新请求数据
+    [self queryDataWithStartTime:startTime endTime:endTime];
+    
+}
+
+
+#pragma mark - 预约量查询
+- (void)queryDataWithStartTime:(NSString *)startTime endTime:(NSString *)endTime{
+    __weak typeof(self) weakSelf = self;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [TTMStatisticsTool queryOrderIncrementWithBeginTime:startTime endTime:endTime complete:^(id result) {
@@ -51,6 +62,12 @@
         if ([result isKindOfClass:[NSString class]]) {
             [MBProgressHUD showToastWithText:result];
         }else{
+            NSArray *sectionArray = result;
+            if (sectionArray.count == 0) {
+                [MBProgressHUD showToastWithText:@"当前时间无数据"];
+                return;
+            }
+            
             //最大预约数
             CGFloat maxIncome = [[result valueForKeyPath:@"@max.count.integerValue"] integerValue];
             
@@ -78,7 +95,9 @@
             
             weakSelf.model = model;
             //设置表格数据
-            weakSelf.formSourceArray = formDataArray;
+            TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
+            formSourceModel.sourceArray = @[formDataArray];
+            weakSelf.formSourceModel = formSourceModel;
         }
     }];
 }

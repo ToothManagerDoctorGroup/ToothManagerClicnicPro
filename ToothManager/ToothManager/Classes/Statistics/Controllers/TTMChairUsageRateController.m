@@ -31,6 +31,7 @@
     if (self) {
         //设置视图的样式
         self.style = StatisticsChartStyleBar;
+        self.showFormViewHeader = YES;
     }
     return self;
 }
@@ -39,27 +40,39 @@
     [super viewDidLoad];
     
     //请求椅位使用率数据
-    [self queryData];
+    NSString *startTime = [TTMDateTool getMonthBeginWith:[NSDate date]];
+    NSString *endTime = [TTMDateTool getMonthEndWith:[NSDate date]];
+    [self queryDataWithStartTime:startTime endTime:endTime];
+}
+
+#pragma mark 选择时间
+- (void)selectDateWithStartTime:(NSString *)startTime endTime:(NSString *)endTime{
+    NSLog(@"执行更新操作starttime:%@--endtime:%@",startTime,endTime);
+    //重新请求数据
+    [self queryDataWithStartTime:startTime endTime:endTime];
 }
 
 #pragma mark 请求椅位使用率数据
-- (void)queryData{
+- (void)queryDataWithStartTime:(NSString *)startTime endTime:(NSString *)endTime{
     __weak typeof(self) weakSelf = self;
-    NSString *startTime = [TTMDateTool getMonthBeginWith:[NSDate date]];
-    NSString *endTime = [TTMDateTool getMonthEndWith:[NSDate date]];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [TTMStatisticsTool queryChairUsageRateWithBeginTime:startTime endTime:endTime complete:^(id result) {
         [hud hide:YES];
         if ([result isKindOfClass:[NSString class]]) {
             [MBProgressHUD showToastWithText:result];
         }else{
+            NSArray *sectionArray = result;
+            if (sectionArray.count == 0) {
+                [MBProgressHUD showToastWithText:@"当前时间无数据"];
+                return;
+            }
+            
             //X轴显示标题数组(获取所有的椅位名称)
             NSMutableArray *chairNames = [NSMutableArray array];
             NSMutableArray *axisXTitles = [NSMutableArray array];
             NSMutableArray *axisYDataArray = [NSMutableArray array];
             NSMutableArray *randomColors = [NSMutableArray array];
-            NSMutableArray *formDataArray = [NSMutableArray arrayWithObject:[[TTMStatisticsFormModel alloc] initWIthTitle:@"日期" content:@"椅位使用率"]];
-            NSArray *sectionArray = result;
+            NSMutableArray *formSourceArray = [NSMutableArray array];
             for (int i = 0; i < sectionArray.count; i++) {
                 NSArray *rows = sectionArray[i];
                 for (int j = 0; j < rows.count; j++) {
@@ -73,9 +86,6 @@
                     if (j == 0) {
                         NSString *xTitle = [chairModel.curDate componentsSeparatedByString:@" "][0];
                         [axisXTitles addObject:xTitle];
-                        
-                        TTMStatisticsFormModel *formModel = [[TTMStatisticsFormModel alloc] initWIthTitle:xTitle content:[NSString stringWithFormat:@"%.2f",[chairModel.curRate floatValue]]];
-                        [formDataArray addObject:formModel];
                     }
                 }
             }
@@ -87,13 +97,20 @@
             //创建Y轴数据
             for (int i = 0; i < chairNames.count; i++) {
                 NSMutableArray *tempArr = [NSMutableArray array];
+                NSMutableArray *formDataArray = [NSMutableArray arrayWithObject:[[TTMStatisticsFormModel alloc] initWIthTitle:@"日期" content:@"椅位使用率"]];
                 for (int j = 0; j < sectionArray.count; j++) {
                     //设置y轴数据
                     NSArray *subArray = sectionArray[j];
                     TTMChairUsageRateModel *model = subArray[i];
                     [tempArr addObject:[NSString stringWithFormat:@"%.2f",[model.curRate floatValue]]];
+                    
+                    //设置表格数据
+                    NSString *xTitle = [model.curDate componentsSeparatedByString:@" "][0];
+                    TTMStatisticsFormModel *formModel = [[TTMStatisticsFormModel alloc] initWIthTitle:xTitle content:[NSString stringWithFormat:@"%.2f",[model.curRate floatValue]]];
+                    [formDataArray addObject:formModel];
                 }
                 [axisYDataArray addObject:tempArr];
+                [formSourceArray addObject:formDataArray];
             }
             
             //创建模型数据
@@ -115,7 +132,10 @@
             model.headerSourceArray = headerArray;
             weakSelf.model = model;
             //设置表格数据
-            weakSelf.formSourceArray = formDataArray;
+            TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
+            formSourceModel.titleArray = chairNames;
+            formSourceModel.sourceArray = formSourceArray;
+            weakSelf.formSourceModel = formSourceModel;
         }
     }];
 }

@@ -23,7 +23,6 @@
  *  y轴分段数
  */
 @property (nonatomic, assign)NSInteger ySection;
-
 /**
  *  x轴标题数组
  */

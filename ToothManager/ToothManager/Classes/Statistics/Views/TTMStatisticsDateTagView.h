@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^StatisticsDateSelectBlock)(NSString *startTime,NSString *endTime);
+
 /**
  *  日期选择
  */
 @interface TTMStatisticsDateTagView : UIView
 
+@property (nonatomic, copy)StatisticsDateSelectBlock dateSelectBlock;
 
 @end

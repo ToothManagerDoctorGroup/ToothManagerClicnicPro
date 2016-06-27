@@ -48,4 +48,26 @@
                                 number:(NSNumber *)number
                                 action:(SEL)action
                                 target:(id)target;
+
+/**
+ *  新建只有title的按钮
+ *
+ *  @param title  标题
+ *  @param target target description
+ *  @param action action description
+ *
+ *  @return 按钮
+ */
++ (instancetype)barButtonItemWithTitle:(NSString*)title
+                                target:(id)target
+                                action:(SEL)action;
+
+/**
+ *  设置按钮的文字颜色
+ *
+ *  @param color color
+ *  @param state 状态
+ */
+- (void)setTitleColor:(UIColor *)color
+             forState:(UIControlState)state;
 @end

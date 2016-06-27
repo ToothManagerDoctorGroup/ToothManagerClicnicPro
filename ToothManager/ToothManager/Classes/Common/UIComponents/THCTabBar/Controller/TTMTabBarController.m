@@ -109,7 +109,7 @@
     NSArray *viewControllers = @[[TTMChairUsageRateController class],[TTMOrderQuantityController class],[TTMOrderItemRatioController class],[TTMIncomeStatisticsController class],[TTMOrderIncrementController class]];
     NSArray *titles = @[@"椅位使用率",@"诊所预约量",@"预约事项占比",@"收入统计",@"预约增量"];
     WMPageController *pageVC = [[WMPageController alloc] initWithViewControllerClasses:viewControllers andTheirTitles:titles];
-    pageVC.pageAnimatable = YES;
+    pageVC.pageAnimatable = NO;
     pageVC.menuItemWidth = (ScreenWidth - 40) / 3;
     pageVC.postNotification = YES;
     pageVC.bounces = NO;
@@ -119,6 +119,7 @@
     pageVC.titleSizeNormal = 14;
     pageVC.titleColorSelected = MainColor;
     pageVC.menuHeight = 44;
+    pageVC.cachePolicy = WMPageControllerPreloadPolicyNeighbour;
     return pageVC;
 }
 
