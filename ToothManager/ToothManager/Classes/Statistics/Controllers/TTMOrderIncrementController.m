@@ -63,11 +63,6 @@
             [MBProgressHUD showToastWithText:result];
         }else{
             NSArray *sectionArray = result;
-            if (sectionArray.count == 0) {
-                [MBProgressHUD showToastWithText:@"当前时间无数据"];
-                return;
-            }
-            
             //最大预约数
             CGFloat maxIncome = [[result valueForKeyPath:@"@max.count.integerValue"] integerValue];
             
@@ -75,29 +70,43 @@
             NSMutableArray *axisXTitles = [NSMutableArray array];
             NSMutableArray *axisYDataArray = [NSMutableArray array];
             NSMutableArray *formDataArray = [NSMutableArray arrayWithObject:[[TTMStatisticsFormModel alloc] initWIthTitle:@"日期" content:@"预约量（次）"]];
-            for (TTMOrderIncrementModel *model in result) {
-                NSString *titleStr = [model.curDate componentsSeparatedByString:@" "][0];
-                NSString *contentStr = [NSString stringWithFormat:@"%ld",(long)[model.count integerValue]];
-                [axisXTitles addObject:titleStr];
-                [axisYDataArray addObject:contentStr];
+            if (sectionArray.count > 0) {
+                for (TTMOrderIncrementModel *model in result) {
+                    NSString *titleStr = [model.curDate componentsSeparatedByString:@" "][0];
+                    NSString *contentStr = [NSString stringWithFormat:@"%ld",(long)[model.count integerValue]];
+                    [axisXTitles addObject:titleStr];
+                    [axisYDataArray addObject:contentStr];
+                    
+                    TTMStatisticsFormModel *formModel = [[TTMStatisticsFormModel alloc] initWIthTitle:titleStr content:contentStr];
+                    [formDataArray addObject:formModel];
+                }
                 
-                TTMStatisticsFormModel *formModel = [[TTMStatisticsFormModel alloc] initWIthTitle:titleStr content:contentStr];
-                [formDataArray addObject:formModel];
+                //创建模型数据
+                TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
+                model.axisXTitles = axisXTitles;
+                model.axisYDataArray = axisYDataArray;
+                model.maxValue = maxIncome;
+                model.ySection = maxIncome > 8 ? 8 : maxIncome;
+                model.colors = @[MainColor];
+                
+                weakSelf.model = model;
+                //设置表格数据
+                TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
+                formSourceModel.sourceArray = @[formDataArray];
+                weakSelf.formSourceModel = formSourceModel;
+            }else {
+                //创建模型数据
+                TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
+                model.axisXTitles = @[];
+                model.axisYDataArray = @[];
+                model.maxValue = 8;
+                model.ySection = 8;
+                model.colors = @[MainColor];
+                
+                weakSelf.model = model;
+                //设置表格数据
+                weakSelf.formSourceModel = nil;
             }
-            
-            //创建模型数据
-            TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
-            model.axisXTitles = axisXTitles;
-            model.axisYDataArray = axisYDataArray;
-            model.maxValue = maxIncome;
-            model.ySection = maxIncome > 8 ? 8 : maxIncome;
-            model.colors = @[MainColor];
-            
-            weakSelf.model = model;
-            //设置表格数据
-            TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
-            formSourceModel.sourceArray = @[formDataArray];
-            weakSelf.formSourceModel = formSourceModel;
         }
     }];
 }

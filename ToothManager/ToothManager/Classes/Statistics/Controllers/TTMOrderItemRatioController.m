@@ -61,50 +61,57 @@
             [MBProgressHUD showToastWithText:result];
         }else{
             NSArray *sectionArray = result;
-            if (sectionArray.count == 0) {
-                [MBProgressHUD showToastWithText:@"当前时间无数据"];
-                return;
-            }
-            
             //X轴显示标题数组
             NSMutableArray *axisXTitles = [NSMutableArray array];
             NSMutableArray *axisYDataArray = [NSMutableArray array];
             NSMutableArray *randomColors = [NSMutableArray array];
             NSMutableArray *formDataArray = [NSMutableArray arrayWithObject:[[TTMStatisticsFormModel alloc] initWIthTitle:@"预约事项" content:@"占比"]];
             
-            for (TTMOrderItemRatioModel *ratioModel in result) {
-                [axisXTitles addObject:ratioModel.curType];
-                [axisYDataArray addObject:[NSString stringWithFormat:@"%ld%%",(long)[ratioModel.proportion integerValue]]];
+            if (sectionArray.count > 0) {
+                for (TTMOrderItemRatioModel *ratioModel in result) {
+                    [axisXTitles addObject:ratioModel.curType];
+                    [axisYDataArray addObject:[NSString stringWithFormat:@"%ld%%",(long)[ratioModel.proportion integerValue]]];
+                    
+                    TTMStatisticsFormModel *formModel = [[TTMStatisticsFormModel alloc] initWIthTitle:ratioModel.curType content:[NSString stringWithFormat:@"%ld%%",(long)[ratioModel.proportion integerValue]]];
+                    [formDataArray addObject:formModel];
+                }
                 
-                TTMStatisticsFormModel *formModel = [[TTMStatisticsFormModel alloc] initWIthTitle:ratioModel.curType content:[NSString stringWithFormat:@"%ld%%",(long)[ratioModel.proportion integerValue]]];
-                [formDataArray addObject:formModel];
+                for (int i = 0; i < axisXTitles.count; i++) {
+                    [randomColors addObject:ZFRandomColor];
+                }
+                
+                //创建模型数据
+                TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
+                model.axisXTitles = axisXTitles;
+                model.axisYDataArray = axisYDataArray;
+                model.colors = randomColors;
+                
+                //创建头部数据
+                NSMutableArray *footerArray = [NSMutableArray array];
+                for (int i = 0; i < axisXTitles.count; i++) {
+                    TTMStatisticsChartHeaderFooterModel *footerM = [[TTMStatisticsChartHeaderFooterModel alloc] init];
+                    footerM.color = randomColors[i];
+                    footerM.content = [NSString stringWithFormat:@"%@:%@",axisXTitles[i],axisYDataArray[i]];
+                    [footerArray addObject:footerM];
+                }
+                model.footerSourceArray = footerArray;
+                
+                weakSelf.model = model;
+                //设置表格数据
+                TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
+                formSourceModel.sourceArray = @[formDataArray];
+                weakSelf.formSourceModel = formSourceModel;
+            }else{
+                //创建模型数据
+                TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
+                model.axisXTitles = @[];
+                model.axisYDataArray = @[];
+                model.colors = randomColors;
+                
+                weakSelf.model = model;
+                //设置表格数据
+                weakSelf.formSourceModel = nil;
             }
-            
-            for (int i = 0; i < axisXTitles.count; i++) {
-                [randomColors addObject:ZFRandomColor];
-            }
-            
-            //创建模型数据
-            TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
-            model.axisXTitles = axisXTitles;
-            model.axisYDataArray = axisYDataArray;
-            model.colors = randomColors;
-            
-            //创建头部数据
-            NSMutableArray *footerArray = [NSMutableArray array];
-            for (int i = 0; i < axisXTitles.count; i++) {
-                TTMStatisticsChartHeaderFooterModel *footerM = [[TTMStatisticsChartHeaderFooterModel alloc] init];
-                footerM.color = randomColors[i];
-                footerM.content = [NSString stringWithFormat:@"%@:%@",axisXTitles[i],axisYDataArray[i]];
-                [footerArray addObject:footerM];
-            }
-            model.footerSourceArray = footerArray;
-            
-            weakSelf.model = model;
-            //设置表格数据
-            TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
-            formSourceModel.sourceArray = @[formDataArray];
-            weakSelf.formSourceModel = formSourceModel;
         }
     }];
 }

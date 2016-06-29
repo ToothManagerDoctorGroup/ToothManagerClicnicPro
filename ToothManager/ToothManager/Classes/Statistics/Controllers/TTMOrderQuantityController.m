@@ -60,36 +60,46 @@
             [MBProgressHUD showToastWithText:result];
         }else{
             NSArray *sectionArray = result;
-            if (sectionArray.count == 0) {
-                [MBProgressHUD showToastWithText:@"当前时间无数据"];
-                return;
-            }
-            
             //最大预约数
             CGFloat maxReserveCount = [[result valueForKeyPath:@"@max.reserveCount.integerValue"] integerValue];
             //X轴显示标题数组
             NSMutableArray *axisXTitles = [NSMutableArray array];
             NSMutableArray *axisYDataArray = [NSMutableArray array];
             NSMutableArray *formDataArray = [NSMutableArray arrayWithObject:[[TTMStatisticsFormModel alloc] initWIthTitle:@"医生" content:@"预约量（次）"]];
-            for (TTMReserveAmountModel *amountM in result) {
-                [axisXTitles addObject:amountM.doctorName];
-                [axisYDataArray addObject:[amountM.reserveCount stringValue]];
+            
+            if (sectionArray.count > 0) {
+                for (TTMReserveAmountModel *amountM in result) {
+                    [axisXTitles addObject:amountM.doctorName];
+                    [axisYDataArray addObject:[amountM.reserveCount stringValue]];
+                    
+                    TTMStatisticsFormModel *formModel = [[TTMStatisticsFormModel alloc] initWIthTitle:amountM.doctorName content:[amountM.reserveCount stringValue]];
+                    [formDataArray addObject:formModel];
+                }
+                //创建模型数据
+                TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
+                model.axisXTitles = axisXTitles;
+                model.axisYDataArray = @[axisYDataArray];
+                model.maxValue = maxReserveCount;
+                model.ySection = 8;
+                model.colors = @[MainColor];
+                weakSelf.model = model;
+                //设置表格数据
+                TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
+                formSourceModel.sourceArray = @[formDataArray];
+                weakSelf.formSourceModel = formSourceModel;
+            }else{
+                //创建模型数据
+                TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
+                model.axisXTitles = @[];
+                model.axisYDataArray = @[axisYDataArray];
+                model.maxValue = 8;
+                model.ySection = 8;
+                model.colors = @[MainColor];
+                weakSelf.model = model;
                 
-                TTMStatisticsFormModel *formModel = [[TTMStatisticsFormModel alloc] initWIthTitle:amountM.doctorName content:[amountM.reserveCount stringValue]];
-                [formDataArray addObject:formModel];
+                //设置表格数据
+                weakSelf.formSourceModel = nil;
             }
-            //创建模型数据
-            TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
-            model.axisXTitles = axisXTitles;
-            model.axisYDataArray = @[axisYDataArray];
-            model.maxValue = maxReserveCount;
-            model.ySection = 8;
-            model.colors = @[MainColor];
-            weakSelf.model = model;
-            //设置表格数据
-            TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
-            formSourceModel.sourceArray = @[formDataArray];
-            weakSelf.formSourceModel = formSourceModel;
         }
     }];
 }

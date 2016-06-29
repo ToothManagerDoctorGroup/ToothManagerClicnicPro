@@ -71,8 +71,18 @@
 
 - (void)setSourceModel:(TTMStatisticsFormSourceModel *)sourceModel{
     _sourceModel = sourceModel;
-    self.dataList = sourceModel.sourceArray[0];
-    [self.collectionView reloadData];
+    
+    if (!sourceModel) {
+        self.hidden = YES;
+        return;
+    }else{
+        self.hidden = NO;
+    }
+    
+    if (sourceModel.sourceArray.count > 0) {
+        self.dataList = sourceModel.sourceArray[0];
+        [self.collectionView reloadData];
+    }
     
     if (sourceModel.titleArray.count > 0) {
         self.headerSegmentView.titleArray = sourceModel.titleArray;
@@ -83,7 +93,6 @@
             [weakSelf.collectionView reloadData];
         };
     }
-    
 }
 
 #pragma mark - ********************* Delegate/DataSource ******************
