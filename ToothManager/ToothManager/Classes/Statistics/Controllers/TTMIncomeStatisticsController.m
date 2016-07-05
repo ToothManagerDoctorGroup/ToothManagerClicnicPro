@@ -85,10 +85,10 @@
                 TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
                 model.axisXTitles = axisXTitles;
                 model.axisYDataArray = axisYDataArray;
-                model.maxValue = maxIncome;
+                model.maxValue = maxIncome > 8 ? maxIncome : 8;
                 model.ySection = 8;
                 model.colors = @[MainColor];
-                
+                model.unit = @"收入";
                 weakSelf.model = model;
                 //设置表格数据
                 TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
@@ -102,7 +102,7 @@
                 model.maxValue = 8;
                 model.ySection = 8;
                 model.colors = @[MainColor];
-                
+                model.unit = @"收入";
                 weakSelf.model = model;
                 //设置表格数据
                 weakSelf.formSourceModel = nil;

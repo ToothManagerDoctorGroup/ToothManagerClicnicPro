@@ -64,7 +64,7 @@ typedef NS_ENUM(NSUInteger, TTMApointmentStatus){
 
 @property (nonatomic, copy) NSString *doctor_id;
 
-@property (nonatomic, assign) NSInteger appoint_money;
+@property (nonatomic, copy) NSString *appoint_money;
 
 @property (nonatomic, assign) NSInteger planting_quantity;
 

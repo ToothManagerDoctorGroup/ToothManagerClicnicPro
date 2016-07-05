@@ -117,6 +117,7 @@
                 model.maxValue = 100;
                 model.ySection = 8;
                 model.colors = randomColors;
+                model.unit = @"百分比";
                 
                 //创建头部数据
                 NSMutableArray *headerArray = [NSMutableArray array];
@@ -143,6 +144,7 @@
                 model.maxValue = 100;
                 model.ySection = 8;
                 model.colors = randomColors;
+                model.unit = @"百分比";
                 
                 weakSelf.model = model;
                 

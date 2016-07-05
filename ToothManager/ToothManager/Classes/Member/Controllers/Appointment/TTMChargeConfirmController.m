@@ -160,13 +160,6 @@
 
 - (void)setupViewWithModel:(TTMChargeDetailModel *)model {
     _detailModel = model;
-    // 计算椅位费和总费用
-    NSNumber *seat_money = @([model.seat_price integerValue] * [model.used_time integerValue] / 60);
-    NSNumber *appoint_money = @([seat_money integerValue] + [model.assistant_money integerValue]
-    + [model.material_money integerValue] + [model.extra_money integerValue]);
-    
-    model.seat_money = [NSString stringwithNumber:seat_money];
-    model.appoint_money = [NSString stringwithNumber:appoint_money];
     
     NSString *timeString = [NSString stringWithFormat:@"总时长:%@\t\t总费用:%@元", [model.used_time hourMinutesTimeFormat], model.appoint_money];
     NSMutableAttributedString *timeAttributeString = [[NSMutableAttributedString alloc] initWithString:timeString];
@@ -244,12 +237,10 @@
  *  计算总价
  */
 - (void)countMoney {
-    NSUInteger countMoney = [self.detailModel.seat_money integerValue] +
-    [self.detailModel.assistant_money integerValue] +
-    [self.detailModel.material_money integerValue] +
-    [self.detailModel.extra_money integerValue];
     
-    self.detailModel.appoint_money = [NSString stringwithNumber:@(countMoney)];
+    //计算总费用
+    double totalMoney = [self.detailModel.seat_money doubleValue] + [self.detailModel.extra_money doubleValue] + [self.detailModel.assistant_money doubleValue] + [self.detailModel.material_money doubleValue];
+    self.detailModel.appoint_money = [@(totalMoney) stringValue];
     
     NSString *timeString = [NSString stringWithFormat:@"总时长:%@\t\t总费用:%@元",
                             [self.detailModel.used_time hourMinutesTimeFormat], self.detailModel.appoint_money];

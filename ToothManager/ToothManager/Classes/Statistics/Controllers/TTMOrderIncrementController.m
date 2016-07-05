@@ -88,7 +88,7 @@
                 model.maxValue = maxIncome;
                 model.ySection = maxIncome > 8 ? 8 : maxIncome;
                 model.colors = @[MainColor];
-                
+                model.unit = @"预约量";
                 weakSelf.model = model;
                 //设置表格数据
                 TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
@@ -102,7 +102,7 @@
                 model.maxValue = 8;
                 model.ySection = 8;
                 model.colors = @[MainColor];
-                
+                model.unit = @"预约量";
                 weakSelf.model = model;
                 //设置表格数据
                 weakSelf.formSourceModel = nil;

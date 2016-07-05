@@ -11,6 +11,10 @@
 @interface TTMStatisticsChartModel : NSObject
 
 /**
+ *  y轴标注
+ */
+@property (nonatomic, copy)NSString *unit;
+/**
  *  y轴数据（可以是多重数组）
  */
 @property (nonatomic, strong)NSArray *axisYDataArray;

@@ -79,9 +79,10 @@
                 TTMStatisticsChartModel *model = [[TTMStatisticsChartModel alloc] init];
                 model.axisXTitles = axisXTitles;
                 model.axisYDataArray = @[axisYDataArray];
-                model.maxValue = maxReserveCount;
+                model.maxValue = maxReserveCount > 8 ? maxReserveCount : 8;
                 model.ySection = 8;
                 model.colors = @[MainColor];
+                model.unit = @"数量";
                 weakSelf.model = model;
                 //设置表格数据
                 TTMStatisticsFormSourceModel *formSourceModel = [[TTMStatisticsFormSourceModel alloc] init];
@@ -94,6 +95,7 @@
                 model.axisYDataArray = @[axisYDataArray];
                 model.maxValue = 8;
                 model.ySection = 8;
+                model.unit = @"数量";
                 model.colors = @[MainColor];
                 weakSelf.model = model;
                 

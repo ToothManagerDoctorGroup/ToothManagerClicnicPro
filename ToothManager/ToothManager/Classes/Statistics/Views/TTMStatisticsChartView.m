@@ -58,9 +58,7 @@
 
 #pragma mark - ********************* Public Method ***********************
 - (void)reloadData{
-//    if (_barChart || _pieChart || _lineChart) {
-//        
-//    }
+
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     if (self.style == StatisticsChartStylePie) {
         self.pieChart = nil;
@@ -98,11 +96,13 @@
     switch (self.style) {
         case StatisticsChartStyleBar:
         {
+            self.barChart.unit = self.currentChartModel.unit;
             [self.container addSubview:self.barChart];
         }
             break;
         case StatisticsChartStyleLine:
         {
+             self.lineChart.unit = self.currentChartModel.unit;
             [self.container addSubview:self.lineChart];
         }
             break;

@@ -107,7 +107,7 @@
     self.chairLabel.text = model.seat_name;
     self.doctorLabel.text = model.doctor_name;
     self.contentLabel.text = model.appoint_type;
-    self.moneyLabel.text = [NSString stringWithFormat:@"实付款 %@元", @(model.appoint_money)];
+    self.moneyLabel.text = [NSString stringWithFormat:@"实收款 %@元", model.appoint_money];
 }
 
 - (void)setFrame:(CGRect)frame {
